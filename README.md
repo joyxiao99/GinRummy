@@ -2,7 +2,7 @@
 
 Team Name: ?
 
-Team Members: ?, ?, ?
+Team Members: Smita Singh, Benson Hall, Joy Xiao
 
 
 This project is a reimplementation of ...
