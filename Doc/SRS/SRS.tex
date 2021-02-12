@@ -1,8 +1,11 @@
 \documentclass[12pt, titlepage]{article}
-
+\usepackage{float}
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{hyperref}
+\usepackage{indentfirst}
+\usepackage{enumerate}
+
 \hypersetup{
     colorlinks,
     citecolor=black,
@@ -12,17 +15,15 @@
 }
 \usepackage[round]{natbib}
 
-\title{SE 3XA3: Software Requirements Specification\\Title of Project}
+\title{SFWRENG 3XA3: Software Requirements Specification\\Rummy For Dummies}
 
-\author{Team \#, Team Name
-		\\ Student 1 name and macid
-		\\ Student 2 name and macid
-		\\ Student 3 name and macid
+\author{Lab 2 Group 7, Rummy For Dummies
+		\\ Joy Xiao, xiaoz18
+		\\ Benson Hall, hallb8
+		\\ Smita Singh, sings59
 }
 
 \date{\today}
-
-\input{../Comments}
 
 \begin{document}
 
@@ -56,73 +57,289 @@ to the template, you should explicity state what modifications were made.
 \section{Project Drivers}
 
 \subsection{The Purpose of the Project}
+With the ongoing pandemic, people are seeking new ways to entertain themselves from the comfort and safety of their home. The intent is to recreate a single-player card game that is normally played with several people. This is to give users the experience of playing a multiplayer card game within their own homes.
+
+Rummy is a popular card game. Although the currently-available Rummy apps on app stores are free, they have many in-game advertisements. Many users may find this an annoyance. The software being developed is to be played on the local machine, to avoid advertisements and the need for internet access.
+
+The software will be an improved version of Rummy. The game will require little memory to play. The project will also be more user-friendly compared to the open-source implementation, as it will be extended to be accessible to the general public, even if they do not have a technical background.
 
 \subsection{The Stakeholders}
 
 \subsubsection{The Client}
+The client for this project is Dr. Bokhari and the TAs of the course SFWRENG 3XA3. 
 
 \subsubsection{The Customers}
+The customers for this project would be people looking to play a game of Rummy.A group of stakeholders would be users that are familiar with Rummy. Allowing the game to be played through the desktop will give more people access to enjoying the game. In particular, card game enthusiasts would have a great deal of interest in this software because they actively seek out various card games to play. 
+
 
 \subsubsection{Other Stakeholders}
-
+Another stakeholder are the developers. They are responsible for re implementing the open source project, testing and maintaining it.
 \subsection{Mandated Constraints}
 
+\subsubsection{Solution Constrains}
+Description: The project shall be written in Java and unit tested using JUnit as the testing framework.
+
+Rationale: This is chosen because the developers are already familiar with using both technologies.
+
+Fit Criterion: The source code will be written completely in Java.
+
+\noindent \textit{Description:} The game shall be played through the CLI.
+
+\textit{Rationale}: It ensures that the game is simple for users to play with a minimalist interface which uses less of the computers resources.
+
+\textit{Fit Criterion}: The project will have no GUI, and will use ASCII characters to represent cards to create a more visual experience for the users on the CLI.
+
+\noindent \textit{Description:} The program will used  on operating systems such as Windows, Mac Os and Linux \\
+\textit{Rationale}: These operating systems will be able to run the project without any necessary installations.\\
+\textit{Fit Criterion}: The project will be fit  to compile and execute on the above stated operating systems.\\
+
+\subsubsection{Implementation Environment of the Current System}
+
+
+\subsubsection{Partner or Collaborative Applications}
+This implementation does not have any partner or collaborative applications. It relies only on the operating system to be able to run a java application.
+
+\subsubsection{Off-the-Shelf Software}
+There aren't any off-the-shelf software, that the developers will use within the implementation. 
+
+\subsubsection{Anticipated Workplace Environment}
+The anticipated workplace environment is the user's home. However, the product can run on most desktop or laptop computers anywhere. There is no need for an internet connection, and the game can be played locally on the user's machine.
+
+\subsubsection{Schedule Constraints}
+The project must be completed by the week of April 5th, 2021. This is when the final demonstration will take place.
+
+\subsubsection{Budget Constraints}
+The budget is \$0 because there is no monetary funding. Creating this project should have no monetary cost, because there will be no costly resources used.
+
+\subsubsection{Enterprise Constraints}
+The game is free to download and free to play for any user to play on any CLI. 
+
 \subsection{Naming Conventions and Terminology}
+\begin{table}[H]
+\caption{Naming Conventions and Terminology}
+    \centering
+    \begin{tabular}{ |p{5cm}|p{7.5cm}| }
+    \hline
+    \textbf{Term} & \textbf{Definition} \\
+    \hline
+    CLI & Command Line Interface \\
+    \hline
+    JRE & Java Runtime Environment \\
+    \hline
+    GUI & Graphical User Interface \\
+    \hline
+    Stock Pile & Remaining cards in the deck after dealing \\
+    \hline
+    \end{tabular}
+\end{table}
 
 \subsection{Relevant Facts and Assumptions}
 
-User characteristics should go under assumptions.
+The project will implement a specific version of Gin-Rummy. (Insert the instructions to the version here) % add the citation to the bibliography
 
 \section{Functional Requirements}
-
 \subsection{The Scope of the Work and the Product}
+Currently, to launch the original source project and play a game of Gin Rummy requires the code to be compiled and built before operation. As the code is built in Go, it requires an installation of Go to compile and execute. % source code Github citation here
 
+As a command line and JRE generally come with a majority of desktop computers, the goal is to re-create Gin Rummy in Java for general use. % last part is a bit weak.
 \subsubsection{The Context of the Work}
+This project is to be developed for the SFWRENG 3XA3 course. It is developed for the professor of the course, Dr. Asghar Bokhari, and the teaching assistant assigned to our team, Mehdi Jafarizadeh.
 
+% Ask TA about this part on Thursday
+% Prior to development of the implementation, several documents will be created to efficiently establish the logistics of the project. These documents include:
+% \begin{itemize}
+%     \item Test Plan
+%     \item Development Plan
+%     \item Module Guide
+%     \item Module Interface Specifications
+% \end{itemize}
+
+The plan is to re-implement Gin Rummy in Java and to make it more accessible to the general public. % literally copying from the scope
+
+The project will be developed such that it can be easily compiled and run in the command line.
+% TODO knocking gives points to winner (player who knocked)
 \subsubsection{Work Partitioning}
+\begin{table}[H]
+\caption{Work Partitioning Events}
+    \centering
+    \begin{tabular}{|c|c|c|c|}
+    \hline
+    \textbf{Event Number} & \textbf{Event Name} & \textbf{Input} & \textbf{Output} \\
+    \hline
+    1 & 420 & 420 & 420 \\
+    \hline
+    2 & 69 & 69 & 69 \\
+    \hline
+    3 & snoop dogg & 420.69 & 69420 \\
+    \hline
+    \end{tabular}
+\end{table}
 
+\begin{table}[H]
+\caption{Work Partitioning Summaries}
+    \centering
+    \begin{tabular}{|c|c|}
+    \hline
+    \textbf{Event Number} & \textbf{Summary} \\
+    \hline
+    1 & 0 \\
+    \hline
+    \end{tabular}
+\end{table}
 \subsubsection{Individual Product Use Cases}
 
 \subsection{Functional Requirements}
+\textbf{Business Event 1:} The user wants to start a new game.
+\begin{enumerate}
+    \item The system shall ask the user to input their name.
+    \item The system shall display a random set of cards as the users card hand, and it shall display the top card on the discard pile.
+    \item The system shall display the set of options the user can take.
+\end{enumerate}
 
-\section{Non-functional Requirements}
+\textbf{Business Event 2}: The user wants to draw a card from the stock pile.
+\begin{enumerate}
+    \item The system shall add the top card of the stock pile to the user's hand.
+    \item The system shall display the new card to the user through the CLI.
+    \item The system shall prompt the user to discard one of the cards in their hand.
+\end{enumerate}
+
+\textbf{Business Event 3}: The user wants to pick up a card from the discard pile.
+\begin{enumerate}
+    \item The system shall add the top card on the discard pile to the user's hand.
+    \item The system shall display the new card to the user through the CLI.
+    \item The system shall prompt the user to discard one of the cards in their hand.
+\end{enumerate}
+
+\textbf{Business Event 4}: The user wants to check for melds. 
+\begin{enumerate}
+    \item The system shall show the user any melds that can be created from the users hands.
+\end{enumerate}
+
+\textbf{Business Event 5}: The user wants to play a meld. 
+\begin{enumerate}
+    \item The system shall allow the user to select the cards they wish to play for the meld.
+    \item The system shall place the cards in a meld if the user's entry is valid.
+    \item The system shall remove the cards used for the meld from the user's hand.
+\end{enumerate}
+
+\textbf{Business Event 6}: The user wants to check total points of the hand.
+\begin{enumerate}
+    \item The system shall calculate and display the user's points.
+\end{enumerate}
+
+\textbf{Business Event 7}: The user wants to discard a card.
+\begin{enumerate}
+    \item The system shall prompt the user to input which card the user wants to discard.
+    \item The system shall discard the chosen card if valid and display the new card hand.
+    \item The system shall place the card on top of the discard pile faced up.
+    \item The system shall make a move on behalf of the computer agent
+\end{enumerate}
+
+% TA question: Knocking with <= 10 points one BE, knocking with > 10 points another BE ??????
+\textbf{Business Event 8}: The user wants to knock.
+\begin{enumerate}
+    \item The system checks if the user has less than 10 deadwood points.
+    \item If the user has 10 or fewer deadwood points, then the system shall end the round. 
+    \item The system will calculate the difference in deadwood points between the user and AI and determine the winner
+    \item The system will award the points to the winner
+    \item The system will prompt the player if they want to play a new round.
+\end{enumerate}
+
+\section{Non-Functional Requirements}
 
 \subsection{Look and Feel Requirements}
+\begin{enumerate}[{LF}.1]
+    \item The system shall have a simplistic look.
+\end{enumerate}
 
 \subsection{Usability and Humanity Requirements}
+\begin{enumerate}[{UH}.1]
+    \item The system shall be easy to play for users of any age.
+    \item The system shall be easy to run for users of any age.
+\end{enumerate}
 
 \subsection{Performance Requirements}
+\begin{enumerate}[{P}.1]
+    \item The system shall respond to valid user interactions within 0.5 seconds.
+    \item The system shall adhere to rules of the game Rummy.
+\end{enumerate}
 
 \subsection{Operational and Environmental Requirements}
+\begin{enumerate}[{OE}.1]
+    \item The system shall be able to be operated on Windows, Linux, and MacOS operating systems.
+\end{enumerate}
 
 \subsection{Maintainability and Support Requirements}
+\begin{enumerate}[{MS}.1]
+    \item The system shall be clearly documented and commented for ease of maintainability.
+    \item The system shall be as modularized as possible.
+\end{enumerate}
 
 \subsection{Security Requirements}
+N/A
 
 \subsection{Cultural Requirements}
+\begin{enumerate}[{C}.1]
+    \item The system shall not have any offensive images or text.
+    \item The system shall be available in English.
+\end{enumerate}
 
 \subsection{Legal Requirements}
+\begin{enumerate}[{L}.1]
+    \item This system shall adhere to the same Open Source License as the original project: MIT License.
+    \item This system shall not violate any of the MIT License copyright properties.
+\end{enumerate}
 
 \subsection{Health and Safety Requirements}
-
-This section is not in the original Volere template, but health and safety are
-issues that should be considered for every engineering project.
+N/A
 
 \section{Project Issues}
-
+% ask TA what project this pertains to, source code or our project?
 \subsection{Open Issues}
+There is one open issue currently. The issue is to fix the test cases for checking deadwood cards. 
 
 \subsection{Off-the-Shelf Solutions}
+%An existing product?
+%Ready made components?
+%Something to follow, or copy
 
 \subsection{New Problems}
+%Problems in current environment?
+%Existing users?
+%Limitations in implementation environment?
+%Will the "solution" create other problems
 
 \subsection{Tasks}
+The Gantt Chart for the project will be followed.
+
+\begin{table}[H]
+\caption{Task due dates}
+    \centering
+    \begin{tabular}{ |p{7.5cm}|p{4.5cm}| }
+    \hline
+    \textbf{Task} & \textbf{Due Date} \\
+    \hline
+    Proof of Concept Demonstration & February 22, 2021 \\
+    \hline
+    Test Plan Revision 0 & March 5, 2021 \\
+    \hline
+    Design and Document Revision 0 & March 18, 2021 \\
+    \hline
+    Revision 0 Demonstration & March 22, 2021 \\
+    \hline
+    Final Demonstration & April 5, 2021 \\
+    \hline
+    Final Documentation & April 12, 2021 \\
+    \hline
+    \end{tabular}
+\end{table}
 
 \subsection{Migration to the New Product}
 
 \subsection{Risks}
-
+N/A
 \subsection{Costs}
+There should be no costs for this project.
 
 \subsection{User Documentation and Training}
 
