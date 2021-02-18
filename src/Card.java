@@ -20,7 +20,7 @@ public class Card {
 		return this.suit;
 	}
 	
-	//returns rank of the card;=
+	//returns rank of the card
 	public int getRank() {
 		return this.rank;
 	}
@@ -33,7 +33,7 @@ public class Card {
 			return 10;
 	}
 	
-	// calls two private methods that each turn  the rank and suit into a string and then returns the combination
+	// calls two private methods that each turn the rank and suit into a string and then returns the combination
 	@Override
 	public String toString() {
 		String r = rankString();
@@ -83,12 +83,5 @@ public class Card {
 		return s;	
 	}
 
-public static void main(String args[]) {
-	Card c = new Card(Suit.C,11);
-	System.out.println(c.toString());
-	System.out.println(c.Points());
-	System.out.println(c.getRank());
-	System.out.println(c.getSuit());
-}
 	}
 
