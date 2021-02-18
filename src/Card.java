@@ -1,41 +1,49 @@
 
-public class CardADT {
+public class Card {
 
-	
+	//suits Enum: S =Spades, H = Heart..etc
 	public enum Suit{
 		 H, S, C, D;
 	}
 
 	private final Suit suit;
 	private final int  rank;
-	public CardADT(Suit s, int r) {
+	
+	//constructor
+	public Card(Suit s, int r) {
 		this.rank = r;
 		this.suit = s;
 	}
 	
+	//returns suit of the card
 	public Suit getSuit() {
 		return this.suit;
 	}
 	
+	//returns rank of the card;=
 	public int getRank() {
 		return this.rank;
 	}
 	
+	//returns 10 points for all face cards except Ace, and returns the card rank for other cards
 	public int Points() {
 		if (this.rank < 10) {
 			return this.rank;
 		}else
 			return 10;
 	}
+	
+	// calls two private methods that each turn  the rank and suit into a string and then returns the combination
 	@Override
 	public String toString() {
 		String r = rankString();
 		String s = suitString();
-		return String.format(r,s);
+		return r+s;
 	}
 	
+	
+	// returns string of the rank
 	private String rankString() {
-		
 	String s;
 	switch(this.rank) {
 		case 1:
@@ -56,6 +64,7 @@ public class CardADT {
 	return s;	
 	}
 	
+	//returns string of the suit
 	private String suitString() {
 		String s;
 		switch(this.suit) {
@@ -71,17 +80,15 @@ public class CardADT {
 			default:
 				s = "d";	
 		}
-		System.out.println(s);
 		return s;	
 	}
 
 public static void main(String args[]) {
-	CardADT c = new CardADT(Suit.C,11);
+	Card c = new Card(Suit.C,11);
 	System.out.println(c.toString());
 	System.out.println(c.Points());
 	System.out.println(c.getRank());
 	System.out.println(c.getSuit());
 }
 	}
-
 
