@@ -8,6 +8,7 @@ public class Player {
     private Hand hand;
     private int totalScore;
     private int deadwoodScore;
+    private ArrayList<ArrayList<Card>> melds;
 
     /**
      * Player constructor
@@ -16,7 +17,7 @@ public class Player {
      */
     public Player(String name){
         this.name = name;
-        this.hand = new Hand(new ArrayList<Card>());
+        this.hand = new Hand();
     }
 
     /**
@@ -56,6 +57,15 @@ public class Player {
     }
 
     /**
+     * Get the melds in the player's hand
+     * 
+     * @return melds in player's hand
+     */
+    public ArrayList<ArrayList<Card>> getMelds(){
+        return this.melds;
+    }
+
+    /**
      * Add a card to the player's hand
      * 
      * @param c - card to be added
@@ -71,14 +81,14 @@ public class Player {
      * @param suit - suit of the card
      * @param rank - rank of the card
      */
-    public Card discardFromHand(Card.Suit suit, int rank){
+    public Card discardFromHand(Suit suit, int rank){
         Card c = new Card(suit, rank);
         if(this.hand.contains(c)){
             this.hand.remove(c);
             return c;
         }
         else{
-            // TO FIX LATER
+            // TENTATIVE - pending main code
             return null;
         }
     }
@@ -92,18 +102,42 @@ public class Player {
         this.totalScore += points;
     }
 
+    private ArrayList<Card> extractDeadwood(){
+        // check deadwood
+        ArrayList<Card> deadwood = new ArrayList<Card>();
+        // for each meld, remove cards from hand
+        for(ArrayList<Card> meld: this.melds){
+            for(Card c: meld){
+                if(!this.hand.contains(c.toString())){
+                    deadwood.add(c);
+                }
+            }
+        }
+        return deadwood;
+    }
+
     /**
      * Recalculate the deadwood score of the hand
      */
     public void recalculateDeadwoodScore(){
-        // TODO
+        ArrayList<Card> deadwood = extractDeadwood();
+        // reset and recalculate score
+        this.resetDeadwoodScore();
+        for(Card c: deadwood){
+            this.deadwoodScore += c.getRank();
+        }
+    }
+
+    
+    public void recheckMelds(){
+        // TODO requires Meld class
     }
 
     /**
      * Reset the player's hand at the beginning of a new deal (?)
      */
     public void resetHand(){
-        this.hand = new Hand(new ArrayList<Card>());
+        this.hand = new Hand();
     }
 
     /**
@@ -113,7 +147,10 @@ public class Player {
         this.deadwoodScore = 0;
     }
 
-    public ? checkMelds(){
-        // TODO
+    /**
+     * Reset melds
+     */
+    public void resetMelds(){
+        this.melds = new ArrayList<ArrayList<Card>>();
     }
 }
