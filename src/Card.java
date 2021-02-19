@@ -1,40 +1,58 @@
 
 public class Card {
-
-	//suits Enum: S =Spades, H = Heart..etc
-	public enum Suit{
-		 H, S, C, D;
-	}
-
 	private final Suit suit;
 	private final int  rank;
 	
-	//constructor
+	/**
+     * Card constructor
+     * 
+     * @param s - Suit type
+     * @param r - rank of card (1 to 13)
+    */
 	public Card(Suit s, int r) {
 		this.rank = r;
 		this.suit = s;
 	}
 	
-	//returns suit of the card
+	/**
+     * Accessor for suit
+     * 
+     * @return This returns the card suit
+    */
 	public Suit getSuit() {
 		return this.suit;
 	}
 	
-	//returns rank of the card
+    /**
+     * Accessor for rank
+     * 
+     * @return This returns the card rank
+    */
 	public int getRank() {
 		return this.rank;
 	}
 	
-	//returns 10 points for all face cards except Ace, and returns the card rank for other cards
-	public int Points() {
+	/**
+     * This method checks if the card is lower than 10
+     * if it is lower than 10 it returns the card rank.
+     * if it is not lower than 10, it returns the value of 10
+     * 
+     * @return Returns card points
+    */
+	public int points() {
 		if (this.rank < 10) {
 			return this.rank;
 		}else
 			return 10;
 	}
-	
-	// calls two private methods that each turn the rank and suit into a string and then returns the combination
-	@Override
+	/**
+     * This method turns a card into a string value
+     * by calling two private methods that turn the 
+     * rank and suit into string seperately.
+     * Then it combines the two string
+     * 
+     * @return Returns a string representation of the card
+    */
 	public String toString() {
 		String r = rankString();
 		String s = suitString();
@@ -42,7 +60,13 @@ public class Card {
 	}
 	
 	
-	// returns string of the rank
+	/**
+     * This method will create the string representation
+     * of the card rank
+     * 
+     * 
+     * @return Returns a string representation of the card rank
+    */
 	private String rankString() {
 	String s;
 	switch(this.rank) {
@@ -64,7 +88,13 @@ public class Card {
 	return s;	
 	}
 	
-	//returns string of the suit
+	/**
+     * This method will create the string representation
+     * of the card suit
+     * 
+     * 
+     * @return Returns a string representation of the card suit
+    */
 	private String suitString() {
 		String s;
 		switch(this.suit) {
