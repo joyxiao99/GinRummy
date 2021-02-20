@@ -105,6 +105,9 @@ public class Player {
         this.totalScore += points;
     }
 
+    /**
+     * Extract deadwood cards from the hand, given the melds
+     */
     private ArrayList<Card> extractDeadwood(){
         // check deadwood
         ArrayList<Card> deadwood = new ArrayList<Card>();
@@ -134,7 +137,7 @@ public class Player {
     /**
      * Check for melds at the beginning of each round (?)
      */
-    public void recheckMelds(){
+    public void checkMelds(){
         // TODO requires Meld class
     }
 
