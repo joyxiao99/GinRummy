@@ -18,6 +18,9 @@ public class Player {
     public Player(String name){
         this.name = name;
         this.hand = new Hand();
+        this.totalScore = 0;
+        this.deadwoodScore = 0;
+        this.melds = null;
     }
 
     /**
@@ -128,20 +131,22 @@ public class Player {
         }
     }
 
-    
+    /**
+     * Check for melds at the beginning of each round (?)
+     */
     public void recheckMelds(){
         // TODO requires Meld class
     }
 
     /**
-     * Reset the player's hand at the beginning of a new deal (?)
+     * Reset the player's hand at the end of a deal
      */
     public void resetHand(){
         this.hand = new Hand();
     }
 
     /**
-     * Reset the deadwood score at the beginning of a new deal (?)
+     * Reset the deadwood score at the end of a new deal
      */
     public void resetDeadwoodScore(){
         this.deadwoodScore = 0;
