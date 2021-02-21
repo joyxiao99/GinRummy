@@ -11,6 +11,7 @@ public class Computer {
 	public static boolean makeMove(Player player, StockPile stockPile, DiscardPile discardPile) {
 		System.out.print("Computer Hand:");
 		player.getHand().displayHand();
+		player.checkMelds();
 		player.recalculateDeadwoodScore();
 		//Computer knocks when score in hand is 10 or less
 		if (player.getDeadwoodScore() <= 10) {
@@ -21,7 +22,7 @@ public class Computer {
 		player.addCardToHand(discardPile.peek());
 		
 		//if there is a meld, keep discard pile card in hand and discard highest point deadwood card
-		if (Meld.checkMelds(player.getHand()).size() == 0) {
+		if (player.getMelds().size() == 0) {
 			Card cardToDiscard = findHighestDeadwoodCard(player, discardPile);
 			swapDiscardCardHighestDeadwood(player, discardPile, cardToDiscard);
 		} else {
