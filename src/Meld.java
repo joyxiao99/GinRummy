@@ -4,10 +4,10 @@ import java.util.List;
 
 public class Meld {
 
-	public static List<ArrayList<Card>> checkMelds(Hand H){
+	public ArrayList<ArrayList<Card>> checkMelds(Hand H){
 		List<Card> handList = new ArrayList<Card>();
-		List<ArrayList<Card>> sequenceMelds = new ArrayList<ArrayList<Card>>();
-		List<ArrayList<Card>> groupMelds = new ArrayList<ArrayList<Card>>();
+		ArrayList<ArrayList<Card>> sequenceMelds = new ArrayList<ArrayList<Card>>();
+		ArrayList<ArrayList<Card>> groupMelds = new ArrayList<ArrayList<Card>>();
 		for(Card c: H) {
 			handList.add(c);
 		}
@@ -22,7 +22,7 @@ public class Meld {
 		handList = sortRank(handList);
 		groupMelds = findgroups(handList);
 		
-		List<ArrayList<Card>> meldset = new ArrayList<ArrayList<Card>>();
+		ArrayList<ArrayList<Card>> meldset = new ArrayList<ArrayList<Card>>();
 		for(ArrayList<Card> list: sequenceMelds ) {
 			meldset.add(list);
 		}
@@ -34,19 +34,19 @@ public class Meld {
 	}
 	
 	
-	private static List<Card> sortRank(List<Card> h) {
+	private List<Card> sortRank(List<Card> h) {
 		 Collections.sort(h, new sortByRank());
 		return h;
 	}
 	
-	private static List<Card> sortSuitRank(List<Card> h) {
+	private List<Card> sortSuitRank(List<Card> h) {
 		Collections.sort(h, new sortBySR());
 		return h;
 	}
 	
-	private static List<ArrayList<Card>> findSeq(List<Card> sh) {
+	private  ArrayList<ArrayList<Card>> findSeq(List<Card> sh) {
 		
-		List<ArrayList<Card>> seqMeld = new ArrayList<ArrayList<Card>>();	
+		ArrayList<ArrayList<Card>> seqMeld = new ArrayList<ArrayList<Card>>();	
 		int i = 0;
 		Suit suiti;
 		int ranki;
@@ -83,8 +83,8 @@ public class Meld {
 		return seqMeld;
 	}
 	
-	private static List<ArrayList<Card>> findgroups(List<Card> sh){
-		List<ArrayList<Card>> groupMelds = new ArrayList<ArrayList<Card>>();
+	private  ArrayList<ArrayList<Card>> findgroups(List<Card> sh){
+		ArrayList<ArrayList<Card>> groupMelds = new ArrayList<ArrayList<Card>>();
 		int i = 0;
 		int ranki;
 		while(i < sh.size()) {
@@ -109,22 +109,22 @@ public class Meld {
 		return groupMelds;
 	}
 	
-	public static void main (String args[]) {
-		Hand h = new Hand();
-		Card c1 = new Card(Suit.S,11);
-		Card c2 = new Card(Suit.D, 12);
-		Card c3 = new Card(Suit.S, 10);
-		Card c4 = new Card(Suit.S, 9);
-		Card c5 = new Card(Suit.S,8);
-		Card c6 = new Card(Suit.H, 12);
-		Card c7 = new Card(Suit.H, 11);
-		Card c8 = new Card(Suit.C, 1);
-		Card c9 = new Card(Suit.H, 13);
-		Card c10 = new Card(Suit.C, 2);
-		h.add(c1); h.add(c2); h.add(c3);h.add(c4); h.add(c5); 
-		h.add(c6); h.add(c7); h.add(c8);h.add(c9); h.add(c10); 
-		checkMelds(h);
-		
-	}
+//	public static void main (String args[]) {
+//		Hand h = new Hand();
+//		Card c1 = new Card(Suit.S,11);
+//		Card c2 = new Card(Suit.D, 12);
+//		Card c3 = new Card(Suit.S, 10);
+//		Card c4 = new Card(Suit.S, 9);
+//		Card c5 = new Card(Suit.S,8);
+//		Card c6 = new Card(Suit.H, 12);
+//		Card c7 = new Card(Suit.H, 11);
+//		Card c8 = new Card(Suit.C, 1);
+//		Card c9 = new Card(Suit.H, 13);
+//		Card c10 = new Card(Suit.C, 2);
+//		h.add(c1); h.add(c2); h.add(c3);h.add(c4); h.add(c5); 
+//		h.add(c6); h.add(c7); h.add(c8);h.add(c9); h.add(c10); 
+//		checkMelds(h);
+//		
+//	}
 	
 }
