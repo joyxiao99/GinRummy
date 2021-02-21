@@ -93,6 +93,6 @@ public class Computer {
 		discardPile.pop();
 
 		//Discard highest point deadwood card in hand
-		player.discardFromHand(cardToDiscard.getSuit(), cardToDiscard.getRank());
+		player.discardFromHand(cardToDiscard.toString());
 	}
 }
