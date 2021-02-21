@@ -108,7 +108,7 @@ public class Player {
     /**
      * Extract deadwood cards from the hand, given the melds
      */
-    private ArrayList<Card> extractDeadwood(){
+    public ArrayList<Card> extractDeadwood(){
         // check deadwood
         ArrayList<Card> deadwood = new ArrayList<Card>();
         // for each meld, remove cards from hand
@@ -126,7 +126,7 @@ public class Player {
      * Recalculate the deadwood score of the hand
      */
     public void recalculateDeadwoodScore(){
-        ArrayList<Card> deadwood = extractDeadwood();
+        ArrayList<Card> deadwood = this.extractDeadwood();
         // reset and recalculate score
         this.resetDeadwoodScore();
         for(Card c: deadwood){
