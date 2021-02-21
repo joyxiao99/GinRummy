@@ -12,19 +12,14 @@ public class Meld {
 			handList.add(c);
 		}
 		handList = sortRank(handList);
-		System.out.println(handList);
 		handList = sortSuitRank(handList);
-		System.out.println(handList);
 		sequenceMelds = findSeq(handList);
-		System.out.println(sequenceMelds);
 		for(ArrayList<Card> list: sequenceMelds) {
 			for(Card c1: list) {
 				handList.remove(c1);
 			}
 		}
-		System.out.println(handList);
 		handList = sortRank(handList);
-		System.out.println(handList);
 		groupMelds = findgroups(handList);
 		
 		List<ArrayList<Card>> meldset = new ArrayList<ArrayList<Card>>();
@@ -68,7 +63,7 @@ public class Meld {
 						&& ranki + 2 == (sh.get(i+2).getRank()) 
 						&& ranki + 3 == (sh.get(i+3).getRank())) {
 					Collections.addAll(miniMeld,sh.get(i),sh.get(i+1),sh.get(i+2),sh.get(i+3));
-					i = i+4;
+					i = i+3;
 				}
 				i++;
 			}else if(i+2 < sh.size() && suiti ==  sh.get(i+1).getSuit() 
@@ -76,7 +71,7 @@ public class Meld {
 				if(ranki + 1 == sh.get(i+1).getRank() 
 						&& ranki + 2 == sh.get(i+2).getRank()) {
 					Collections.addAll(miniMeld,sh.get(i),sh.get(i+1),sh.get(i+2));
-					i = i+3;
+					i = i+2;
 				}
 				i++;
 			}else
@@ -100,18 +95,17 @@ public class Meld {
 						&& ranki == (sh.get(i+2).getRank()) 
 						&& ranki == (sh.get(i+3).getRank())) {
 					Collections.addAll(miniMeld,sh.get(i),sh.get(i+1),sh.get(i+2),sh.get(i+3));
-					i = i+4;
+					i = i+3;
 			}else if((i+2 < sh.size() && ranki == sh.get(i+1).getRank() 
 						&& ranki == sh.get(i+2).getRank())) {
 					Collections.addAll(miniMeld,sh.get(i),sh.get(i+1),sh.get(i+2));
-					i = i+3;
+					i = i+2;
 			}else
 				i++;
 		if(!miniMeld.isEmpty()) {
 			groupMelds.add(miniMeld);	
 		}	
 		}
-		System.out.println(groupMelds);
 		return groupMelds;
 	}
 	
@@ -122,8 +116,8 @@ public class Meld {
 		Card c3 = new Card(Suit.S, 10);
 		Card c4 = new Card(Suit.S, 9);
 		Card c5 = new Card(Suit.S,8);
-		Card c6 = new Card(Suit.D, 1);
-		Card c7 = new Card(Suit.H, 1);
+		Card c6 = new Card(Suit.H, 12);
+		Card c7 = new Card(Suit.H, 11);
 		Card c8 = new Card(Suit.C, 1);
 		Card c9 = new Card(Suit.H, 13);
 		Card c10 = new Card(Suit.C, 2);
