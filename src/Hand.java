@@ -10,7 +10,7 @@ public class Hand extends ArrayList<Card> {
 	public Hand() {
 	}
 	
-	 /*
+	 /**
 	  * Displays the player's hand to the console
 	  */
 	 public void displayHand() {
@@ -22,7 +22,7 @@ public class Hand extends ArrayList<Card> {
 		 System.out.println(playerHand);
 	 }
 	 
-	 /*
+	 /**
 	  * Checks if hand contains the card
 	  * 
 	  * @param playerInput String input of the card to check
@@ -36,7 +36,7 @@ public class Hand extends ArrayList<Card> {
 		 return false;
 	 }
 	 
-	 /*
+	 /**
 	  * Discards the specific card from the player's hand
 	  * 
 	  * @param playerInput String input of card to discard

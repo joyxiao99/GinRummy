@@ -1,6 +1,6 @@
 public class Computer {
 
-	/*
+	/**
 	 * Computer opponent makes move 
 	 * 
 	 * @param player The computer player information
@@ -21,7 +21,7 @@ public class Computer {
 		}
 	}
 	
-	/*
+	/**
 	 * Keep the discard pile card in hand
 	 * or draw from stock pile (and removing discard pile card previously added)
 	 * Discard highest point deadwood card
@@ -48,20 +48,34 @@ public class Computer {
 		
 	}
 	
+	/**
+	 * Finds highest deadwood card point from hand
+	 * 
+	 * @param player The computer player
+	 * @param discardPile The discard pile
+	 * @return The card with highest deadwood point
+	 */
 	private static Card findHighestDeadwoodCard(Player player, DiscardPile discardPile) {
 		int highestNonMeldPoint = 0;
-		Card cardToDiscard = null;
+		Card cardWithHighestDeadwood = null;
 		
 		for (Card card : player.extractDeadwood()) {
 			//Finds the deadwood card with highest score and not the discard pile card
 			if (card.points() > highestNonMeldPoint && card != discardPile.peek()) {
 				highestNonMeldPoint = card.points();
-				cardToDiscard = card;
+				cardWithHighestDeadwood = card;
 			}
 		}
-		return cardToDiscard;
+		return cardWithHighestDeadwood;
 	}
 	
+	/**
+	 * Removes card from discard with highest deadwood point card
+	 * 
+	 * @param player The computer player information
+	 * @param stockPile The stock pile
+	 * @param card The card to swap
+	 */
 	private static void swapDiscardCardHighestDeadwood(Player player, DiscardPile discardPile, Card cardToDiscard) {
 		//Actually removes card from discard pile
 		discardPile.pop();
