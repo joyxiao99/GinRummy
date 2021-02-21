@@ -51,7 +51,7 @@ public class Hand extends ArrayList<Card> {
 		 
 		 Card cardToDiscard = null;
 		 for (Card cardInHand: this) {
-			 if (!cardInHand.toString().equals(playerInput)) {
+			 if (!cardInHand.toString().equalsIgnoreCase(playerInput)) {
 				 newHand.add(cardInHand);
 			 } else {
 				 cardToDiscard = cardInHand;
