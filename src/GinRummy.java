@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 import java.util.Collections;
 
 public class GinRummy {
@@ -46,20 +47,109 @@ public class GinRummy {
     }
 
     /**
-     * Player makes decisions
+     * Print method for displaying user's options
      */
-    private static void playerDecision(){
-        System.out.println("Your hand: ");
-        for(Card c: p1.getHand()){
-            System.out.print(c.toString() + " ");
-        }
+    private static void displayChoices(){
         System.out.println("\nWhat would you like to do? Input 1-4 to make your choice.");
         System.out.println("1. Draw a card from the stock pile.");
         System.out.println("2. Draw the card from the discard pile.");
         System.out.println("3. Check melds.");
-        System.out.println("4. Check deadwood score/knock.");
+        System.out.println("4. Check deadwood score/attempt to knock.");
+    }
+
+    /**
+     * Draw from the stock pile
+     */
+    private static void drawFromStockPile(){
+        Card c = stockPile.pop();
+        displayAddDraw(c);
+    }
+
+    /**
+     * Draw from discard pile
+     */
+    private static void drawFromDiscardPile(){
+        Card c = discardPile.pop();
+        displayAddDraw(c);
+    }
+
+    /**
+     * Display and add the drawn card to hand
+     */
+    private static void displayAddDraw(Card c){
+        System.out.println("You drew: " + c.toString());
+        p1.addCardToHand(c);
+    }
+
+    /**
+     * Discard from hand
+     */
+    private static void discardCard(){
+
+    }
+
+    /**
+     * Player makes decisions
+     * 
+     * @return true if the player knocks, false otherwise
+     */
+    private static boolean playerDecision(){
+        // hand
+        System.out.println("Your hand: ");
+        for(Card c: p1.getHand()){
+            System.out.print(c.toString() + " ");
+        }
+        
+        // check melds
+        p1.checkMelds();
+        
+        // choices
+        displayChoices();
         int choice = scanner.nextInt();
-        // TODO
+
+        // lock user and prevent them from advancing if input is incorrect
+        while(choice < 1 || choice > 4){
+            System.out.println("Invalid input. Enter a value between 1 and 4.");
+            choice = scanner.nextInt();
+        }
+
+        do{
+            switch(choice){
+                case 1:
+                    drawFromStockPile();
+                    discardCard();
+                    break;
+                case 2:
+                    drawFromDiscardPile();
+                    discardCard();
+                    break;
+                case 3:
+                    ArrayList<ArrayList<Card>> melds = p1.getMelds();
+                    for(ArrayList<Card> meld: melds){
+                        for(Card c: meld){
+                            System.out.print(c.toString() + " ");
+                        }
+                        System.out.println();
+                    }
+                    displayChoices();
+                    choice = scanner.nextInt();
+                    break;
+                case 4:
+                    System.out.println("Your current deadwood score: " + p1.getDeadwoodScore());
+                    if(p1.getDeadwoodScore() <= 10){
+                        System.out.println("Would you like to knock? (Y/N)");
+                        char knock = scanner.nextLine().toLowerCase().charAt(0);
+                        if(knock == 'Y'){
+                            return true;
+                        }
+                    }
+                    displayChoices();
+                    choice = scanner.nextInt();
+                    break;
+            }
+        }while(choice == 3 || choice == 4);
+
+        return false;
     }
 
     /**
@@ -69,15 +159,16 @@ public class GinRummy {
         // distribute cards
         distributeCards();
 
-
-        while(???){
+        boolean playerKnocks = false;
+        boolean cpuKnocks = false;
+        while(!cpuKnocks || !playerKnocks){
             System.out.print("Card on the discard pile: ");
             discardPile.displayTopCard();
 
             // player decides on what to do
-            playerDecision();
+            playerKnocks = playerDecision();
             // cpu decides on what to do
-            Computer.makeMove(cpu, stockPile, discardPile);
+            cpuKnocks = Computer.makeMove(cpu, stockPile, discardPile);
         }
     }
 
