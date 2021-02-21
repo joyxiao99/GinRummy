@@ -78,20 +78,37 @@ public class Player {
     }
 
     /**
-     * Discard a card from the player's hand, if it is there
+     * Given the user's input, discard a card from the player's hand 
+     * if it is there and return its Card representation.
+     * 
+     * @param input - user's input
+     * @return card that was discarded or null if it is not in the hand
+     */
+    public Card discardFromHand(String input){
+        if(this.hand.contains(input)){
+            Card c = this.hand.remove(input);
+            return c;
+        }
+        else{
+            return null;
+        }
+    }
+
+    /**
+     * Given the suit and rank of the card, discard from the player's hand, if it is there
      * and return its Card representation.
      * 
-     * @param suit - suit of the card
+     * @param s - suit of the card
      * @param rank - rank of the card
+     * @return card that was discarded or null if it is not in the hand
      */
-    public Card discardFromHand(Suit suit, int rank){
-        Card c = new Card(suit, rank);
+    public Card discardFromHand(Suit s, int rank){
+        Card c = new Card(s, rank);
         if(this.hand.contains(c)){
             this.hand.remove(c);
             return c;
         }
         else{
-            // TENTATIVE - pending main code
             return null;
         }
     }

@@ -91,7 +91,7 @@ public class GinRummy {
         }
         System.out.println("");
         String discard = scanner.nextLine();
-        discardPile.push(p1.getHand().remove(discard));
+        discardPile.push(p1.discardFromHand(discard));
     }
 
     /**
