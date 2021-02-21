@@ -1,4 +1,3 @@
-
 public class Computer {
 
 	/*
@@ -9,21 +8,17 @@ public class Computer {
 	 * @param discardPile The discard pile
 	 */
 	public static void makeMove(Player player, StockPile stockPile, DiscardPile discardPile) {
-		//adds card from discard pile into computer hand and checks for melds
-		checkMeldsWithTopDiscardCard(player.getHand(), discardPile);
-		//finalizes computer hand with new card and discard a card from hand
-		completeTurn(player, stockPile, discardPile);
-	}
-	
-	/*
-	 * Checks for melds with the visible card from the discard pile
-	 *
-	 * @param hand The computer opponent's hand
-	 * @param discardPile The discard pile
-	 */
-	private static void checkMeldsWithTopDiscardCard(Hand hand, DiscardPile discardPile) {
-		hand.add(discardPile.peek());
-		Meld.checkMelds(hand);
+		//adds card from discard pile into computer hand and checks for melds WITHOUT popping from discard pile
+		player.addCardToHand(discardPile.peek());
+		
+		//if there is a meld, keep discard pile card in hand and discard highest point deadwood card
+		if (Meld.checkMelds(player.getHand()).size() == 0) {
+			Card cardToDiscard = findHighestDeadwoodCard(player, discardPile);
+			swapDiscardCardHighestDeadwood(player, discardPile, cardToDiscard);
+		} else {
+			//finalizes computer hand with new card and discard a card from hand
+			completeTurnNoMeld(player, stockPile, discardPile);
+		}
 	}
 	
 	/*
@@ -35,8 +30,25 @@ public class Computer {
 	 * @param stockPile The stock pile	 
 	 * @param discardPile The discard pile
 	 */
-	private static void completeTurn(Player player, StockPile stockPile, DiscardPile discardPile) {
-		//find card to swap with discard pile card to make lowest deadwood score
+	private static void completeTurnNoMeld(Player player, StockPile stockPile, DiscardPile discardPile) {
+		Card cardToDiscard = findHighestDeadwoodCard(player, discardPile);
+	
+		//when drawing from discard pile will not result in a decrease in deadwood score
+		if (cardToDiscard == null) {
+			//Draw from the stock pile
+			player.addCardToHand(stockPile.pop());
+			
+			//discard the previously drawn discard pile card from the hand
+			player.discardFromHand(discardPile.peek().getSuit(), discardPile.peek().getRank());
+		} 
+		//when drawing the discard pile card would result in decrease in deadwood score
+		else {
+			swapDiscardCardHighestDeadwood(player, discardPile, cardToDiscard);
+		}
+		
+	}
+	
+	private static Card findHighestDeadwoodCard(Player player, DiscardPile discardPile) {
 		int highestNonMeldPoint = 0;
 		Card cardToDiscard = null;
 		
@@ -47,24 +59,14 @@ public class Computer {
 				cardToDiscard = card;
 			}
 		}
-	
-		//when drawing from discard pile will not result in a decrease in deadwood score
-		if (highestNonMeldPoint == 0) {
-			//Draw from the stock pile
-			player.addCardToHand(stockPile.pop());
-			
-			//discard the previously drawn discard pile card from the hand
-			player.discardFromHand(discardPile.peek().getSuit(), discardPile.peek().getRank());
-		} 
-		//when drawing the discard pile card would result in decrease in deadwood score
-		else {
-			//Takes the card from discard pile
-			discardPile.pop();
-
-			//discard highest non meld card in hand
-			player.discardFromHand(cardToDiscard.getSuit(), cardToDiscard.getRank());
-		}
-		
+		return cardToDiscard;
 	}
 	
+	private static void swapDiscardCardHighestDeadwood(Player player, DiscardPile discardPile, Card cardToDiscard) {
+		//Actually removes card from discard pile
+		discardPile.pop();
+
+		//Discard highest point deadwood card in hand
+		player.discardFromHand(cardToDiscard.getSuit(), cardToDiscard.getRank());
+	}
 }
