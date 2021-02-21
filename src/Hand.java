@@ -32,7 +32,7 @@ public class Hand extends ArrayList<Card> {
 	  */
 	 public boolean contains(String playerInput) {
 		 for (Card card: this) {
-			 if (card.toString().equals(playerInput)) {
+			 if (card.toString().equalsIgnoreCase(playerInput)) {
 				 return true;
 			 }
 		 }
