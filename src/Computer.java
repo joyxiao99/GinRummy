@@ -25,6 +25,7 @@ public class Computer {
 		if (player.getMelds().size() == 0) {
 			Card cardToDiscard = findHighestDeadwoodCard(player, discardPile);
 			swapDiscardCardHighestDeadwood(player, discardPile, cardToDiscard);
+			discardPile.add(cardToDiscard);
 		} else {
 			//finalizes computer hand with new card and discard a card from hand
 			completeTurnNoMeld(player, stockPile, discardPile);
@@ -51,7 +52,8 @@ public class Computer {
 			player.addCardToHand(stockPile.pop());
 			
 			//discard the previously drawn discard pile card from the hand
-			player.discardFromHand(discardPile.peek().getSuit(), discardPile.peek().getRank());
+			player.getHand().remove(discardPile.peek().toString());
+			
 		} 
 		//when drawing the discard pile card would result in decrease in deadwood score
 		else {
@@ -93,6 +95,8 @@ public class Computer {
 		discardPile.pop();
 
 		//Discard highest point deadwood card in hand
-		player.discardFromHand(cardToDiscard.toString());
+		player.getHand().remove(cardToDiscard.toString());
+		
+		discardPile.add(cardToDiscard);
 	}
 }
