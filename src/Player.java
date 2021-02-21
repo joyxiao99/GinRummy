@@ -128,12 +128,11 @@ public class Player {
     public ArrayList<Card> extractDeadwood(){
         // check deadwood
         ArrayList<Card> deadwood = new ArrayList<Card>();
-        // for each meld, remove cards from hand
+        deadwood.addAll(this.hand);
+        // remove cards from deadwood list that are part of a meld
         for(ArrayList<Card> meld: this.melds){
             for(Card c: meld){
-                if(!this.hand.contains(c.toString())){
-                    deadwood.add(c);
-                }
+               deadwood.remove(c);
             }
         }
         return deadwood;
