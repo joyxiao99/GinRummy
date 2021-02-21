@@ -82,7 +82,7 @@ public class GinRummy {
     }
 
     /**
-     * Discard from hand
+     * Discard from hand and put on top of discard pile
      */
     private static void discardCard(){
         System.out.println("Choose a card to discard: ");
@@ -91,7 +91,7 @@ public class GinRummy {
         }
         System.out.println("");
         String discard = scanner.nextLine();
-        p1.getHand().remove(discard);
+        discardPile.push(p1.getHand().remove(discard));
     }
 
     /**
