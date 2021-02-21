@@ -215,6 +215,7 @@ public class GinRummy {
             }
             // cpu decides on what to do
             cpuKnocks = Computer.makeMove(cpu, stockPile, discardPile);
+            System.out.println("AI has made their move!");
         }
 
         // calculate score based on who knocked
