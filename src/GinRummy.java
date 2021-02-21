@@ -85,7 +85,13 @@ public class GinRummy {
      * Discard from hand
      */
     private static void discardCard(){
-
+        System.out.println("Choose a card to discard: ");
+        for(Card c: p1.getHand()){
+            System.out.print(c.toString() + " ");
+        }
+        System.out.println("");
+        String discard = scanner.nextLine();
+        p1.getHand().remove(discard);
     }
 
     /**
@@ -102,6 +108,8 @@ public class GinRummy {
         
         // check melds
         p1.checkMelds();
+        // recalculate deadwood score
+        p1.recalculateDeadwoodScore();
         
         // choices
         displayChoices();
@@ -153,9 +161,43 @@ public class GinRummy {
     }
 
     /**
+     * Calculate score: The absolute value of the difference of 
+     * the deadwood scores is calculated, and the points are 
+     * awarded to the player with the lowest deadwood score.
+     * If any of the players have 0 deadwood points and knocks,
+     * they get an additional 20 points.
+     */
+    private static void calculateScores(){
+        int playerScore = p1.getDeadwoodScore();
+        int cpuScore = cpu.getDeadwoodScore();
+        int difference = Math.abs(playerScore - cpuScore);
+        if(playerScore < cpuScore){
+            p1.addToTotalScore(difference);
+        }
+        else{
+            cpu.addToTotalScore(difference);
+        }
+    }
+
+    /**
+     * Reset all elements of the former deal
+     */
+    private static void resetEverything(){
+        p1.resetDeadwoodScore();
+        p1.resetHand();
+        p1.resetMelds();
+        cpu.resetDeadwoodScore();
+        cpu.resetHand();
+        cpu.resetMelds();
+    }
+
+    /**
      * Play a single deal
      */
     private static void playDeal(){
+        // reset everything
+        resetEverything();
+
         // distribute cards
         distributeCards();
 
@@ -167,9 +209,16 @@ public class GinRummy {
 
             // player decides on what to do
             playerKnocks = playerDecision();
+            
+            if(playerKnocks){
+                break;
+            }
             // cpu decides on what to do
             cpuKnocks = Computer.makeMove(cpu, stockPile, discardPile);
         }
+
+        // calculate score based on who knocked
+        calculateScores();
     }
 
     /**
