@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Meld {
 
-	public ArrayList<ArrayList<Card>> checkMelds(Hand H){
+	public static ArrayList<ArrayList<Card>> checkMelds(Hand H){
 		List<Card> handList = new ArrayList<Card>();
 		ArrayList<ArrayList<Card>> sequenceMelds = new ArrayList<ArrayList<Card>>();
 		ArrayList<ArrayList<Card>> groupMelds = new ArrayList<ArrayList<Card>>();
@@ -34,17 +34,17 @@ public class Meld {
 	}
 	
 	
-	private List<Card> sortRank(List<Card> h) {
+	private static List<Card> sortRank(List<Card> h) {
 		 Collections.sort(h, new sortByRank());
 		return h;
 	}
 	
-	private List<Card> sortSuitRank(List<Card> h) {
+	private static List<Card> sortSuitRank(List<Card> h) {
 		Collections.sort(h, new sortBySR());
 		return h;
 	}
 	
-	private  ArrayList<ArrayList<Card>> findSeq(List<Card> sh) {
+	private static ArrayList<ArrayList<Card>> findSeq(List<Card> sh) {
 		
 		ArrayList<ArrayList<Card>> seqMeld = new ArrayList<ArrayList<Card>>();	
 		int i = 0;
@@ -83,7 +83,7 @@ public class Meld {
 		return seqMeld;
 	}
 	
-	private  ArrayList<ArrayList<Card>> findgroups(List<Card> sh){
+	private static ArrayList<ArrayList<Card>> findgroups(List<Card> sh){
 		ArrayList<ArrayList<Card>> groupMelds = new ArrayList<ArrayList<Card>>();
 		int i = 0;
 		int ranki;
@@ -107,7 +107,7 @@ public class Meld {
 		}	
 		}
 		return groupMelds;
-	}
+}
 	
 //	public static void main (String args[]) {
 //		Hand h = new Hand();
