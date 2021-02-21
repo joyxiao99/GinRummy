@@ -23,14 +23,13 @@ public class Computer {
 	 */
 	private static void checkMeldsWithTopDiscardCard(Hand hand, DiscardPile discardPile) {
 		hand.add(discardPile.peek());
-//		Meld.checkMeld(hand);
+		Meld.checkMelds(hand);
 	}
 	
 	/*
-	 * Checks for lowest deadwood score with discard pile card
 	 * Keep the discard pile card in hand
 	 * or draw from stock pile (and removing discard pile card previously added)
-	 * Discard highest point non meld card
+	 * Discard highest point deadwood card
 	 * 
 	 * @param player The computer player information
 	 * @param stockPile The stock pile	 
@@ -41,9 +40,9 @@ public class Computer {
 		int highestNonMeldPoint = 0;
 		Card cardToDiscard = null;
 		
-		for (Card card : player.getHand()) {
-			//Finds the card with highest deadwood score in hand (that is non meld and not the discard pile card)
-			if (!player.checkMelds().contains(card) && card.points() > highestNonMeldPoint && card != discardPile.peek()) {
+		for (Card card : player.extractDeadwood()) {
+			//Finds the deadwood card with highest score and not the discard pile card
+			if (card.points() > highestNonMeldPoint && card != discardPile.peek()) {
 				highestNonMeldPoint = card.points();
 				cardToDiscard = card;
 			}
