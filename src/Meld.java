@@ -7,6 +7,7 @@ public class Meld {
 	public static List<ArrayList<Card>> checkMelds(Hand H){
 		List<Card> handList = new ArrayList<Card>();
 		List<ArrayList<Card>> sequenceMelds = new ArrayList<ArrayList<Card>>();
+		List<ArrayList<Card>> groupMelds = new ArrayList<ArrayList<Card>>();
 		for(Card c: H) {
 			handList.add(c);
 		}
@@ -16,7 +17,24 @@ public class Meld {
 		System.out.println(handList);
 		sequenceMelds = findSeq(handList);
 		System.out.println(sequenceMelds);
+		for(ArrayList<Card> list: sequenceMelds) {
+			for(Card c1: list) {
+				handList.remove(c1);
+			}
+		}
+		System.out.println(handList);
+		handList = sortRank(handList);
+		System.out.println(handList);
+		groupMelds = findgroups(handList);
+		
 		List<ArrayList<Card>> meldset = new ArrayList<ArrayList<Card>>();
+		for(ArrayList<Card> list: sequenceMelds ) {
+			meldset.add(list);
+		}
+		for(ArrayList<Card> list: groupMelds ) {
+			meldset.add(list);
+		}
+		System.out.println(meldset);
 		return meldset;
 	}
 	
@@ -33,8 +51,7 @@ public class Meld {
 	
 	private static List<ArrayList<Card>> findSeq(List<Card> sh) {
 		
-		List<ArrayList<Card>> seqMeld = new ArrayList<ArrayList<Card>>();
-		
+		List<ArrayList<Card>> seqMeld = new ArrayList<ArrayList<Card>>();	
 		int i = 0;
 		Suit suiti;
 		int ranki;
@@ -56,7 +73,6 @@ public class Meld {
 				i++;
 			}else if(i+2 < sh.size() && suiti ==  sh.get(i+1).getSuit() 
 					&& suiti == sh.get(i+2).getSuit()) {
-				System.out.println("Passed");
 				if(ranki + 1 == sh.get(i+1).getRank() 
 						&& ranki + 2 == sh.get(i+2).getRank()) {
 					Collections.addAll(miniMeld,sh.get(i),sh.get(i+1),sh.get(i+2));
@@ -65,7 +81,6 @@ public class Meld {
 				i++;
 			}else
 				i++;
-		System.out.println(miniMeld);
 		if(!miniMeld.isEmpty()) {
 			seqMeld.add(miniMeld);	
 		}	
@@ -73,8 +88,31 @@ public class Meld {
 		return seqMeld;
 	}
 	
-	private Hand findgroups(List<Card> sortedHand){
-		return null;  
+	private static List<ArrayList<Card>> findgroups(List<Card> sh){
+		List<ArrayList<Card>> groupMelds = new ArrayList<ArrayList<Card>>();
+		int i = 0;
+		int ranki;
+		while(i < sh.size()) {
+			ArrayList<Card> miniMeld = new ArrayList<Card>();
+			ranki = sh.get(i).getRank();
+	
+			if(i+3 < sh.size() && ranki ==(sh.get(i+1).getRank())
+						&& ranki == (sh.get(i+2).getRank()) 
+						&& ranki == (sh.get(i+3).getRank())) {
+					Collections.addAll(miniMeld,sh.get(i),sh.get(i+1),sh.get(i+2),sh.get(i+3));
+					i = i+4;
+			}else if((i+2 < sh.size() && ranki == sh.get(i+1).getRank() 
+						&& ranki == sh.get(i+2).getRank())) {
+					Collections.addAll(miniMeld,sh.get(i),sh.get(i+1),sh.get(i+2));
+					i = i+3;
+			}else
+				i++;
+		if(!miniMeld.isEmpty()) {
+			groupMelds.add(miniMeld);	
+		}	
+		}
+		System.out.println(groupMelds);
+		return groupMelds;
 	}
 	
 	public static void main (String args[]) {
