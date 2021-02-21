@@ -6,8 +6,15 @@ public class Computer {
 	 * @param player The computer player information
 	 * @param stockPile The stock pile	 
 	 * @param discardPile The discard pile
+	 * @return true when computer knocks, false when computer draws card
 	 */
-	public static void makeMove(Player player, StockPile stockPile, DiscardPile discardPile) {
+	public static boolean makeMove(Player player, StockPile stockPile, DiscardPile discardPile) {
+		
+		//Computer knocks when score in hand is 10 or less
+		if (player.getDeadwoodScore() <= 10) {
+			return true;
+		}
+		
 		//adds card from discard pile into computer hand and checks for melds WITHOUT popping from discard pile
 		player.addCardToHand(discardPile.peek());
 		
@@ -19,6 +26,8 @@ public class Computer {
 			//finalizes computer hand with new card and discard a card from hand
 			completeTurnNoMeld(player, stockPile, discardPile);
 		}
+		
+		return false;
 	}
 	
 	/**
