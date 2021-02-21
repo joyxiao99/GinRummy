@@ -135,7 +135,7 @@ public class Player {
     }
 
     /**
-     * Check for melds at the beginning of each round (?)
+     * Check for melds at the beginning of each round
      */
     public void checkMelds(){
         this.melds = Meld.checkMelds(this.hand);

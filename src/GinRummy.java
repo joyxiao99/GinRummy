@@ -34,21 +34,51 @@ public class GinRummy {
     }
 
     /**
+     * Distribute cards.
+     * 10 cards per player, next card on the discard pile
+     */
+    private static void distributeCards(){
+        for(int i = 0; i < 10; i++){
+            p1.addCardToHand(stockPile.pop());
+            cpu.addCardToHand(stockPile.pop());
+        }
+        discardPile.push(stockPile.pop());
+    }
+
+    /**
      * Player makes decisions
      */
     private static void playerDecision(){
-        // TODO player decides on move
+        System.out.println("Your hand: ");
+        for(Card c: p1.getHand()){
+            System.out.print(c.toString() + " ");
+        }
+        System.out.println("\nWhat would you like to do? Input 1-4 to make your choice.");
+        System.out.println("1. Draw a card from the stock pile.");
+        System.out.println("2. Draw the card from the discard pile.");
+        System.out.println("3. Check melds.");
+        System.out.println("4. Check deadwood score/knock.");
+        int choice = scanner.nextInt();
+        // TODO
     }
 
     /**
      * Play a single deal
      */
     private static void playDeal(){
-        // TODO distribute cards, loop the decisions
-        // player decides on what to do
-        playerDecision();
-        // cpu decides on what to do
-        Computer.makeMove(cpu, stockPile, discardPile);
+        // distribute cards
+        distributeCards();
+
+
+        while(???){
+            System.out.print("Card on the discard pile: ");
+            discardPile.displayTopCard();
+
+            // player decides on what to do
+            playerDecision();
+            // cpu decides on what to do
+            Computer.makeMove(cpu, stockPile, discardPile);
+        }
     }
 
     /**
