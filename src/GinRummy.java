@@ -145,9 +145,9 @@ public class GinRummy {
                 case 4:
                     System.out.println("Your current deadwood score: " + p1.getDeadwoodScore());
                     if(p1.getDeadwoodScore() <= 10){
-                        System.out.println("Would you like to knock? (Y/N)");
+                        System.out.println("Would you like to knock? (y/n)");
                         char knock = scanner.nextLine().toLowerCase().charAt(0);
-                        if(knock == 'Y'){
+                        if(knock == 'y'){
                             return true;
                         }
                     }
