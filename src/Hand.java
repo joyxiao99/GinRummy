@@ -7,6 +7,9 @@ public class Hand extends ArrayList<Card> {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Hand constructor
+	 */
 	public Hand() {
 	}
 	

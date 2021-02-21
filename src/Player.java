@@ -138,7 +138,7 @@ public class Player {
      * Check for melds at the beginning of each round (?)
      */
     public void checkMelds(){
-        // TODO requires Meld class
+        this.melds = Meld.checkMelds(this.hand);
     }
 
     /**
