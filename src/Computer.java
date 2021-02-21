@@ -9,7 +9,9 @@ public class Computer {
 	 * @return true when computer knocks, false when computer draws card
 	 */
 	public static boolean makeMove(Player player, StockPile stockPile, DiscardPile discardPile) {
-		
+		System.out.print("Computer Hand:");
+		player.getHand().displayHand();
+		player.recalculateDeadwoodScore();
 		//Computer knocks when score in hand is 10 or less
 		if (player.getDeadwoodScore() <= 10) {
 			return true;
