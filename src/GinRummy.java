@@ -195,7 +195,7 @@ public class GinRummy {
     /**
      * Main method
      */
-    public static void main(){
+    public static void main(String[] args){
         System.out.println("Welcome to Rummy for Dummies!");
         scanner = new Scanner(System.in);
         System.out.println("Please enter your name:");
