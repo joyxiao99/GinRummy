@@ -43,7 +43,7 @@ public class Hand extends ArrayList<Card> {
 	  * Discards the specific card from the player's hand
 	  * 
 	  * @param playerInput String input of card to discard
-	  * @return true
+	  * @return Card that has been removed
 	  */
 	 public Card remove(String playerInput) {		 
 		 //Create new hand of cards with the card removed
