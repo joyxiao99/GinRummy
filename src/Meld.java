@@ -4,46 +4,79 @@ import java.util.List;
 
 public class Meld {
 
+	/**
+	 * Finds the sequence and group melds of a given hand of cards
+	 * 
+	 * @param Hand H hand of cards of the player
+	 * @return 2d arraylist of the the list of melds
+	 */
 	public static ArrayList<ArrayList<Card>> checkMelds(Hand H){
-		List<Card> handList = new ArrayList<Card>();
+		
 		ArrayList<ArrayList<Card>> sequenceMelds = new ArrayList<ArrayList<Card>>();
 		ArrayList<ArrayList<Card>> groupMelds = new ArrayList<ArrayList<Card>>();
+		ArrayList<ArrayList<Card>> meldset = new ArrayList<ArrayList<Card>>();
+		List<Card> handList = new ArrayList<Card>();
+		
 		for(Card c: H) {
 			handList.add(c);
 		}
+		
 		handList = sortRank(handList);
 		handList = sortSuitRank(handList);
 		sequenceMelds = findSeq(handList);
+		
+		handList = removeCards(handList, sequenceMelds);
+		handList = sortRank(handList);
+		groupMelds = findgroups(handList);
+		
+		
+		meldset.addAll(sequenceMelds);
+		meldset.addAll(groupMelds);
+		return meldset;
+	}
+	/**
+	 * Private method that removeCards of a hand that are parts of the sequncemelds
+	 * 
+	 * @param H hand of cards of the player
+	 * @param sequencemelds a list of sequencemelds
+	 * @return 2d arraylist of the the list of melds
+	 */
+	private static List<Card> removeCards (List<Card> handList, ArrayList<ArrayList<Card>> sequenceMelds){
+		
 		for(ArrayList<Card> list: sequenceMelds) {
 			for(Card c1: list) {
 				handList.remove(c1);
 			}
 		}
-		handList = sortRank(handList);
-		groupMelds = findgroups(handList);
-		
-		ArrayList<ArrayList<Card>> meldset = new ArrayList<ArrayList<Card>>();
-		for(ArrayList<Card> list: sequenceMelds ) {
-			meldset.add(list);
-		}
-		for(ArrayList<Card> list: groupMelds ) {
-			meldset.add(list);
-		}
-		System.out.println(meldset);
-		return meldset;
+		return handList;
 	}
-	
-	
+	/**
+	 * Private method that sorts the cards in a hand by rank
+	 * 
+	 * @param h hand of cards
+	 * @return sorted list of cards
+	 */
 	private static List<Card> sortRank(List<Card> h) {
 		 Collections.sort(h, new sortByRank());
 		return h;
 	}
 	
+	/**
+	 * Private method that sorts the cards in a hand by suit first, and then rank
+	 * 
+	 * @param h list of cards
+	 * @return sorted list of cards
+	 */
 	private static List<Card> sortSuitRank(List<Card> h) {
 		Collections.sort(h, new sortBySR());
 		return h;
 	}
-	
+	/**
+	 * Private method that finds sequence melds from a sorted hand of cards
+	 * 
+	 * @param sh list of sorted cards by suit and rank
+	 * @return 2d arraylist of all the sequence melds.
+	 */
 	private static ArrayList<ArrayList<Card>> findSeq(List<Card> sh) {
 		
 		ArrayList<ArrayList<Card>> seqMeld = new ArrayList<ArrayList<Card>>();	
@@ -59,7 +92,7 @@ public class Meld {
 					&& suiti == sh.get(i+2).getSuit() 
 					&& suiti == sh.get(i+3).getSuit()){
 
-				if(ranki + 1==(sh.get(i+1).getRank())
+				if(ranki + 1 ==(sh.get(i+1).getRank())
 						&& ranki + 2 == (sh.get(i+2).getRank()) 
 						&& ranki + 3 == (sh.get(i+3).getRank())) {
 					Collections.addAll(miniMeld,sh.get(i),sh.get(i+1),sh.get(i+2),sh.get(i+3));
@@ -82,7 +115,12 @@ public class Meld {
 		}
 		return seqMeld;
 	}
-	
+	/**
+	 * Private method that finds group melds from a sorted hand of cards
+	 * 
+	 * @param sh list of sorted cards by rank
+	 * @return 2d arraylist of all the group melds.
+	 */
 	private static ArrayList<ArrayList<Card>> findgroups(List<Card> sh){
 		ArrayList<ArrayList<Card>> groupMelds = new ArrayList<ArrayList<Card>>();
 		int i = 0;
@@ -107,7 +145,7 @@ public class Meld {
 		}	
 		}
 		return groupMelds;
-}
+	}
 	
 //	public static void main (String args[]) {
 //		Hand h = new Hand();
