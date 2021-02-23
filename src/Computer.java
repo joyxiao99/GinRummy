@@ -52,7 +52,7 @@ public class Computer {
 			player.addCardToHand(stockPile.pop());
 			
 			//discard the previously drawn discard pile card from the hand
-			player.getHand().remove(discardPile.peek().toString());
+			player.discardFromHand(discardPile.peek().toString());
 			
 		} 
 		//when drawing the discard pile card would result in decrease in deadwood score
@@ -95,7 +95,7 @@ public class Computer {
 		discardPile.pop();
 
 		//Discard highest point deadwood card in hand
-		player.getHand().remove(cardToDiscard.toString());
+		player.discardFromHand(cardToDiscard.toString());
 		
 		discardPile.add(cardToDiscard);
 	}
