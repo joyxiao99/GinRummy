@@ -146,7 +146,7 @@ public class Player {
         // reset and recalculate score
         this.resetDeadwoodScore();
         for(Card c: deadwood){
-            this.deadwoodScore += c.getRank();
+            this.deadwoodScore += c.points();
         }
     }
 
