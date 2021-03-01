@@ -111,17 +111,19 @@ public class GinRummy {
         // recalculate deadwood score
         p1.recalculateDeadwoodScore();
         
-        // choices
-        displayChoices();
-        int choice = Integer.parseInt(scanner.nextLine());
-
-        // lock user and prevent them from advancing if input is incorrect
-        while(choice < 1 || choice > 4){
-            System.out.println("Invalid input. Enter a value between 1 and 4.");
-            choice = Integer.parseInt(scanner.nextLine());
-        }
-
+        // declare choice variable for do-while loop
+        int choice;
         do{
+        	// choices
+            displayChoices();
+            choice = Integer.parseInt(scanner.nextLine());
+
+            // lock user and prevent them from advancing if input is incorrect
+            while(choice < 1 || choice > 4){
+                System.out.println("Invalid input. Enter a value between 1 and 4.");
+                choice = Integer.parseInt(scanner.nextLine());
+            }
+            
             switch(choice){
                 case 1:
                     drawFromStockPile();
@@ -139,8 +141,6 @@ public class GinRummy {
                         }
                         System.out.println();
                     }
-                    displayChoices();
-                    choice = Integer.parseInt(scanner.nextLine());
                     break;
                 case 4:
                     System.out.println("Your current deadwood score: " + p1.getDeadwoodScore());
@@ -151,8 +151,6 @@ public class GinRummy {
                             return true;
                         }
                     }
-                    displayChoices();
-                    choice = Integer.parseInt(scanner.nextLine());
                     break;
             }
         }while(choice == 3 || choice == 4);
