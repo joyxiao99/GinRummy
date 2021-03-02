@@ -1,4 +1,4 @@
-public class Computer {
+public class OldComputer {
 
 	/**
 	 * Computer opponent makes move 
