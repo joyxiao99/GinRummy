@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Collections;
 
 /**
@@ -57,6 +58,17 @@ public class GameOps {
 	}
 
 	/**
+	 * Discard specified card from player's hand
+	 * 
+	 * @param p1      - user player
+	 * @param dp      - discard pile
+	 * @param discard - string input of card to be discarded
+	 */
+	public static void discardCard(Player p1, DiscardPile dp, String discard) {
+		dp.push(p1.discardFromHand(discard));
+	}
+
+	/**
 	 * Display and add the drawn card to hand
 	 * 
 	 * @param p1 - user player
@@ -106,6 +118,79 @@ public class GameOps {
 	}
 
 	/**
+	 * End the game, close scanners
+	 */
+	public static void endGame() {
+		UserInputOps.closeScanner();
+	}
+
+	/**
+	 * Play again? Ask the user.
+	 * 
+	 * @return user's input
+	 */
+	public static char playAgain() {
+		return UserInputOps.playAgain();
+	}
+	
+	/**
+	 * Given the user's choice, process its choice and return true if the user
+	 * knocks, false otherwise.
+	 * 
+	 * @param p1     - user player
+	 * @param sp     - stock pile
+	 * @param dp     - discard pile
+	 * @return true if user knocks, false otherwise
+	 */
+	public static boolean processDecision(Player p1, StockPile sp, DiscardPile dp) {
+		// for the do-while loop
+		int choice;
+		do {
+			choice = UserInputOps.playerDecision(p1, sp, dp);
+			String discard;
+			
+			// choice check
+			switch (choice) {
+			case 1:
+				// draw from stock pile and discard another
+				drawFromStockPile(p1, sp);
+				discard = UserInputOps.chooseDiscard(p1, dp);
+				discardCard(p1, dp, discard);
+				break;
+			case 2:
+				// draw from discard pile and discard another
+				drawFromDiscardPile(p1, dp);
+				discard = UserInputOps.chooseDiscard(p1, dp);
+				discardCard(p1, dp, discard);
+				break;
+			case 3:
+				// check melds
+				ArrayList<ArrayList<Card>> melds = p1.getMelds();
+				for (ArrayList<Card> meld : melds) {
+					for (Card c : meld) {
+						System.out.print(c.toString() + " ");
+					}
+					System.out.println();
+				}
+				break;
+			case 4:
+				// deadwood score - knock?
+				System.out.println("Your current deadwood score: " + p1.getDeadwoodScore());
+				if (p1.getDeadwoodScore() <= 10) {
+					System.out.println("Would you like to knock? (y/n)");
+					char knock = UserInputOps.knock();
+					if (knock == 'y') {
+						return true;
+					}
+				}
+				break;
+			}
+		} while (choice == 3 || choice == 4);
+
+		return false;
+	}
+
+	/**
 	 * Reset all elements of the former deal
 	 * 
 	 * @param p1  - user player
@@ -118,5 +203,14 @@ public class GameOps {
 		cpu.resetDeadwoodScore();
 		cpu.resetHand();
 		cpu.resetMelds();
+	}
+
+	/**
+	 * Call user operations to ask for a username
+	 * 
+	 * @return username from user operations
+	 */
+	public static String username() {
+		return UserInputOps.username();
 	}
 }

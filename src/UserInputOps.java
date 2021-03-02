@@ -1,15 +1,7 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserInputOps {
 	private static Scanner scanner = new Scanner(System.in);
-
-	/**
-	 * Close scanner
-	 */
-	public static void closeScanner() {
-		scanner.close();
-	}
 
 	/**
 	 * Discard from hand and put on top of discard pile
@@ -17,16 +9,22 @@ public class UserInputOps {
 	 * @param p1          - Player's information
 	 * @param discardPile - discard pile
 	 */
-	public static void discardCard(Player p1, DiscardPile discardPile) {
+	public static String chooseDiscard(Player p1, DiscardPile discardPile) {
 		System.out.println("Choose a card to discard: ");
-		for (Card c : p1.getHand()) {
-			System.out.print(c.toString() + " ");
-		}
+		// show hand for user to make decision
+		p1.getHand().displayHand();
 		System.out.println("");
 		String discard = scanner.nextLine();
-		discardPile.push(p1.discardFromHand(discard));
+		return discard;
 	}
 
+	/**
+	 * Close scanner
+	 */
+	public static void closeScanner() {
+		scanner.close();
+	}
+	
 	/**
 	 * Print method for displaying user's options
 	 */
@@ -36,6 +34,20 @@ public class UserInputOps {
 		System.out.println("2. Draw the card from the discard pile.");
 		System.out.println("3. Check melds.");
 		System.out.println("4. Check deadwood score/attempt to knock.");
+	}
+	
+	/**
+	 * Does the user want to knock?
+	 * 
+	 * @return y if yes, n if no
+	 */
+	public static char knock() {
+		char knock = scanner.nextLine().toLowerCase().charAt(0);
+		while(knock != 'y' || knock != 'n') {
+			System.out.println("Invalid input.\nWould you like to knock? (y/n)");
+			knock = scanner.nextLine().toLowerCase().charAt(0);
+		}
+		return knock;
 	}
 
 	/**
@@ -55,9 +67,12 @@ public class UserInputOps {
 	/**
 	 * Player makes decisions
 	 * 
-	 * @return true if the player knocks, false otherwise
+	 * @param p1 - user player
+	 * @param sp - stock pile
+	 * @param dp - discard pile
+	 * @return player's decision, integer between 1 and 4
 	 */
-	public static boolean playerDecision(Player p1, StockPile sp, DiscardPile dp) {
+	public static int playerDecision(Player p1, StockPile sp, DiscardPile dp) {
 		// hand
 		System.out.println("Your hand: ");
 		for (Card c : p1.getHand()) {
@@ -69,56 +84,15 @@ public class UserInputOps {
 		// recalculate deadwood score
 		p1.recalculateDeadwoodScore();
 
-		// declare choice variable for do-while loop
-		int choice;
-		do {
-			// choices
-			displayChoices();
+		// choices
+		displayChoices();
+		int choice = Integer.parseInt(scanner.nextLine());
+		// lock user and prevent them from advancing if input is incorrect
+		while (choice < 1 || choice > 4) {
+			System.out.println("Invalid input. Enter a value between 1 and 4.");
 			choice = Integer.parseInt(scanner.nextLine());
-
-			// lock user and prevent them from advancing if input is incorrect
-			while (choice < 1 || choice > 4) {
-				System.out.println("Invalid input. Enter a value between 1 and 4.");
-				choice = Integer.parseInt(scanner.nextLine());
-			}
-
-			// choice check
-			switch (choice) {
-			case 1:
-				// draw from stock pile and discard another
-				GameOps.drawFromStockPile(p1, sp);
-				discardCard(p1, dp);
-				break;
-			case 2:
-				// draw from discard pile and discard another
-				GameOps.drawFromDiscardPile(p1, dp);
-				discardCard(p1, dp);
-				break;
-			case 3:
-				// check melds
-				ArrayList<ArrayList<Card>> melds = p1.getMelds();
-				for (ArrayList<Card> meld : melds) {
-					for (Card c : meld) {
-						System.out.print(c.toString() + " ");
-					}
-					System.out.println();
-				}
-				break;
-			case 4:
-				// deadwood score - knock?
-				System.out.println("Your current deadwood score: " + p1.getDeadwoodScore());
-				if (p1.getDeadwoodScore() <= 10) {
-					System.out.println("Would you like to knock? (y/n)");
-					char knock = scanner.nextLine().toLowerCase().charAt(0);
-					if (knock == 'y') {
-						return true;
-					}
-				}
-				break;
-			}
-		} while (choice == 3 || choice == 4);
-
-		return false;
+		}
+		return choice;
 	}
 
 	/**

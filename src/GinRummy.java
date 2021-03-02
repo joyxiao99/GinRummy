@@ -2,6 +2,11 @@ public class GinRummy {
 
 	/**
 	 * Play a single deal
+	 * 
+	 * @param p1  - user player
+	 * @param cpu - computer player
+	 * @param sp  - stock pile
+	 * @param dp  - discard pile
 	 */
 	private static void playDeal(Player p1, Player cpu, StockPile sp, DiscardPile dp) {
 		// reset everything
@@ -17,11 +22,11 @@ public class GinRummy {
 			dp.displayTopCard();
 
 			// player decides on what to do
-			playerKnocks = UserInputOps.playerDecision(p1, sp, dp);
-
+			playerKnocks = GameOps.processDecision(p1, sp, dp);
 			if (playerKnocks) {
 				break;
 			}
+
 			// cpu decides on what to do
 			cpuKnocks = Computer.makeMove(cpu, sp, dp);
 			System.out.println("AI has made their move!");
@@ -61,7 +66,7 @@ public class GinRummy {
 		System.out.println("Welcome to Rummy for Dummies!");
 
 		// username
-		String name = UserInputOps.username();
+		String name = GameOps.username();
 
 		Player p1 = new Player(name);
 		Player cpu = new Player("AI");
@@ -72,8 +77,8 @@ public class GinRummy {
 			playGame(p1, cpu);
 			// let player have option of playing again
 			System.out.println("Play again? (y/n)");
-			keepPlaying = UserInputOps.playAgain();
+			keepPlaying = GameOps.playAgain();
 		}
-		UserInputOps.closeScanner();
+		GameOps.endGame();
 	}
 }
