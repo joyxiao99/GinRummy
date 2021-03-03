@@ -43,7 +43,7 @@ public class UserInputOps {
 	 */
 	public static char knock() {
 		char knock = scanner.nextLine().toLowerCase().charAt(0);
-		while(knock != 'y' || knock != 'n') {
+		while(knock != 'y' && knock != 'n') {
 			System.out.println("Invalid input.\nWould you like to knock? (y/n)");
 			knock = scanner.nextLine().toLowerCase().charAt(0);
 		}
@@ -57,8 +57,8 @@ public class UserInputOps {
 	 */
 	public static char playAgain() {
 		char confirm = scanner.nextLine().toLowerCase().charAt(0);
-		while (confirm != 'y' || confirm != 'n') {
-			System.out.println("Play again? (y/n)");
+		while (confirm != 'y' && confirm != 'n') {
+			System.out.println("Invalid input.\nPlay again? (y/n)");
 			confirm = scanner.nextLine().toLowerCase().charAt(0);
 		}
 		return confirm;
