@@ -36,10 +36,10 @@ public class Meld {
 		return meldset;
 	}
 	/**
-	 * Private method that removeCards of a hand that are parts of the sequncemelds
+	 * Private method that removeCards of a hand that are parts of the sequence melds
 	 * 
 	 * @param H hand of cards of the player
-	 * @param sequencemelds a list of sequencemelds
+	 * @param sequencemelds a list of sequence melds
 	 * @return 2d arraylist of the the list of melds
 	 */
 	private static List<Card> removeCards (List<Card> handList, ArrayList<ArrayList<Card>> sequenceMelds){

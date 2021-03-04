@@ -56,7 +56,7 @@ public class Card {
 	public String toString() {
 		String r = rankString();
 		String s = suitString();
-		return r+s;
+		return r + s;
 	}
 	
 	
@@ -68,24 +68,24 @@ public class Card {
      * @return Returns a string representation of the card rank
     */
 	private String rankString() {
-	String s;
-	switch(this.rank) {
-		case 1:
-			s = "A";
-			break;
-		case 11:
-			s = "J";
-			break;
-		case 12 :
-			s = "Q";
-			break;
-		case 13:
-			s = "K";
-			break;
-		default:
-			s = Integer.toString(this.rank);
-	}
-	return s;	
+		String s;
+		switch(this.rank) {
+			case 1:
+				s = "A";
+				break;
+			case 11:
+				s = "J";
+				break;
+			case 12 :
+				s = "Q";
+				break;
+			case 13:
+				s = "K";
+				break;
+			default:
+				s = Integer.toString(this.rank);
+		}
+		return s;	
 	}
 	
 	/**
