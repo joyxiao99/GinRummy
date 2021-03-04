@@ -32,6 +32,7 @@ public class Meld {
 		
 		meldset.addAll(sequenceMelds);
 		meldset.addAll(groupMelds);
+		System.out.println(meldset);
 		return meldset;
 	}
 	/**
@@ -69,6 +70,7 @@ public class Meld {
 	 */
 	private static List<Card> sortSuitRank(List<Card> h) {
 		Collections.sort(h, new sortBySR());
+		System.out.println(h);
 		return h;
 	}
 	/**
@@ -97,24 +99,32 @@ public class Meld {
 						&& ranki + 3 == (sh.get(i+3).getRank())) {
 					Collections.addAll(miniMeld,sh.get(i),sh.get(i+1),sh.get(i+2),sh.get(i+3));
 					i = i+3;
+					seqMeld.add(miniMeld);
+					continue;
 				}
-				i++;
-			}else if(i+2 < sh.size() && suiti ==  sh.get(i+1).getSuit() 
+			}
+			if(i+2 < sh.size() && suiti ==  sh.get(i+1).getSuit() 
 					&& suiti == sh.get(i+2).getSuit()) {
 				if(ranki + 1 == sh.get(i+1).getRank() 
 						&& ranki + 2 == sh.get(i+2).getRank()) {
 					Collections.addAll(miniMeld,sh.get(i),sh.get(i+1),sh.get(i+2));
 					i = i+2;
+					seqMeld.add(miniMeld);
+					continue;
 				}
+				
+			}
 				i++;
-			}else
-				i++;
-		if(!miniMeld.isEmpty()) {
-			seqMeld.add(miniMeld);	
-		}	
+
 		}
 		return seqMeld;
 	}
+//	private static boolean checkSuits(int i,List<Card> sh, int iterations) {
+//		Suit suiti = sh.get(i).getSuit();
+//		for(int j = 1; j < = iterations; j++) {
+//			if ()
+//		}
+//	}
 	/**
 	 * Private method that finds group melds from a sorted hand of cards
 	 * 
@@ -134,15 +144,17 @@ public class Meld {
 						&& ranki == (sh.get(i+3).getRank())) {
 					Collections.addAll(miniMeld,sh.get(i),sh.get(i+1),sh.get(i+2),sh.get(i+3));
 					i = i+3;
-			}else if((i+2 < sh.size() && ranki == sh.get(i+1).getRank() 
+					groupMelds.add(miniMeld);
+					continue;
+			}
+			if((i+2 < sh.size() && ranki == sh.get(i+1).getRank() 
 						&& ranki == sh.get(i+2).getRank())) {
 					Collections.addAll(miniMeld,sh.get(i),sh.get(i+1),sh.get(i+2));
 					i = i+2;
-			}else
+					groupMelds.add(miniMeld);
+					continue;
+			}
 				i++;
-		if(!miniMeld.isEmpty()) {
-			groupMelds.add(miniMeld);	
-		}	
 		}
 		return groupMelds;
 	}
@@ -164,5 +176,23 @@ public class Meld {
 //		checkMelds(h);
 //		
 //	}
-	
+//	
+//	public static void main (String args[]) {
+//		Hand h = new Hand();
+//		Card c1 = new Card(Suit.D,8);
+//		Card c2 = new Card(Suit.C, 11);
+//		Card c3 = new Card(Suit.C, 5);
+//		Card c4 = new Card(Suit.C, 4);
+//		Card c5 = new Card(Suit.S,2);
+//		Card c6 = new Card(Suit.C, 13);
+//		Card c7 = new Card(Suit.C, 10);
+//		Card c8 = new Card(Suit.D, 3);
+//		Card c9 = new Card(Suit.C, 9);
+//		Card c10 = new Card(Suit.H, 5);
+//		h.add(c1); h.add(c2); h.add(c3);h.add(c4); h.add(c5); 
+//		h.add(c6); h.add(c7); h.add(c8);h.add(c9); h.add(c10); 
+//		checkMelds(h);
+//		
+//	}
+//	
 }
