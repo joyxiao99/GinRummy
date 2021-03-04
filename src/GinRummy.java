@@ -10,7 +10,8 @@ public class GinRummy {
 	 */
 	private static void playDeal(Player p1, Player cpu, StockPile sp, DiscardPile dp) {
 		// reset everything
-		GameOps.resetEverything(p1, cpu);
+		GameOps.resetEverything(p1);
+		GameOps.resetEverything(cpu);
 
 		// distribute cards
 		GameOps.distributeCards(p1, cpu, sp, dp);

@@ -193,16 +193,12 @@ public class GameOps {
 	/**
 	 * Reset all elements of the former deal
 	 * 
-	 * @param p1  - user player
-	 * @param cpu - cpu player
+	 * @param p  - player being reset
 	 */
-	public static void resetEverything(Player p1, Player cpu) {
-		p1.resetDeadwoodScore();
-		p1.resetHand();
-		p1.resetMelds();
-		cpu.resetDeadwoodScore();
-		cpu.resetHand();
-		cpu.resetMelds();
+	public static void resetEverything(Player p) {
+		p.resetDeadwoodScore();
+		p.resetHand();
+		p.resetMelds();
 	}
 
 	/**
