@@ -95,25 +95,6 @@ public class Player {
     }
 
     /**
-     * Given the suit and rank of the card, discard from the player's hand, if it is there
-     * and return its Card representation.
-     * 
-     * @param s - suit of the card
-     * @param rank - rank of the card
-     * @return card that was discarded or null if it is not in the hand
-     */
-    public Card discardFromHand(Suit s, int rank){
-        Card c = new Card(s, rank);
-        if(this.hand.contains(c)){
-            this.hand.remove(c);
-            return c;
-        }
-        else{
-            return null;
-        }
-    }
-
-    /**
      * Add points earned in the round to the total score
      * 
      * @param points - points earned that round
