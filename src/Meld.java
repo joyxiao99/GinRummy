@@ -12,16 +12,43 @@ public class Meld {
 	 */
 	public static ArrayList<ArrayList<Card>> checkMelds(Hand H){
 		
+		ArrayList<ArrayList<Card>> meldset1 = new ArrayList<ArrayList<Card>>();
+		ArrayList<ArrayList<Card>> meldset2 = new ArrayList<ArrayList<Card>>();
+		List<Card> handList = new ArrayList<Card>();
+		List<Card> handList2 = new ArrayList<Card>(); 
+
+		for(Card c: H) {
+			handList.add(c);
+			handList2.add(c);
+		}
+		
+
+		meldset1 = checkSeqGroup(handList);
+		meldset2 = checkGroupSeq(handList2);
+		if(deadwood(handList, meldset1) < deadwood(handList2, meldset2)) {
+			System.out.println(meldset1);
+			return meldset1;
+		}
+		else{
+			System.out.println(meldset2);
+			return meldset2;
+
+		}
+	}
+
+	private static int deadwood(List<Card> handList, ArrayList<ArrayList<Card>> melds) {
+		int deadwoodscore = 0;
+		List<Card> newHandList = removeCards(handList, melds);
+		for(Card c: newHandList) {
+			deadwoodscore += c.points();
+		}
+		return deadwoodscore;
+		
+	}
+	private static ArrayList<ArrayList<Card>> checkSeqGroup(List<Card> handList){
 		ArrayList<ArrayList<Card>> sequenceMelds = new ArrayList<ArrayList<Card>>();
 		ArrayList<ArrayList<Card>> groupMelds = new ArrayList<ArrayList<Card>>();
 		ArrayList<ArrayList<Card>> meldset = new ArrayList<ArrayList<Card>>();
-		List<Card> handList = new ArrayList<Card>();
-		
-		for(Card c: H) {
-			handList.add(c);
-		}
-		
-		handList = sortRank(handList);
 		handList = sortSuitRank(handList);
 		sequenceMelds = findSeq(handList);
 		
@@ -32,7 +59,22 @@ public class Meld {
 		
 		meldset.addAll(sequenceMelds);
 		meldset.addAll(groupMelds);
-		System.out.println(meldset);
+		return meldset;
+	}
+	
+	private static ArrayList<ArrayList<Card>> checkGroupSeq(List<Card> handList){
+		ArrayList<ArrayList<Card>> sequenceMelds = new ArrayList<ArrayList<Card>>();
+		ArrayList<ArrayList<Card>> groupMelds = new ArrayList<ArrayList<Card>>();
+		ArrayList<ArrayList<Card>> meldset = new ArrayList<ArrayList<Card>>();
+		handList = sortRank(handList);
+		groupMelds = findgroups(handList);
+	
+		handList = removeCards(handList, groupMelds);
+		handList = sortSuitRank(handList);
+		sequenceMelds = findSeq(handList);
+		
+		meldset.addAll(sequenceMelds);
+		meldset.addAll(groupMelds);
 		return meldset;
 	}
 	/**
@@ -42,9 +84,12 @@ public class Meld {
 	 * @param sequencemelds a list of sequencemelds
 	 * @return 2d arraylist of the the list of melds
 	 */
-	private static List<Card> removeCards (List<Card> handList, ArrayList<ArrayList<Card>> sequenceMelds){
-		
-		for(ArrayList<Card> list: sequenceMelds) {
+	private static List<Card> removeCards (List<Card> handList, ArrayList<ArrayList<Card>> melds){
+		if(melds.isEmpty()) {
+
+			return handList;
+		}
+		for(ArrayList<Card> list: melds) {
 			for(Card c1: list) {
 				handList.remove(c1);
 			}
@@ -70,7 +115,6 @@ public class Meld {
 	 */
 	private static List<Card> sortSuitRank(List<Card> h) {
 		Collections.sort(h, new sortBySR());
-		System.out.println(h);
 		return h;
 	}
 	/**
@@ -169,7 +213,7 @@ public class Meld {
 //		checkMelds(h);
 //		
 //	}
-//	
+	
 //	public static void main (String args[]) {
 //		Hand h = new Hand();
 //		Card c1 = new Card(Suit.D,8);
@@ -182,6 +226,24 @@ public class Meld {
 //		Card c8 = new Card(Suit.D, 3);
 //		Card c9 = new Card(Suit.C, 9);
 //		Card c10 = new Card(Suit.H, 5);
+//		h.add(c1); h.add(c2); h.add(c3);h.add(c4); h.add(c5); 
+//		h.add(c6); h.add(c7); h.add(c8);h.add(c9); h.add(c10); 
+//		checkMelds(h);
+//		
+//	}
+	
+//	public static void main (String args[]) {
+//		Hand h = new Hand();
+//		Card c1 = new Card(Suit.H,1);
+//		Card c2 = new Card(Suit.C, 1);
+//		Card c3 = new Card(Suit.D, 1);
+//		Card c4 = new Card(Suit.S, 1);
+//		Card c5 = new Card(Suit.S,2);
+//		Card c6 = new Card(Suit.D, 2);
+//		Card c7 = new Card(Suit.C, 2);
+//		Card c8 = new Card(Suit.S, 3);
+//		Card c9 = new Card(Suit.S, 12);
+//		Card c10 = new Card(Suit.H, 9);
 //		h.add(c1); h.add(c2); h.add(c3);h.add(c4); h.add(c5); 
 //		h.add(c6); h.add(c7); h.add(c8);h.add(c9); h.add(c10); 
 //		checkMelds(h);
