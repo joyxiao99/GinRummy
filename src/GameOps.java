@@ -21,8 +21,16 @@ public class GameOps {
 		int difference = Math.abs(playerScore - cpuScore);
 		if (playerScore < cpuScore) {
 			p1.addToTotalScore(difference);
+			// player goes gin
+			if(playerScore == 0){
+				p1.addToTotalScore(20);
+			}
 		} else {
 			cpu.addToTotalScore(difference);
+			// computer goes gin
+			if(cpuScore == 0){
+				cpu.addToTotalScore(20);
+			}
 		}
 	}
 
