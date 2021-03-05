@@ -26,11 +26,9 @@ public class Meld {
 		meldset1 = checkSeqGroup(handList);
 		meldset2 = checkGroupSeq(handList2);
 		if(deadwood(handList, meldset1) < deadwood(handList2, meldset2)) {
-			System.out.println(meldset1);
 			return meldset1;
 		}
 		else{
-			System.out.println(meldset2);
 			return meldset2;
 
 		}
