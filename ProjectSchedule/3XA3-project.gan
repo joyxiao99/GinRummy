@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="3XA3 Project" company="" webLink="https://gitlab.cas.mcmaster.ca/xiaoz18/3xa3-project.git" view-date="2021-01-24" view-index="0" gantt-divider-location="369" resource-divider-location="428" version="2.8.11" locale="en_CA">
+<?xml version="1.0" encoding="UTF-8"?><project name="3XA3 Project" company="" webLink="https://gitlab.cas.mcmaster.ca/xiaoz18/3xa3-project.git" view-date="2021-02-26" view-index="0" gantt-divider-location="369" resource-divider-location="428" version="2.8.11" locale="en_CA">
     <description><![CDATA[This is a Gantt chart outlining all of the deliverables for the SFWRENG 3XA3 project (Rummy for Dummies)]]></description>
     <view zooming-state="default:2" id="gantt-chart">
         <field id="tpd3" name="Name" width="183" order="0"/>
@@ -59,22 +59,32 @@
             <task id="951" name="Citing Refrences" color="#8cb6ce" meeting="false" start="2021-02-11" duration="1" complete="100" thirdDate="2021-01-26" thirdDate-constraint="0" expand="true"/>
             <task id="411" name="Requirements Document Due" color="#8cb6ce" meeting="true" start="2021-02-12" duration="0" complete="100" thirdDate="2021-01-21" thirdDate-constraint="0" expand="true"/>
         </task>
-        <task id="507" name="Proof of Concept Demonstration" color="#8cb6ce" meeting="false" start="2021-02-16" duration="9" complete="0" thirdDate="2021-02-13" thirdDate-constraint="0" expand="false">
-            <task id="953" name="Card and Deck code created" color="#8cb6ce" meeting="false" start="2021-02-16" duration="1" complete="0" thirdDate="2021-02-13" thirdDate-constraint="0" expand="true"/>
-            <task id="964" name="Game Functions Created" color="#8cb6ce" meeting="false" start="2021-02-17" duration="3" complete="0" thirdDate="2021-02-13" thirdDate-constraint="0" expand="true"/>
-            <task id="966" name="Player and Computer AI created" color="#8cb6ce" meeting="false" start="2021-02-20" duration="5" complete="0" thirdDate="2021-02-13" thirdDate-constraint="0" expand="true"/>
-            <task id="961" name="Proof of Concept Completed" color="#8cb6ce" meeting="true" start="2021-02-25" duration="0" complete="0" thirdDate="2021-02-13" thirdDate-constraint="0" expand="true"/>
+        <task id="507" name="Proof of Concept Demonstration" color="#8cb6ce" meeting="false" start="2021-02-16" duration="9" complete="100" thirdDate="2021-02-13" thirdDate-constraint="0" expand="true">
+            <task id="953" name="First set of classes created" color="#8cb6ce" meeting="false" start="2021-02-16" duration="1" complete="100" thirdDate="2021-02-13" thirdDate-constraint="0" expand="true">
+                <notes><![CDATA[Card, Stock Pile, Discard Pile, Hand classes]]></notes>
+            </task>
+            <task id="964" name="Game Functions Created" color="#8cb6ce" meeting="false" start="2021-02-17" duration="3" complete="100" thirdDate="2021-02-13" thirdDate-constraint="0" expand="true">
+                <notes><![CDATA[UserInputOps, GameOps, Melds classes]]></notes>
+            </task>
+            <task id="966" name="Player and Computer AI created" color="#8cb6ce" meeting="false" start="2021-02-20" duration="5" complete="100" thirdDate="2021-02-13" thirdDate-constraint="0" expand="true"/>
+            <task id="961" name="Proof of Concept Completed" color="#8cb6ce" meeting="true" start="2021-02-25" duration="0" complete="100" thirdDate="2021-02-13" thirdDate-constraint="0" expand="true"/>
         </task>
-        <task id="508" name="Test Plan Revision 0" color="#8cb6ce" meeting="false" start="2021-02-27" duration="5" complete="0" thirdDate="2021-02-03" thirdDate-constraint="0" expand="true"/>
-        <task id="973" name="Test Plan Revision 0 Completed" color="#8cb6ce" meeting="true" start="2021-03-04" duration="0" complete="0" thirdDate="2021-02-13" thirdDate-constraint="0" expand="true"/>
-        <task id="976" name="Testing Source Code" color="#8cb6ce" meeting="false" start="2021-03-05" duration="10" complete="0" thirdDate="2021-02-13" thirdDate-constraint="0" expand="false">
-            <task id="993" name="Unit Testing of ADTs" color="#8cb6ce" meeting="false" start="2021-03-05" duration="2" complete="0" thirdDate="2021-02-28" thirdDate-constraint="0" expand="true"/>
-            <task id="980" name="Functional Requirements Testing" color="#8cb6ce" meeting="false" start="2021-03-06" duration="3" complete="0" thirdDate="2021-02-27" thirdDate-constraint="0" expand="true"/>
-            <task id="985" name="Non-Functional Requirements Testing" color="#8cb6ce" meeting="false" start="2021-03-09" duration="3" complete="0" thirdDate="2021-02-27" thirdDate-constraint="0" expand="true"/>
-            <task id="987" name="Coverage Testing" color="#8cb6ce" meeting="false" start="2021-03-12" duration="3" complete="0" thirdDate="2021-02-28" thirdDate-constraint="0" expand="true"/>
+        <task id="508" name="Test Plan Revision 0" color="#8cb6ce" meeting="false" start="2021-02-27" duration="5" complete="100" thirdDate="2021-02-03" thirdDate-constraint="0" expand="true"/>
+        <task id="973" name="Test Plan Revision 0 Completed" color="#8cb6ce" meeting="true" start="2021-03-04" duration="0" complete="100" thirdDate="2021-02-13" thirdDate-constraint="0" expand="true"/>
+        <task id="976" name="Testing Source Code" color="#8cb6ce" meeting="false" start="2021-03-06" duration="9" complete="0" thirdDate="2021-02-13" thirdDate-constraint="0" expand="true">
+            <task id="1073" name="Computer Class Tests" color="#8cb6ce" meeting="false" start="2021-03-06" duration="2" complete="0" thirdDate="2021-02-28" thirdDate-constraint="0" expand="true"/>
+            <task id="1075" name="Hand Class Tests" color="#8cb6ce" meeting="false" start="2021-03-08" duration="1" complete="0" thirdDate="2021-02-28" thirdDate-constraint="0" expand="true"/>
+            <task id="1080" name="DiscardPile Class Tests" color="#8cb6ce" meeting="false" start="2021-03-09" duration="1" complete="0" thirdDate="2021-03-01" thirdDate-constraint="0" expand="true"/>
+            <task id="1082" name="StockPile Class Tests" color="#8cb6ce" meeting="false" start="2021-03-10" duration="1" complete="0" thirdDate="2021-03-01" thirdDate-constraint="0" expand="true"/>
+            <task id="1070" name="Card Class Tests" color="#8cb6ce" meeting="false" start="2021-03-06" duration="1" complete="0" thirdDate="2021-02-28" thirdDate-constraint="0" expand="true"/>
+            <task id="1084" name="Meld Class Tests" color="#8cb6ce" meeting="false" start="2021-03-07" duration="4" complete="0" thirdDate="2021-03-01" thirdDate-constraint="0" expand="true"/>
+            <task id="1085" name="Player Class Tests" color="#8cb6ce" meeting="false" start="2021-03-06" duration="1" complete="0" thirdDate="2021-03-01" thirdDate-constraint="0" expand="true"/>
+            <task id="1086" name="UserInputOps Class Tests" color="#8cb6ce" meeting="false" start="2021-03-07" duration="2" complete="0" thirdDate="2021-03-01" thirdDate-constraint="0" expand="true"/>
+            <task id="1087" name="GameOps Class Tests" color="#8cb6ce" meeting="false" start="2021-03-09" duration="2" complete="0" thirdDate="2021-03-01" thirdDate-constraint="0" expand="true"/>
+            <task id="985" name="Non-Functional Requirements Testing" color="#8cb6ce" meeting="false" start="2021-03-11" duration="4" complete="0" thirdDate="2021-02-27" thirdDate-constraint="0" expand="true"/>
             <task id="982" name="Testing Complete" color="#8cb6ce" meeting="true" start="2021-03-15" duration="0" complete="0" thirdDate="2021-02-27" thirdDate-constraint="0" expand="true"/>
         </task>
-        <task id="509" name="Design and Document Revision 0" color="#8cb6ce" meeting="false" start="2021-03-05" duration="13" complete="0" thirdDate="2021-02-28" thirdDate-constraint="0" expand="true"/>
+        <task id="509" name="Design and Document Revision 0" color="#8cb6ce" meeting="false" start="2021-03-15" duration="3" complete="0" thirdDate="2021-02-28" thirdDate-constraint="0" expand="true"/>
         <task id="1001" name="Design and Document Revision 0 Complete" color="#8cb6ce" meeting="true" start="2021-03-18" duration="0" complete="0" thirdDate="2021-02-28" thirdDate-constraint="0" expand="true"/>
         <task id="1004" name="Preparing Source Code for Revision 0 Demonstration" color="#8cb6ce" meeting="false" start="2021-03-22" duration="3" complete="0" thirdDate="2021-03-14" thirdDate-constraint="0" expand="true"/>
         <task id="511" name="Revision 0 Demostration" color="#8cb6ce" meeting="true" start="2021-03-25" duration="0" complete="0" thirdDate="2021-03-22" thirdDate-constraint="0" expand="true"/>
@@ -110,10 +120,8 @@
         <allocation task-id="964" resource-id="0" function="Default:0" responsible="true" load="100.0"/>
         <allocation task-id="966" resource-id="0" function="Default:0" responsible="true" load="100.0"/>
         <allocation task-id="508" resource-id="0" function="Default:0" responsible="false" load="100.0"/>
-        <allocation task-id="980" resource-id="0" function="Default:0" responsible="false" load="50.0"/>
-        <allocation task-id="985" resource-id="0" function="Default:0" responsible="true" load="50.0"/>
-        <allocation task-id="987" resource-id="0" function="Default:0" responsible="false" load="50.0"/>
-        <allocation task-id="509" resource-id="0" function="Default:0" responsible="true" load="50.0"/>
+        <allocation task-id="985" resource-id="0" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="509" resource-id="0" function="Default:0" responsible="true" load="100.0"/>
         <allocation task-id="1004" resource-id="0" function="Default:0" responsible="true" load="100.0"/>
         <allocation task-id="1019" resource-id="0" function="Default:0" responsible="true" load="50.0"/>
         <allocation task-id="1007" resource-id="0" function="Default:0" responsible="true" load="50.0"/>
@@ -123,6 +131,8 @@
         <allocation task-id="1025" resource-id="0" function="Default:0" responsible="false" load="100.0"/>
         <allocation task-id="943" resource-id="0" function="Default:0" responsible="false" load="100.0"/>
         <allocation task-id="951" resource-id="0" function="Default:0" responsible="false" load="50.0"/>
+        <allocation task-id="1070" resource-id="0" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="1084" resource-id="0" function="Default:0" responsible="true" load="100.0"/>
         <allocation task-id="4" resource-id="1" function="Default:0" responsible="true" load="100.0"/>
         <allocation task-id="102" resource-id="1" function="Default:0" responsible="false" load="50.0"/>
         <allocation task-id="331" resource-id="1" function="Default:0" responsible="false" load="100.0"/>
@@ -134,10 +144,8 @@
         <allocation task-id="964" resource-id="1" function="Default:0" responsible="false" load="100.0"/>
         <allocation task-id="966" resource-id="1" function="Default:0" responsible="false" load="100.0"/>
         <allocation task-id="508" resource-id="1" function="Default:0" responsible="true" load="100.0"/>
-        <allocation task-id="980" resource-id="1" function="Default:0" responsible="true" load="50.0"/>
-        <allocation task-id="985" resource-id="1" function="Default:0" responsible="false" load="50.0"/>
-        <allocation task-id="987" resource-id="1" function="Default:0" responsible="true" load="50.0"/>
-        <allocation task-id="509" resource-id="1" function="Default:0" responsible="false" load="50.0"/>
+        <allocation task-id="985" resource-id="1" function="Default:0" responsible="false" load="100.0"/>
+        <allocation task-id="509" resource-id="1" function="Default:0" responsible="false" load="100.0"/>
         <allocation task-id="1004" resource-id="1" function="Default:0" responsible="false" load="100.0"/>
         <allocation task-id="1019" resource-id="1" function="Default:0" responsible="false" load="100.0"/>
         <allocation task-id="1015" resource-id="1" function="Default:0" responsible="true" load="100.0"/>
@@ -147,6 +155,9 @@
         <allocation task-id="106" resource-id="1" function="Default:0" responsible="false" load="100.0"/>
         <allocation task-id="943" resource-id="1" function="Default:0" responsible="false" load="100.0"/>
         <allocation task-id="947" resource-id="1" function="Default:0" responsible="true" load="50.0"/>
+        <allocation task-id="1085" resource-id="1" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="1086" resource-id="1" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="1087" resource-id="1" function="Default:0" responsible="true" load="100.0"/>
         <allocation task-id="5" resource-id="2" function="Default:0" responsible="true" load="100.0"/>
         <allocation task-id="102" resource-id="2" function="Default:0" responsible="false" load="50.0"/>
         <allocation task-id="104" resource-id="2" function="Default:0" responsible="false" load="50.0"/>
@@ -158,10 +169,8 @@
         <allocation task-id="964" resource-id="2" function="Default:0" responsible="false" load="100.0"/>
         <allocation task-id="966" resource-id="2" function="Default:0" responsible="false" load="100.0"/>
         <allocation task-id="508" resource-id="2" function="Default:0" responsible="false" load="100.0"/>
-        <allocation task-id="993" resource-id="2" function="Default:0" responsible="true" load="50.0"/>
-        <allocation task-id="985" resource-id="2" function="Default:0" responsible="false" load="50.0"/>
-        <allocation task-id="987" resource-id="2" function="Default:0" responsible="false" load="50.0"/>
-        <allocation task-id="509" resource-id="2" function="Default:0" responsible="false" load="50.0"/>
+        <allocation task-id="985" resource-id="2" function="Default:0" responsible="false" load="100.0"/>
+        <allocation task-id="509" resource-id="2" function="Default:0" responsible="false" load="100.0"/>
         <allocation task-id="1004" resource-id="2" function="Default:0" responsible="false" load="100.0"/>
         <allocation task-id="1019" resource-id="2" function="Default:0" responsible="false" load="50.0"/>
         <allocation task-id="1007" resource-id="2" function="Default:0" responsible="false" load="50.0"/>
@@ -173,6 +182,10 @@
         <allocation task-id="106" resource-id="2" function="Default:0" responsible="false" load="100.0"/>
         <allocation task-id="945" resource-id="2" function="Default:0" responsible="true" load="100.0"/>
         <allocation task-id="949" resource-id="2" function="Default:0" responsible="false" load="50.0"/>
+        <allocation task-id="1073" resource-id="2" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="1075" resource-id="2" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="1080" resource-id="2" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="1082" resource-id="2" function="Default:0" responsible="true" load="100.0"/>
     </allocations>
     <vacations/>
     <previous/>
