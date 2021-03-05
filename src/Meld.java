@@ -36,10 +36,10 @@ public class Meld {
 		return meldset;
 	}
 	/**
-	 * Private method that removeCards of a hand that are parts of the sequence melds
+	 * Private method that removeCards of a hand that are parts of the sequncemelds
 	 * 
 	 * @param H hand of cards of the player
-	 * @param sequencemelds a list of sequence melds
+	 * @param sequencemelds a list of sequencemelds
 	 * @return 2d arraylist of the the list of melds
 	 */
 	private static List<Card> removeCards (List<Card> handList, ArrayList<ArrayList<Card>> sequenceMelds){
@@ -92,39 +92,32 @@ public class Meld {
 	
 			if(i+3 < sh.size() && suiti ==  sh.get(i+1).getSuit() 
 					&& suiti == sh.get(i+2).getSuit() 
-					&& suiti == sh.get(i+3).getSuit()){
-
-				if(ranki + 1 ==(sh.get(i+1).getRank())
-						&& ranki + 2 == (sh.get(i+2).getRank()) 
-						&& ranki + 3 == (sh.get(i+3).getRank())) {
+					&& suiti == sh.get(i+3).getSuit()
+					&&ranki + 1 ==(sh.get(i+1).getRank())
+					&& ranki + 2 == (sh.get(i+2).getRank()) 
+					&& ranki + 3 == (sh.get(i+3).getRank())) {
 					Collections.addAll(miniMeld,sh.get(i),sh.get(i+1),sh.get(i+2),sh.get(i+3));
 					i = i+3;
 					seqMeld.add(miniMeld);
 					continue;
-				}
-			}
+				}			
 			if(i+2 < sh.size() && suiti ==  sh.get(i+1).getSuit() 
-					&& suiti == sh.get(i+2).getSuit()) {
-				if(ranki + 1 == sh.get(i+1).getRank() 
-						&& ranki + 2 == sh.get(i+2).getRank()) {
+					&& suiti == sh.get(i+2).getSuit()
+					&&ranki + 1 == sh.get(i+1).getRank() 
+					&& ranki + 2 == sh.get(i+2).getRank()) {
 					Collections.addAll(miniMeld,sh.get(i),sh.get(i+1),sh.get(i+2));
 					i = i+2;
 					seqMeld.add(miniMeld);
 					continue;
 				}
 				
-			}
+			
 				i++;
 
 		}
 		return seqMeld;
 	}
-//	private static boolean checkSuits(int i,List<Card> sh, int iterations) {
-//		Suit suiti = sh.get(i).getSuit();
-//		for(int j = 1; j < = iterations; j++) {
-//			if ()
-//		}
-//	}
+
 	/**
 	 * Private method that finds group melds from a sorted hand of cards
 	 * 
