@@ -1,24 +1,17 @@
 import java.util.Stack;
 
+/**
+ * @author Joy Xiao
+ * @brief The stock pile class
+ */
 public class StockPile extends Stack<Card> {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-	
-//	/**
-//	 * Overrides peek method since it is not allowed
-//	 */
-//	@Override 
-//	public Card peek() {
-//		return null;
-//	}
 	
 	/**
 	 * Overrides search method since information should not be given
 	 * 
-	 * @returns -1
+	 * @returns -1 always
 	 */
 	@Override 
 	public int search(Object e) {
