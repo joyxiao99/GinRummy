@@ -1,10 +1,11 @@
 import java.util.ArrayList;
 
+/**
+ * @author Joy Xiao
+ * @brief Hand of cards class
+ */
 public class Hand extends ArrayList<Card> {
-
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -29,6 +30,7 @@ public class Hand extends ArrayList<Card> {
 	  * Checks if hand contains the card
 	  * 
 	  * @param playerInput String input of the card to check
+	  * @return true when the card is in the hand or else return false
 	  */
 	 public boolean contains(String playerInput) {
 		 for (Card card: this) {
@@ -43,7 +45,7 @@ public class Hand extends ArrayList<Card> {
 	  * Discards the specific card from the player's hand
 	  * 
 	  * @param playerInput String input of card to discard
-	  * @return Card that has been removed
+	  * @return the card that has been removed
 	  */
 	 public Card remove(String playerInput) {		 
 		 //Create new hand of cards with the card removed
