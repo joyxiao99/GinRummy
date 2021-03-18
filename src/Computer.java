@@ -13,7 +13,7 @@ public class Computer {
 	public static boolean makeMove(Player player, StockPile stockPile, DiscardPile discardPile) {
 		System.out.print("Computer Hand:");
 		
-		player.getHand().displayHand();
+		player.displayHand();
 		player.checkMelds();
 		player.recalculateDeadwoodScore();
 		
@@ -36,7 +36,7 @@ public class Computer {
 			noMeldDecision(player, stockPile, discardPile);
 		}
 		
-		player.getHand().displayHand();
+		player.displayHand();
 		System.out.println("Computer deadwood:" + player.extractDeadwood());
 		return false;
 	}
