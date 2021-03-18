@@ -2,7 +2,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /**
- *
+ * @brief Class of operations for a game of Gin Rummy.
+ * @author Benson Hall
  */
 public class GameOps {
 
@@ -22,13 +23,13 @@ public class GameOps {
 		if (playerScore < cpuScore) {
 			p1.addToTotalScore(difference);
 			// player goes gin
-			if(playerScore == 0){
+			if (playerScore == 0) {
 				p1.addToTotalScore(20);
 			}
 		} else {
 			cpu.addToTotalScore(difference);
 			// computer goes gin
-			if(cpuScore == 0){
+			if (cpuScore == 0) {
 				cpu.addToTotalScore(20);
 			}
 		}
@@ -40,7 +41,7 @@ public class GameOps {
 	 * @param p1 - user
 	 * @return user's card to discard
 	 */
-	public static String chooseDiscard(Player p1){
+	public static String chooseDiscard(Player p1) {
 		System.out.println("Choose a card to discard: ");
 		// show hand for user to make decision
 		p1.displayHand();
@@ -156,32 +157,32 @@ public class GameOps {
 	public static char playAgain() {
 		return UserInputOps.playAgain();
 	}
-	
+
 	/**
 	 * Given the user's choice, process its choice and return true if the user
 	 * knocks, false otherwise.
 	 * 
-	 * @param p1     - user player
-	 * @param sp     - stock pile
-	 * @param dp     - discard pile
+	 * @param p1 - user player
+	 * @param sp - stock pile
+	 * @param dp - discard pile
 	 * @return true if user knocks, false otherwise
 	 */
 	public static boolean processDecision(Player p1, StockPile sp, DiscardPile dp) {
 		// for the do-while loop
 		int choice;
-		
+
 		// check melds
 		p1.checkMelds();
 		// recalculate deadwood score
 		p1.recalculateDeadwoodScore();
-		
+
 		do {
 			// display hand
 			System.out.println("Your hand: ");
 			p1.displayHand();
 
 			choice = UserInputOps.playerDecision();
-			
+
 			// choice check
 			switch (choice) {
 			case 1:
@@ -225,7 +226,7 @@ public class GameOps {
 	/**
 	 * Reset all elements of the former deal
 	 * 
-	 * @param p  - player being reset
+	 * @param p - player being reset
 	 */
 	public static void resetEverything(Player p) {
 		p.resetDeadwoodScore();

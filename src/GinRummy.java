@@ -1,3 +1,8 @@
+/**
+ * @brief Main operating class of the program
+ * @author Benson
+ *
+ */
 public class GinRummy {
 
 	/**

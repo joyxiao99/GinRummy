@@ -1,5 +1,10 @@
 import java.util.Scanner;
 
+/**
+ * @brief Class designated for user input and operations.
+ * @author Benson Hall
+ *
+ */
 public class UserInputOps {
 	private static Scanner scanner = new Scanner(System.in);
 
