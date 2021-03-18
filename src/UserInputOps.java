@@ -10,8 +10,6 @@ public class UserInputOps {
 
 	/**
 	 * Discard from hand and put on top of discard pile
-	 * 
-	 * @param discardPile - discard pile
 	 */
 	public static String chooseDiscard() {
 		String discard = scanner.nextLine();
@@ -67,7 +65,6 @@ public class UserInputOps {
 	/**
 	 * Player makes decisions
 	 * 
-	 * @param p1 - user player
 	 * @return player's decision, integer between 1 and 4
 	 */
 	public static int playerDecision() {
