@@ -1,3 +1,8 @@
+/**
+ * @brief  A class to determine the melds of a hand
+ * @author Smita Singh
+ * 
+*/
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -34,6 +39,13 @@ public class Meld {
 		}
 	}
 
+	/**
+	 * Determines the deadwood score of a hand with melds
+	 * 
+	 * @param List<Card> handList hand of cards of the player
+	 * @param ArrayList<ArrayList<Card>> melds of the hand
+	 * @return integer representing deadwood score
+	 */
 	private static int deadwood(List<Card> handList, ArrayList<ArrayList<Card>> melds) {
 		int deadwoodscore = 0;
 		List<Card> newHandList = removeCards(handList, melds);
@@ -43,6 +55,13 @@ public class Meld {
 		return deadwoodscore;
 		
 	}
+
+	/**
+	 * Determines the sequence melds and then the group melds
+	 * 
+	 * @param List<Card> handList hand of cards of the player
+	 * @return 2-D ArrayList of cards representing sequence and group melds
+	 */
 	private static ArrayList<ArrayList<Card>> checkSeqGroup(List<Card> handList){
 		ArrayList<ArrayList<Card>> sequenceMelds = new ArrayList<ArrayList<Card>>();
 		ArrayList<ArrayList<Card>> groupMelds = new ArrayList<ArrayList<Card>>();
@@ -60,6 +79,12 @@ public class Meld {
 		return meldset;
 	}
 	
+	/**
+	 * Determines the group melds and then the sequence melds
+	 * 
+	 * @param List<Card> handList hand of cards of the player
+	 * @return 2-D ArrayList of cards representing sequence and group melds
+	 */
 	private static ArrayList<ArrayList<Card>> checkGroupSeq(List<Card> handList){
 		ArrayList<ArrayList<Card>> sequenceMelds = new ArrayList<ArrayList<Card>>();
 		ArrayList<ArrayList<Card>> groupMelds = new ArrayList<ArrayList<Card>>();
@@ -194,58 +219,5 @@ public class Meld {
 		return groupMelds;
 	}
 	
-//	public static void main (String args[]) {
-//		Hand h = new Hand();
-//		Card c1 = new Card(Suit.S,11);
-//		Card c2 = new Card(Suit.D, 12);
-//		Card c3 = new Card(Suit.S, 10);
-//		Card c4 = new Card(Suit.S, 9);
-//		Card c5 = new Card(Suit.S,8);
-//		Card c6 = new Card(Suit.H, 12);
-//		Card c7 = new Card(Suit.H, 11);
-//		Card c8 = new Card(Suit.C, 1);
-//		Card c9 = new Card(Suit.H, 13);
-//		Card c10 = new Card(Suit.C, 2);
-//		h.add(c1); h.add(c2); h.add(c3);h.add(c4); h.add(c5); 
-//		h.add(c6); h.add(c7); h.add(c8);h.add(c9); h.add(c10); 
-//		checkMelds(h);
-//		
-//	}
-	
-//	public static void main (String args[]) {
-//		Hand h = new Hand();
-//		Card c1 = new Card(Suit.D,8);
-//		Card c2 = new Card(Suit.C, 11);
-//		Card c3 = new Card(Suit.C, 5);
-//		Card c4 = new Card(Suit.C, 4);
-//		Card c5 = new Card(Suit.S,2);
-//		Card c6 = new Card(Suit.C, 13);
-//		Card c7 = new Card(Suit.C, 10);
-//		Card c8 = new Card(Suit.D, 3);
-//		Card c9 = new Card(Suit.C, 9);
-//		Card c10 = new Card(Suit.H, 5);
-//		h.add(c1); h.add(c2); h.add(c3);h.add(c4); h.add(c5); 
-//		h.add(c6); h.add(c7); h.add(c8);h.add(c9); h.add(c10); 
-//		checkMelds(h);
-//		
-//	}
-	
-//	public static void main (String args[]) {
-//		Hand h = new Hand();
-//		Card c1 = new Card(Suit.H,1);
-//		Card c2 = new Card(Suit.C, 1);
-//		Card c3 = new Card(Suit.D, 1);
-//		Card c4 = new Card(Suit.S, 1);
-//		Card c5 = new Card(Suit.S,2);
-//		Card c6 = new Card(Suit.D, 2);
-//		Card c7 = new Card(Suit.C, 2);
-//		Card c8 = new Card(Suit.S, 3);
-//		Card c9 = new Card(Suit.S, 12);
-//		Card c10 = new Card(Suit.H, 9);
-//		h.add(c1); h.add(c2); h.add(c3);h.add(c4); h.add(c5); 
-//		h.add(c6); h.add(c7); h.add(c8);h.add(c9); h.add(c10); 
-//		checkMelds(h);
-//		
-//	}
-//	
+
 }
