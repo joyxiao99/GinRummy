@@ -154,7 +154,7 @@ public class GameOps {
 		// for the do-while loop
 		int choice;
 		do {
-			choice = UserInputOps.playerDecision(p1, sp, dp);
+			choice = UserInputOps.playerDecision(p1);
 			String discard;
 			
 			// choice check

@@ -68,11 +68,9 @@ public class UserInputOps {
 	 * Player makes decisions
 	 * 
 	 * @param p1 - user player
-	 * @param sp - stock pile
-	 * @param dp - discard pile
 	 * @return player's decision, integer between 1 and 4
 	 */
-	public static int playerDecision(Player p1, StockPile sp, DiscardPile dp) {
+	public static int playerDecision(Player p1) {
 		// hand
 		System.out.println("Your hand: ");
 		p1.displayHand();
