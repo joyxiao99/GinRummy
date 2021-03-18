@@ -6,7 +6,13 @@
 import java.util.Comparator;
 
 public class sortBySR implements Comparator<Card> {
-
+	/**
+	 * Public method that returns integer based on which card is greater in suit and rank
+	 * 
+	 * @param c1 card one
+	 * @param c2 card two
+	 * @return integer number, if c1 is greater it returns a positive int else it returns a negative int
+	 */
 	@Override
 	public int compare(Card c1, Card c2) {
 		int c;
