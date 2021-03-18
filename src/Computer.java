@@ -5,9 +5,9 @@ public class Computer {
 	/**
 	 * Computer opponent makes move 
 	 * 
-	 * @param player The computer player information
-	 * @param stockPile The stock pile	 
-	 * @param discardPile The discard pile
+	 * @param player the computer player
+	 * @param stockPile the stock pile	 
+	 * @param discardPile the discard pile
 	 * @return true when computer knocks, false when computer draws card
 	 */
 	public static boolean makeMove(Player player, StockPile stockPile, DiscardPile discardPile) {
@@ -44,9 +44,9 @@ public class Computer {
 	/**
 	 * Decision making for when the discard pile card does not make a meld with cards in hand
 	 * 
-	 * @param player
-	 * @param stockPile
-	 * @param discardPile
+	 * @param player the computer player
+	 * @param stockPile the stock pile	 
+	 * @param discardPile the discard pile
 	 */
 	private static void noMeldDecision(Player player, StockPile stockPile, DiscardPile discardPile) {
 		//if deadwood score decreases with discard pile card
@@ -73,9 +73,9 @@ public class Computer {
 	/**
 	 * Draws card from stock pile into hand and discards a card
 	 * 
-	 * @param player
-	 * @param stockPile
-	 * @param discardPile
+	 * @param player the computer player
+	 * @param stockPile the stock pile	 
+	 * @param discardPile the discard pile
 	 */
 	private static void drawFromStock(Player player, StockPile stockPile, DiscardPile discardPile) {
 		Card card = stockPile.pop();
@@ -90,8 +90,8 @@ public class Computer {
 	/**
 	 * Draws card from discard pile into hand and discards a card
 	 * 
-	 * @param player
-	 * @param discardPile
+	 * @param player the computer player
+	 * @param discardPile the discard pile
 	 */
 	private static void drawFromDiscard(Player player, DiscardPile discardPile) {
 		//take discard pile card from pile 
@@ -104,8 +104,8 @@ public class Computer {
 	/**
 	 * Discards the appropriate card from hand into the discard pile 
 	 * 
-	 * @param player
-	 * @param discardPile
+	 * @param player the computer player
+	 * @param discardPile the discard pile
 	 */
 	private static void discardHighestPointDeadwoodCard(Player player, DiscardPile discardPile) {
 		int highestNonMeldPoint = 0;
