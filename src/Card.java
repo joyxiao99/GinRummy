@@ -59,6 +59,19 @@ public class Card {
 		return r + s;
 	}
 	
+	/**
+     * This method turns a card into a string value with the suit symbol
+     * by calling two private methods that turn the 
+     * rank and suit into string seperately.
+     * Then it combines the two string
+     * 
+     * @return Returns a string representation of the card with suit symbol
+    */
+	public String toSymbol() {
+		String r = rankString();
+		String s = suitSymbol();
+		return r + s;
+	}
 	
 	/**
      * This method will create the string representation
@@ -112,6 +125,29 @@ public class Card {
 		}
 		return s;	
 	}
-
+	/**
+     * This method will create the string representation
+     * of the card suit symbol
+     * 
+     * 
+     * @return Returns a string representation of the card suit symbol
+    */
+	private String suitSymbol() {
+		String s;
+		switch(this.suit) {
+			case S:
+				s = "\u2660";
+				break;
+			case H:
+				s = "\u2665";
+				break;
+			case C :
+				s = "\u26667";
+				break;
+			default:
+				s = "\u2666";	
+		}
+		return s;	
+	}
 	}
 
