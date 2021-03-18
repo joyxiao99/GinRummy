@@ -1,4 +1,8 @@
-
+/**
+ * @brief  A class to present Card data type
+ * @author Smita Singh
+ * 
+*/
 public class Card {
 	private final Suit suit;
 	private final int  rank;
