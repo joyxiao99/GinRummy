@@ -1,3 +1,8 @@
+/**
+ * @brief  A comparator class that defines cards rank by suit and rank
+ * @author Smita Singh
+ * 
+*/
 import java.util.Comparator;
 
 public class sortBySR implements Comparator<Card> {
