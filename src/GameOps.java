@@ -35,6 +35,22 @@ public class GameOps {
 	}
 
 	/**
+	 * Player must choose a card to discard.
+	 * 
+	 * @param p1 - user
+	 * @return user's card to discard
+	 */
+	public static String chooseDiscard(Player p1){
+		System.out.println("Choose a card to discard: ");
+		// show hand for user to make decision
+		p1.displayHand();
+		System.out.println("");
+
+		// ask for user's input
+		return UserInputOps.chooseDiscard();
+	}
+
+	/**
 	 * Create initial stock pile and add cards to it
 	 * 
 	 * @return new stock pile
@@ -153,23 +169,28 @@ public class GameOps {
 	public static boolean processDecision(Player p1, StockPile sp, DiscardPile dp) {
 		// for the do-while loop
 		int choice;
+		
+		// check melds
+		p1.checkMelds();
+		// recalculate deadwood score
+		p1.recalculateDeadwoodScore();
+		
 		do {
-			choice = UserInputOps.playerDecision(p1);
-			String discard;
+			// display hand
+			System.out.println("Your hand: ");
+			p1.displayHand();
+
+			choice = UserInputOps.playerDecision();
 			
 			// choice check
 			switch (choice) {
 			case 1:
-				// draw from stock pile and discard another
+				// draw from stock pile
 				drawFromStockPile(p1, sp);
-				discard = UserInputOps.chooseDiscard(p1, dp);
-				discardCard(p1, dp, discard);
 				break;
 			case 2:
-				// draw from discard pile and discard another
+				// draw from discard pile
 				drawFromDiscardPile(p1, dp);
-				discard = UserInputOps.chooseDiscard(p1, dp);
-				discardCard(p1, dp, discard);
 				break;
 			case 3:
 				// check melds
@@ -195,6 +216,9 @@ public class GameOps {
 			}
 		} while (choice == 3 || choice == 4);
 
+		// discard a card from the hand
+		String discard = chooseDiscard(p1);
+		discardCard(p1, dp, discard);
 		return false;
 	}
 

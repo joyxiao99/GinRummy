@@ -6,14 +6,9 @@ public class UserInputOps {
 	/**
 	 * Discard from hand and put on top of discard pile
 	 * 
-	 * @param p1          - Player's information
 	 * @param discardPile - discard pile
 	 */
-	public static String chooseDiscard(Player p1, DiscardPile discardPile) {
-		System.out.println("Choose a card to discard: ");
-		// show hand for user to make decision
-		p1.displayHand();
-		System.out.println("");
+	public static String chooseDiscard() {
 		String discard = scanner.nextLine();
 		return discard;
 	}
@@ -70,16 +65,7 @@ public class UserInputOps {
 	 * @param p1 - user player
 	 * @return player's decision, integer between 1 and 4
 	 */
-	public static int playerDecision(Player p1) {
-		// hand
-		System.out.println("Your hand: ");
-		p1.displayHand();
-
-		// check melds
-		p1.checkMelds();
-		// recalculate deadwood score
-		p1.recalculateDeadwoodScore();
-
+	public static int playerDecision() {
 		// choices
 		displayChoices();
 		int choice = Integer.parseInt(scanner.nextLine());
