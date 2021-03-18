@@ -75,9 +75,7 @@ public class UserInputOps {
 	public static int playerDecision(Player p1, StockPile sp, DiscardPile dp) {
 		// hand
 		System.out.println("Your hand: ");
-		for (Card c : p1.getHand()) {
-			System.out.print(c.toString() + " ");
-		}
+		p1.displayHand();
 
 		// check melds
 		p1.checkMelds();
