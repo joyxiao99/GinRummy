@@ -1,5 +1,9 @@
 import java.util.ArrayList;
 
+/**
+ * @author Joy Xiao
+ * @brief The computer opponent class to make the computer's move
+ */
 public class Computer {
 
 	/**
