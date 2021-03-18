@@ -12,7 +12,7 @@ public class UserInputOps {
 	public static String chooseDiscard(Player p1, DiscardPile discardPile) {
 		System.out.println("Choose a card to discard: ");
 		// show hand for user to make decision
-		p1.getHand().displayHand();
+		p1.displayHand();
 		System.out.println("");
 		String discard = scanner.nextLine();
 		return discard;

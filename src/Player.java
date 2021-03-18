@@ -139,6 +139,13 @@ public class Player {
     }
 
     /**
+     * Interfacing method to display the hand
+     */
+    public void displayHand(){
+        this.hand.displayHand();
+    }
+
+    /**
      * Reset the player's hand at the end of a deal
      */
     public void resetHand(){
