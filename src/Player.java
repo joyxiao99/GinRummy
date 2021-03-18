@@ -82,15 +82,16 @@ public class Player {
      * if it is there and return its Card representation.
      * 
      * @param input - user's input
-     * @return card that was discarded or null if it is not in the hand
+     * @return card that was discarded
+     * @throws IllegalArgumentException if the card does not exist in the hand
      */
-    public Card discardFromHand(String input){
+    public Card discardFromHand(String input) throws IllegalArgumentException{
         if(this.hand.contains(input)){
             Card c = this.hand.remove(input);
             return c;
         }
         else{
-            return null;
+            throw new IllegalArgumentException("Card does not exist in the hand.");
         }
     }
 
