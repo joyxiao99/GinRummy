@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="3XA3 Project" company="" webLink="https://gitlab.cas.mcmaster.ca/xiaoz18/3xa3-project.git" view-date="2021-03-05" view-index="0" gantt-divider-location="369" resource-divider-location="428" version="2.8.11" locale="en_CA">
+<?xml version="1.0" encoding="UTF-8"?><project name="3XA3 Project" company="" webLink="https://gitlab.cas.mcmaster.ca/xiaoz18/3xa3-project.git" view-date="2021-03-11" view-index="0" gantt-divider-location="369" resource-divider-location="428" version="2.8.11" locale="en_CA">
     <description><![CDATA[This is a Gantt chart outlining all of the deliverables for the SFWRENG 3XA3 project (Rummy for Dummies)]]></description>
     <view zooming-state="default:2" id="gantt-chart">
         <field id="tpd3" name="Name" width="183" order="0"/>
@@ -144,7 +144,7 @@
         <allocation task-id="964" resource-id="1" function="Default:0" responsible="false" load="100.0"/>
         <allocation task-id="966" resource-id="1" function="Default:0" responsible="false" load="100.0"/>
         <allocation task-id="508" resource-id="1" function="Default:0" responsible="true" load="100.0"/>
-        <allocation task-id="985" resource-id="1" function="Default:0" responsible="false" load="50.0"/>
+        <allocation task-id="985" resource-id="1" function="Default:0" responsible="false" load="40.0"/>
         <allocation task-id="509" resource-id="1" function="Default:0" responsible="false" load="100.0"/>
         <allocation task-id="1004" resource-id="1" function="Default:0" responsible="false" load="100.0"/>
         <allocation task-id="1019" resource-id="1" function="Default:0" responsible="false" load="100.0"/>
@@ -157,7 +157,7 @@
         <allocation task-id="947" resource-id="1" function="Default:0" responsible="true" load="50.0"/>
         <allocation task-id="1085" resource-id="1" function="Default:0" responsible="true" load="100.0"/>
         <allocation task-id="1086" resource-id="1" function="Default:0" responsible="true" load="100.0"/>
-        <allocation task-id="1087" resource-id="1" function="Default:0" responsible="true" load="50.0"/>
+        <allocation task-id="1087" resource-id="1" function="Default:0" responsible="true" load="60.0"/>
         <allocation task-id="5" resource-id="2" function="Default:0" responsible="true" load="100.0"/>
         <allocation task-id="102" resource-id="2" function="Default:0" responsible="false" load="50.0"/>
         <allocation task-id="104" resource-id="2" function="Default:0" responsible="false" load="50.0"/>
