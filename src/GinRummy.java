@@ -6,6 +6,18 @@
 public class GinRummy {
 
 	/**
+	 * Display current total scores of both players
+	 * 
+	 * @param p1 - user player
+	 * @param cpu - computer player
+	 */
+	private static void displayCurrentScores(Player p1, Player cpu) {
+		System.out.println("Current scores: ");
+		System.out.print(p1.getName() + ": " + p1.getTotalScore() + "\t");
+		System.out.println(cpu.getName() + ": " + cpu.getTotalScore() + "\n");
+	}
+	
+	/**
 	 * Play a single deal
 	 * 
 	 * @param p1  - user player
@@ -38,8 +50,13 @@ public class GinRummy {
 			System.out.println("AI has made their move!");
 		}
 
+		// reaching here means someone knocked - who?
+		String knocker = playerKnocks ? p1.getName() : cpu.getName();
+		System.out.println(knocker + " knocked!\n");
+		
 		// calculate score based on who knocked
 		GameOps.calculateScores(p1, cpu);
+		displayCurrentScores(p1, cpu);
 	}
 
 	/**
