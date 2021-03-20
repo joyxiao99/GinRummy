@@ -200,12 +200,12 @@ public class GameOps {
 					for (Card c : meld) {
 						System.out.print(c.toString() + " ");
 					}
-					System.out.println();
+					System.out.println("\n");
 				}
 				break;
 			case 4:
 				// deadwood score - knock?
-				System.out.println("Your current deadwood score: " + p1.getDeadwoodScore());
+				System.out.println("Your current deadwood score: " + p1.getDeadwoodScore() + "\n");
 				if (p1.getDeadwoodScore() <= 10) {
 					System.out.println("Would you like to knock? (y/n)");
 					char knock = UserInputOps.knock();
