@@ -15,7 +15,7 @@ public class StockPileTest {
 		stockPile.add(card);
 	}
 
-	/*
+	/**
 	 * Tests FR-DP-1 drawing card
 	 */
 	@Test

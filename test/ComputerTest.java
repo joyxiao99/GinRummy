@@ -53,7 +53,7 @@ public class ComputerTest {
 		player = new Player("Computer");
 	}
 
-	/*
+	/**
 	 * Tests FR-CP-1 make move method
 	 */
 	@Test
@@ -77,7 +77,7 @@ public class ComputerTest {
 		Assert.assertEquals(6, player.getHand().size());
 	}
 	
-	/*
+	/**
 	 * Tests FR-CP-2 make move method
 	 */
 	@Test
@@ -101,7 +101,7 @@ public class ComputerTest {
 		Assert.assertEquals(6, player.getHand().size());
 	}
 	
-	/*
+	/**
 	 * Tests FR-CP-3 make move method
 	 */
 	@Test
@@ -126,7 +126,7 @@ public class ComputerTest {
 		Assert.assertEquals(6, player.getHand().size());
 	}
 	
-	/*
+	/**
 	 * Tests FR-CP-4 never discards meld
 	 */
 	@Test
@@ -155,7 +155,7 @@ public class ComputerTest {
 		Assert.assertEquals(true, player.getHand().contains("kc"));
 	}
 	
-	/*
+	/**
 	 * Tests FR-CP-5 never discards meld
 	 */
 	@Test
@@ -184,7 +184,7 @@ public class ComputerTest {
 		Assert.assertEquals(true, player.getHand().contains("kc"));
 	}
 	
-	/*
+	/**
 	 * Tests FR-CP-6 knock when deadwood score is 10 or less
 	 */
 	@Test

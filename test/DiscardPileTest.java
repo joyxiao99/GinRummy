@@ -15,7 +15,7 @@ public class DiscardPileTest {
 		discardPile.add(card);
 	}
 	
-	/*
+	/**
 	 * Tests FR-DP-1 display method - Manual Test
 	 */
 	@Test
@@ -24,7 +24,7 @@ public class DiscardPileTest {
 		//9d is displayed
 	}
 	
-	/*
+	/**
 	 * Tests FR-DP-2 drawing card
 	 */
 	@Test

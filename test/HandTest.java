@@ -20,7 +20,7 @@ public class HandTest {
 		hand.add(card);
 	}
 	
-	/*
+	/**
 	 * Tests FR-H-1 remove method  
 	 */
 	@Test
@@ -31,7 +31,7 @@ public class HandTest {
 		Assert.assertEquals(4, hand.size());
 	}
 	
-	/*
+	/**
 	 * Tests FR-H-2 remove method  
 	 */
 	@Test
@@ -43,7 +43,7 @@ public class HandTest {
 		Assert.assertEquals(hand.size() == 5, handRemove.size() == 5);
 	}
 	
-	/*
+	/**
 	 * Tests FR-H-3 remove method  
 	 */
 	@Test
@@ -55,7 +55,7 @@ public class HandTest {
 		Assert.assertEquals(4, hand.size());
 	}
 	
-	/*
+	/**
 	 * Tests FR-H-4 remove method 
 	 */
 	@Test
@@ -67,7 +67,7 @@ public class HandTest {
 		Assert.assertEquals(hand.size() == 5, handRemove.size() == 5);
 	}
 	
-	/*
+	/**
 	 * Tests FR-H-5 hand display on console - Manual Check
 	 */
 	@Test
@@ -75,7 +75,7 @@ public class HandTest {
 		hand.displayHand();
 	}
 	
-	/*
+	/**
 	 * Tests FR-H-6 contains method
 	 */
 	@Test
@@ -84,7 +84,7 @@ public class HandTest {
 		Assert.assertEquals(true, actual);
 	}
 	
-	/*
+	/**
 	 * Tests FR-H-7 contains method
 	 */
 	@Test
@@ -93,7 +93,7 @@ public class HandTest {
 		Assert.assertEquals(false, actual);
 	}
 	
-	/*
+	/**
 	 * Tests FR-H-8 contains method
 	 */
 	@Test
@@ -102,7 +102,7 @@ public class HandTest {
 		Assert.assertEquals(true, actual);
 	}
 	
-	/*
+	/**
 	 * Tests FR-H-9 contains method
 	 */
 	@Test
