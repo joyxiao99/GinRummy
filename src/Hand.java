@@ -17,14 +17,49 @@ public class Hand extends ArrayList<Card> {
 	 /**
 	  * Displays the player's hand to the console
 	  */
-	 public void displayHand() {
-		 String playerHand = "";
-		 
-		 for (Card card : this) {
-			 playerHand += card.toString() + " ";
-		 }
-		 System.out.println(playerHand);
-	 }
+	public void displayHand() {
+		for(Card card: this) {
+			System.out.print("_________");
+			System.out.print(" ");
+		}
+		System.out.println();
+		for(Card card: this) {
+			System.out.print("|       | ");
+		}
+		System.out.println();
+		for(Card card: this) {
+			if (card.getRank()!= 10) {
+			System.out.print("|"+card.rankString()+"      | ");
+			}else {
+			System.out.print("|"+card.rankString()+"     | ");	
+		}
+		}
+		System.out.println();
+		for(Card card: this) {
+			System.out.print("|       | ");
+		}
+		System.out.println();
+		for(Card card: this) {
+			System.out.print("|   "+card.suitSymbol()+"   | ");
+		}
+		System.out.println();
+		for(Card card: this) {
+			System.out.print("|       | ");
+		}
+		System.out.println();
+		for(Card card: this) {
+			if (card.getRank()!= 10)
+			System.out.print("|      "+card.rankString()+"| ");
+			else
+				System.out.print("|     "+card.rankString()+"| ");
+		}
+
+		System.out.println();
+		for(Card card: this) {
+			System.out.print("|_______|");
+			System.out.print(" ");
+		}
+	}
 	 
 	 /**
 	  * Checks if hand contains the card

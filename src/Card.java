@@ -84,7 +84,7 @@ public class Card {
      * 
      * @return Returns a string representation of the card rank
     */
-	private String rankString() {
+	public String rankString() {
 		String s;
 		switch(this.rank) {
 			case 1:
@@ -136,7 +136,7 @@ public class Card {
      * 
      * @return Returns a string representation of the card suit symbol
     */
-	private String suitSymbol() {
+	public String suitSymbol() {
 		String s;
 		switch(this.suit) {
 			case S:
@@ -146,7 +146,7 @@ public class Card {
 				s = "\u2665";
 				break;
 			case C :
-				s = "\u26667";
+				s = "\u2663";
 				break;
 			default:
 				s = "\u2666";	
