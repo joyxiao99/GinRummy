@@ -13,6 +13,25 @@ public class DiscardPile extends Stack<Card> {
 	 */
 	public void displayTopCard() {
 		Card topCard = this.peek();
-		System.out.println(topCard.toString());
+		System.out.println();
+		System.out.println("_________");
+		System.out.println("|       | ");
+		if (topCard.getRank()!= 10) 
+			System.out.println("|"+topCard.rankString()+"      | ");
+		else 
+			System.out.println("|"+topCard.rankString()+"     | ");	
+		
+		System.out.println("|       | ");
+		System.out.println("|   "+topCard.suitSymbol()+"   | ");
+		System.out.println("|       | ");
+	
+		if (topCard.getRank()!= 10)
+			System.out.println("|      "+topCard.rankString()+"| ");
+		else
+			System.out.println("|     "+topCard.rankString()+"| ");
+
+		System.out.println("|_______|");
+
+		}
 	}
-}
+
