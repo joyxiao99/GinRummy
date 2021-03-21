@@ -198,7 +198,7 @@ public class GameOps {
 				ArrayList<ArrayList<Card>> melds = p1.getMelds();
 				for (ArrayList<Card> meld : melds) {
 					for (Card c : meld) {
-						System.out.print(c.toString() + " ");
+						System.out.print(c.toSymbol() + " ");
 					}
 					System.out.println("\n");
 				}
