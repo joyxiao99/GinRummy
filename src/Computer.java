@@ -15,9 +15,9 @@ public class Computer {
 	 * @return true when computer knocks, false when computer draws card
 	 */
 	public static boolean makeMove(Player player, StockPile stockPile, DiscardPile discardPile) {
-		System.out.print("Computer Hand:");
+//		System.out.print("Computer Hand:");
 		
-		player.displayHand();
+//		player.displayHand();
 		player.checkMelds();
 		player.recalculateDeadwoodScore();
 		
@@ -40,8 +40,8 @@ public class Computer {
 			noMeldDecision(player, stockPile, discardPile);
 		}
 		
-		player.displayHand();
-		System.out.println("Computer deadwood:" + player.extractDeadwood());
+//		player.displayHand();
+//		System.out.println("Computer deadwood:" + player.extractDeadwood());
 		return false;
 	}
 	
