@@ -116,8 +116,8 @@ public class Computer {
 		Card cardWithHighestDeadwood = null;
 		
 		for (Card card : player.extractDeadwood()) {
-			//Finds the deadwood card with highest score and not the discard pile card
-			if (card.points() > highestNonMeldPoint && card != discardPile.peek()) {
+			//Finds the deadwood card with highest score
+			if (card.points() > highestNonMeldPoint) {
 				highestNonMeldPoint = card.points();
 				cardWithHighestDeadwood = card;
 			}
