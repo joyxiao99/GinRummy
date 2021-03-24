@@ -36,9 +36,6 @@ public class GinRummy {
 		boolean playerKnocks = false;
 		boolean cpuKnocks = false;
 		while (!cpuKnocks || !playerKnocks) {
-			System.out.print("Card on the discard pile: ");
-			dp.displayTopCard();
-
 			// player decides on what to do
 			playerKnocks = GameOps.processDecision(p1, sp, dp);
 			if (playerKnocks) {

@@ -100,7 +100,7 @@ public class GameOps {
 	 * @param c  - card being added
 	 */
 	private static void displayAddDraw(Player p1, Card c) {
-		System.out.println("You drew: " + c.toString());
+		System.out.println("You drew: " + c.toSymbol());
 		p1.addCardToHand(c);
 	}
 
@@ -177,6 +177,9 @@ public class GameOps {
 		p1.recalculateDeadwoodScore();
 
 		do {
+			System.out.print("Card on the discard pile: ");
+			dp.displayTopCard();
+			
 			// display hand
 			System.out.println("Your hand: ");
 			p1.displayHand();
