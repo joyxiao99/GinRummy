@@ -41,7 +41,7 @@ public class GameOps {
 	 * @param p1 - user
 	 * @return user's card to discard
 	 */
-	public static String chooseDiscard(Player p1) {
+	private static String chooseDiscard(Player p1) {
 		System.out.println("Choose a card to discard: ");
 		// show hand for user to make decision
 		p1.displayHand();
@@ -89,7 +89,7 @@ public class GameOps {
 	 * @param dp      - discard pile
 	 * @param discard - string input of card to be discarded
 	 */
-	public static void discardCard(Player p1, DiscardPile dp, String discard) {
+	private static void discardCard(Player p1, DiscardPile dp, String discard) {
 		dp.push(p1.discardFromHand(discard));
 	}
 
@@ -126,7 +126,7 @@ public class GameOps {
 	 * @param p1        - user player
 	 * @param stockPile - stock pile
 	 */
-	public static void drawFromStockPile(Player p1, StockPile stockPile) {
+	private static void drawFromStockPile(Player p1, StockPile stockPile) {
 		Card c = stockPile.pop();
 		displayAddDraw(p1, c);
 	}
@@ -137,7 +137,7 @@ public class GameOps {
 	 * @param p1          - user player
 	 * @param discardPile - discard pile
 	 */
-	public static void drawFromDiscardPile(Player p1, DiscardPile discardPile) {
+	private static void drawFromDiscardPile(Player p1, DiscardPile discardPile) {
 		Card c = discardPile.pop();
 		displayAddDraw(p1, c);
 	}
