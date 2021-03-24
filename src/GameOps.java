@@ -197,13 +197,18 @@ public class GameOps {
 				drawFromDiscardPile(p1, dp);
 				break;
 			case 3:
-				// check melds
+				// check melds, if any
 				ArrayList<ArrayList<Card>> melds = p1.getMelds();
-				for (ArrayList<Card> meld : melds) {
-					for (Card c : meld) {
-						System.out.print(c.toSymbol() + " ");
+				if(melds.isEmpty()) {
+					System.out.println("There are no melds.\n");
+				}
+				else {
+					for (ArrayList<Card> meld : melds) {
+						for (Card c : meld) {
+							System.out.print(c.toSymbol() + " ");
+						}
+						System.out.println("\n");
 					}
-					System.out.println("\n");
 				}
 				break;
 			case 4:
