@@ -202,4 +202,25 @@ public class ComputerTest {
 		Assert.assertEquals(true, actual);
 	}
 
+	/**
+	 * Tests FR-CP-7 make move method when discardPile has 1 card
+	 */
+	@Test
+	public void testComputerMakeMove4() {
+		discardPile.add(card_4h);
+
+		player.addCardToHand(card_4d);
+		player.addCardToHand(card_6d);
+		player.addCardToHand(card_Js);
+		player.addCardToHand(card_Ad);
+		player.addCardToHand(card_2d);
+		player.addCardToHand(card_5d);
+		
+		Boolean actual = Computer.makeMove(player, stockPile, discardPile);
+		
+		Assert.assertEquals(false, actual);
+		Assert.assertEquals(1, discardPile.size());
+		Assert.assertEquals(2, stockPile.size());
+		Assert.assertEquals(6, player.getHand().size());
+	}
 }
