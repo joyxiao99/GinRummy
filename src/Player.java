@@ -166,4 +166,11 @@ public class Player {
 	public void resetMelds() {
 		this.melds = new ArrayList<ArrayList<Card>>();
 	}
+	
+	/**
+	 * Reset the total score at the start of a new game
+	 */
+	public void resetTotalScore() {
+		this.totalScore = 0;
+	}
 }

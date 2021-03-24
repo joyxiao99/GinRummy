@@ -63,6 +63,8 @@ public class GinRummy {
 	 * @param cpu - computer player
 	 */
 	public static void playGame(Player p1, Player cpu) {
+		p1.resetTotalScore();
+		cpu.resetTotalScore();
 		System.out.println("Let's play a game of Gin Rummy!");
 
 		// while either score is less than 100, play a new deal
