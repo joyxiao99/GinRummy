@@ -47,6 +47,9 @@ public class GameOps {
 		p1.displayHand();
 		System.out.println("");
 
+		// instructions
+		System.out.println("Helpful tip: Type the card rank, followed by the first letter representing the suit.");
+		System.out.println("Example: For 9\u2660, type in 9s");
 		// ask for user's input
 		return UserInputOps.chooseDiscard();
 	}
@@ -179,7 +182,7 @@ public class GameOps {
 		do {
 			System.out.print("Card on the discard pile: ");
 			dp.displayTopCard();
-			
+
 			// display hand
 			System.out.println("Your hand: ");
 			p1.displayHand();
@@ -199,10 +202,9 @@ public class GameOps {
 			case 3:
 				// check melds, if any
 				ArrayList<ArrayList<Card>> melds = p1.getMelds();
-				if(melds.isEmpty()) {
+				if (melds.isEmpty()) {
 					System.out.println("There are no melds.\n");
-				}
-				else {
+				} else {
 					for (ArrayList<Card> meld : melds) {
 						for (Card c : meld) {
 							System.out.print(c.toSymbol() + " ");
