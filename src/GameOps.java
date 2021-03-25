@@ -116,6 +116,9 @@ public class GameOps {
 	 * @param discardPile - discard pile
 	 */
 	public static void distributeCards(Player p1, Player cpu, StockPile stockPile, DiscardPile discardPile) {
+		if(stockPile.size() != 52) {
+			throw new IllegalArgumentException("The initial stock pile is not a standard 52-card deck.");
+		}
 		for (int i = 0; i < 10; i++) {
 			p1.addCardToHand(stockPile.pop());
 			cpu.addCardToHand(stockPile.pop());
