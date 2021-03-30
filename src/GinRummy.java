@@ -35,7 +35,7 @@ public class GinRummy {
 
 		boolean playerKnocks = false;
 		boolean cpuKnocks = false;
-		while (!cpuKnocks || !playerKnocks) {
+		while (!cpuKnocks && !playerKnocks) {
 			// player decides on what to do
 			playerKnocks = GameOps.processDecision(p1, sp, dp);
 			if (playerKnocks) {
