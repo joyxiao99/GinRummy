@@ -2,37 +2,35 @@ import org.junit.*;
 
 public class StockPileTest {
 
-
 	private static StockPile stockPile;
+	
+	private static StockPile stockPileExpected;
+	
+	private static Card card_5d = new Card(Suit.D, 5); 
+
+	private static Card card_As = new Card(Suit.S, 1); 
 
 	@Before
 	public void setUp() {
 		stockPile = new StockPile();
 		//Set up the hand		
-		Card card = new Card(Suit.S, 1);
-		stockPile.add(card);
-		card = new Card(Suit.D, 5);
-		stockPile.add(card);
+		stockPile.add(card_As);
+		stockPile.add(card_5d);
+		
+		stockPileExpected = new StockPile();
 	}
 
 	/**
 	 * Tests FR-DP-1 drawing card
 	 */
 	@Test
-	public void testHandPop1() {
-		Card card = new Card(Suit.S, 1);
-
+	public void testStockPilePop() {
 		stockPile.pop();
-		Assert.assertEquals(card.toString(), stockPile.peek().toString());
-		Assert.assertEquals(1, stockPile.size());
+		
+		//Expected stock pile
+		stockPileExpected.add(card_As);
+		
+		Assert.assertEquals(stockPileExpected, stockPile);
 	}
-	
-//	/*
-//	 * Tests FR-DP-2 drawing card
-//	 */
-//	@Test
-//	public void testHandPop2() {
-//		StockPile stockPile = new StockPile();
-//		stockPile.pop();
-//	}
+
 }
