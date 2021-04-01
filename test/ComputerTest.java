@@ -1,8 +1,6 @@
 import org.junit.*;
 
 public class ComputerTest {
-
-	private static Computer computer = new Computer();
 	
 	private static Player player;
 	
@@ -34,6 +32,8 @@ public class ComputerTest {
 	
 	private static Card card_Jc = new Card(Suit.C, 11); 
 
+	private static Card card_Jd = new Card(Suit.D, 11); 
+
 	private static Card card_10d = new Card(Suit.D, 10); 
 	
 	private static Card card_As = new Card(Suit.S, 1); 
@@ -44,12 +44,21 @@ public class ComputerTest {
 	
 	private static Card card_Qc = new Card(Suit.C, 12); 
 
+	private static DiscardPile discardPileExpected = new DiscardPile();
+	
+	private static Hand handExpected = new Hand();
+
+	private static StockPile stockPileExpected = new StockPile();
+	
 	@Before
 	public void setUp() {
 		discardPile = new DiscardPile();
 		stockPile = new StockPile();
 		stockPile.add(card_Qs);
 		stockPile.add(card_3d);
+		discardPileExpected = new DiscardPile();
+		handExpected = new Hand();
+		stockPileExpected = new StockPile();
 		player = new Player("Computer");
 	}
 
@@ -71,10 +80,26 @@ public class ComputerTest {
 		
 		Boolean actual = Computer.makeMove(player, stockPile, discardPile);
 		
+		//Expected values for test
+		discardPileExpected.push(card_4h);
+		discardPileExpected.push(card_9c);
+		discardPileExpected.push(card_Ks);
+		
+		handExpected.add(card_4d);
+		handExpected.add(card_6d);
+		handExpected.add(card_Js);
+		handExpected.add(card_Ad);
+		handExpected.add(card_2d);
+		handExpected.add(card_5d);
+		
+		stockPileExpected.add(card_Qs);
+		stockPileExpected.add(card_3d);
+		
 		Assert.assertEquals(false, actual);
-		Assert.assertEquals(3, discardPile.size());
-		Assert.assertEquals(2, stockPile.size());
-		Assert.assertEquals(6, player.getHand().size());
+		Assert.assertEquals(discardPileExpected.toString(), discardPile.toString());
+		Assert.assertEquals(stockPileExpected.toString(), stockPile.toString());
+		Assert.assertEquals(handExpected.toString(), player.getHand().toString());
+
 	}
 	
 	/**
@@ -85,7 +110,8 @@ public class ComputerTest {
 		discardPile.add(card_4h);
 		discardPile.add(card_Jc);
 		discardPile.add(card_10d);
-		
+		discardPile.add(card_Ks);
+
 		player.addCardToHand(card_4d);
 		player.addCardToHand(card_6d);
 		player.addCardToHand(card_Js);
@@ -95,10 +121,26 @@ public class ComputerTest {
 		
 		Boolean actual = Computer.makeMove(player, stockPile, discardPile);
 		
+		//Expected values for test
+		discardPileExpected.push(card_4h);
+		discardPileExpected.push(card_Jc);
+		discardPileExpected.push(card_10d);
+		discardPileExpected.push(card_Ks);
+		discardPileExpected.push(card_Js);
+
+		handExpected.add(card_4d);
+		handExpected.add(card_6d);
+		handExpected.add(card_Ad);
+		handExpected.add(card_2d);
+		handExpected.add(card_5d);
+		handExpected.add(card_3d);
+
+		stockPileExpected.add(card_Qs);
+		
 		Assert.assertEquals(false, actual);
-		Assert.assertEquals(4, discardPile.size());
-		Assert.assertEquals(1, stockPile.size());
-		Assert.assertEquals(6, player.getHand().size());
+		Assert.assertEquals(discardPileExpected.toString(), discardPile.toString());
+		Assert.assertEquals(stockPileExpected.toString(), stockPile.toString());
+		Assert.assertEquals(handExpected.toString(), player.getHand().toString());
 	}
 	
 	/**
@@ -120,10 +162,26 @@ public class ComputerTest {
 		
 		Boolean actual = Computer.makeMove(player, stockPile, discardPile);
 		
+		//Expected values for test
+		discardPileExpected.push(card_4h);
+		discardPileExpected.push(card_Jc);
+		discardPileExpected.push(card_10d);
+		discardPileExpected.push(card_Js);
+		
+		handExpected.add(card_4d);
+		handExpected.add(card_6d);
+		handExpected.add(card_Ad);
+		handExpected.add(card_2d);
+		handExpected.add(card_5d);
+		handExpected.add(card_As);
+		
+		stockPileExpected.add(card_Qs);
+		stockPileExpected.add(card_3d);
+		
 		Assert.assertEquals(false, actual);
-		Assert.assertEquals(4, discardPile.size());
-		Assert.assertEquals(2, stockPile.size());
-		Assert.assertEquals(6, player.getHand().size());
+		Assert.assertEquals(discardPileExpected.toString(), discardPile.toString());
+		Assert.assertEquals(stockPileExpected.toString(), stockPile.toString());
+		Assert.assertEquals(handExpected.toString(), player.getHand().toString());
 	}
 	
 	/**
@@ -138,21 +196,35 @@ public class ComputerTest {
 
 		player.addCardToHand(card_4d);
 		player.addCardToHand(card_6d);
+		player.addCardToHand(card_Ad);
 		player.addCardToHand(card_2d);
 		player.addCardToHand(card_Kc);
 		player.addCardToHand(card_Kd);
 		player.addCardToHand(card_Ks);
-		player.addCardToHand(card_As);
 
 		Boolean actual = Computer.makeMove(player, stockPile, discardPile);
 		
+		//Expected values for test
+		discardPileExpected.push(card_4h);
+		discardPileExpected.push(card_Jc);
+		discardPileExpected.push(card_10d);
+		discardPileExpected.push(card_6d);
+		
+		handExpected.add(card_4d);
+		handExpected.add(card_Ad);
+		handExpected.add(card_2d);
+		handExpected.add(card_Kc);
+		handExpected.add(card_Kd);
+		handExpected.add(card_Ks);
+		handExpected.add(card_As);
+
+		stockPileExpected.add(card_Qs);
+		stockPileExpected.add(card_3d);
+		
 		Assert.assertEquals(false, actual);
-		Assert.assertEquals(4, discardPile.size());
-		Assert.assertEquals(2, stockPile.size());
-		Assert.assertEquals(7, player.getHand().size());
-		Assert.assertEquals(true, player.getHand().contains("kd"));
-		Assert.assertEquals(true, player.getHand().contains("ks"));
-		Assert.assertEquals(true, player.getHand().contains("kc"));
+		Assert.assertEquals(discardPileExpected.toString(), discardPile.toString());
+		Assert.assertEquals(stockPileExpected.toString(), stockPile.toString());
+		Assert.assertEquals(handExpected.toString(), player.getHand().toString());
 	}
 	
 	/**
@@ -161,7 +233,7 @@ public class ComputerTest {
 	@Test
 	public void testComputerFunctionalityMeld2() {
 		discardPile.add(card_4h);
-		discardPile.add(card_Jc);
+		discardPile.add(card_Jd);
 		discardPile.add(card_10d);
 		discardPile.add(card_As);
 
@@ -175,13 +247,27 @@ public class ComputerTest {
 
 		Boolean actual = Computer.makeMove(player, stockPile, discardPile);
 		
+		//Expected values for test
+		discardPileExpected.push(card_4h);
+		discardPileExpected.push(card_Jd);
+		discardPileExpected.push(card_10d);
+		discardPileExpected.push(card_6d);
+
+		handExpected.add(card_4d);
+		handExpected.add(card_Ad);
+		handExpected.add(card_2d);
+		handExpected.add(card_Jc);
+		handExpected.add(card_Qc);
+		handExpected.add(card_Kc);
+		handExpected.add(card_As);
+
+		stockPileExpected.add(card_Qs);
+		stockPileExpected.add(card_3d);
+		
 		Assert.assertEquals(false, actual);
-		Assert.assertEquals(4, discardPile.size());
-		Assert.assertEquals(2, stockPile.size());
-		Assert.assertEquals(7, player.getHand().size());
-		Assert.assertEquals(true, player.getHand().contains("jc"));
-		Assert.assertEquals(true, player.getHand().contains("qc"));
-		Assert.assertEquals(true, player.getHand().contains("kc"));
+		Assert.assertEquals(discardPileExpected.toString(), discardPile.toString());
+		Assert.assertEquals(stockPileExpected.toString(), stockPile.toString());
+		Assert.assertEquals(handExpected.toString(), player.getHand().toString());
 	}
 	
 	/**
@@ -199,6 +285,15 @@ public class ComputerTest {
 
 		Boolean actual = Computer.makeMove(player, stockPile, discardPile);
 		
+		//Expected values for test
+		handExpected.add(card_4d);
+		handExpected.add(card_Ad);
+		handExpected.add(card_2d);
+		handExpected.add(card_Jc);
+		handExpected.add(card_Qc);
+		handExpected.add(card_Kc);
+		handExpected.add(card_As);
+
 		Assert.assertEquals(true, actual);
 	}
 
@@ -218,9 +313,22 @@ public class ComputerTest {
 		
 		Boolean actual = Computer.makeMove(player, stockPile, discardPile);
 		
+		//Expected values for test
+		discardPileExpected.push(card_Js);
+		
+		handExpected.add(card_4d);
+		handExpected.add(card_6d);
+		handExpected.add(card_Ad);
+		handExpected.add(card_2d);
+		handExpected.add(card_5d);
+		handExpected.add(card_4h);
+
+		stockPileExpected.add(card_Qs);
+		stockPileExpected.add(card_3d);
+		
 		Assert.assertEquals(false, actual);
-		Assert.assertEquals(1, discardPile.size());
-		Assert.assertEquals(2, stockPile.size());
-		Assert.assertEquals(6, player.getHand().size());
+		Assert.assertEquals(discardPileExpected.toString(), discardPile.toString());
+		Assert.assertEquals(stockPileExpected.toString(), stockPile.toString());
+		Assert.assertEquals(handExpected.toString(), player.getHand().toString());
 	}
 }
