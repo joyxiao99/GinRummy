@@ -1,23 +1,34 @@
-import org.junit.*;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
 
 public class HandTest {
 
 	private static Hand hand;
+	
+	private static Hand handExpected;
+
+	private static Card card_5d = new Card(Suit.D, 5); 
+
+	private static Card card_Qs = new Card(Suit.S, 12); 
+
+	private static Card card_3d = new Card(Suit.D, 3); 
+	
+	private static Card card_As = new Card(Suit.S, 1); 
+
+	private static Card card_2s = new Card(Suit.S, 2); 
 
 	@Before
 	public void setUp() {
 		hand = new Hand();
 		//Set up the hand		
-		Card card = new Card(Suit.S, 1);
-		hand.add(card);
-		card = new Card(Suit.S, 2);
-		hand.add(card);
-		card = new Card(Suit.S, 12);
-		hand.add(card);
-		card = new Card(Suit.S, 3);
-		hand.add(card);
-		card = new Card(Suit.S, 5);
-		hand.add(card);
+		hand.add(card_As);
+		hand.add(card_2s);
+		hand.add(card_Qs);
+		hand.add(card_3d);
+		hand.add(card_5d);
+		
+		handExpected = new Hand();
 	}
 	
 	/**
@@ -25,10 +36,15 @@ public class HandTest {
 	 */
 	@Test
 	public void testHandRemove1() {
-		Card removedCard = new Card(Suit.S, 1);
-		Card actualCard = hand.remove("As");
-		Assert.assertEquals(removedCard.toString(), actualCard.toString());
-		Assert.assertEquals(4, hand.size());
+		hand.remove("As");
+		
+		//Expected hand 
+		handExpected.add(card_2s);
+		handExpected.add(card_Qs);
+		handExpected.add(card_3d);
+		handExpected.add(card_5d);
+
+		Assert.assertEquals(handExpected.toString(), hand.toString());
 	}
 	
 	/**
@@ -36,11 +52,16 @@ public class HandTest {
 	 */
 	@Test
 	public void testHandRemove2() {		
-		Hand handRemove = hand;
-		handRemove.remove("Kc");
+		hand.remove("Kc");
 
-		Assert.assertEquals(hand, handRemove);
-		Assert.assertEquals(hand.size() == 5, handRemove.size() == 5);
+		//Expected hand 
+		handExpected.add(card_As);
+		handExpected.add(card_2s);
+		handExpected.add(card_Qs);
+		handExpected.add(card_3d);
+		handExpected.add(card_5d);
+		
+		Assert.assertEquals(handExpected.toString(), hand.toString());
 	}
 	
 	/**
@@ -48,11 +69,15 @@ public class HandTest {
 	 */
 	@Test
 	public void testHandRemove3() {		
-		Card removedCard = new Card(Suit.S, 1);
-		Card actualCard = hand.remove("AS");
+		hand.remove("AS");
 		
-		Assert.assertEquals(removedCard.toString(), actualCard.toString());
-		Assert.assertEquals(4, hand.size());
+		//Expected hand 
+		handExpected.add(card_2s);
+		handExpected.add(card_Qs);
+		handExpected.add(card_3d);
+		handExpected.add(card_5d);
+		
+		Assert.assertEquals(handExpected.toString(), hand.toString());
 	}
 	
 	/**
@@ -60,11 +85,17 @@ public class HandTest {
 	 */
 	@Test
 	public void testHandRemove4() {			
-		Hand handRemove = hand;
-		handRemove.remove("KC");
+		hand.remove("KC");
 
-		Assert.assertEquals(hand, handRemove);
-		Assert.assertEquals(hand.size() == 5, handRemove.size() == 5);
+		//Expected hand 
+		handExpected.add(card_As);
+		handExpected.add(card_2s);
+		handExpected.add(card_Qs);
+		handExpected.add(card_3d);
+		handExpected.add(card_5d);
+		
+		Assert.assertEquals(handExpected.toString(), hand.toString());
+
 	}
 	
 	/**
@@ -81,6 +112,7 @@ public class HandTest {
 	@Test
 	public void testHandContains1() {
 		Boolean actual = hand.contains("As");
+		
 		Assert.assertEquals(true, actual);
 	}
 	
@@ -90,6 +122,7 @@ public class HandTest {
 	@Test
 	public void testHandContains2() {
 		Boolean actual = hand.contains("Ks");
+		
 		Assert.assertEquals(false, actual);
 	}
 	
@@ -99,6 +132,7 @@ public class HandTest {
 	@Test
 	public void testHandContains3() {
 		Boolean actual = hand.contains("AS");
+		
 		Assert.assertEquals(true, actual);
 	}
 	
@@ -108,6 +142,7 @@ public class HandTest {
 	@Test
 	public void testHandContains4() {
 		Boolean actual = hand.contains("KS");
+		
 		Assert.assertEquals(false, actual);
 	}
 }
