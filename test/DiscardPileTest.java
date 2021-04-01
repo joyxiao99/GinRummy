@@ -2,37 +2,41 @@ import org.junit.*;
 
 public class DiscardPileTest {
 
-
 	private static DiscardPile discardPile;
+
+	private static DiscardPile discardPileExpected = new DiscardPile();
+
+	private static Card card_9d = new Card(Suit.D, 9); 
+
+	private static Card card_5h = new Card(Suit.H, 5); 
 
 	@Before
 	public void setUp() {
 		discardPile = new DiscardPile();
 		//Set up the hand		
-		Card card = new Card(Suit.H, 5);
-		discardPile.add(card);
-		card = new Card(Suit.D, 9);
-		discardPile.add(card);
+		discardPile.add(card_5h);
+		discardPile.add(card_9d);
 	}
 	
 	/**
-	 * Tests FR-DP-1 display method - Manual Test
+	 * Tests FR-DP-1 display method - Manually checked in console
 	 */
 	@Test
-	public void testHandDisplay() {
+	public void testDiscardPileDisplay() {
 		discardPile.displayTopCard();
-		//9d is displayed
+		//9 of diamonds card is displayed
 	}
 	
 	/**
 	 * Tests FR-DP-2 drawing card
 	 */
 	@Test
-	public void testHandPop() {
-		Card card = new Card(Suit.H, 5);
-
+	public void testDiscardPilePop() {
 		discardPile.pop();
-		Assert.assertEquals(card.toString(), discardPile.peek().toString());
-		Assert.assertEquals(1, discardPile.size());
+		
+		//Expected discard pile
+		discardPileExpected.add(card_5h);
+		
+		Assert.assertEquals(discardPileExpected, discardPile);
 	}
 }
