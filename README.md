@@ -10,4 +10,7 @@ This project is a reimplementation of the game Gin Rummy
 The folders and files for this project are as follows:
 
 Doc - Documentation for the project
-Code - Implementation
+
+src - Implementation
+
+test - Testing files
