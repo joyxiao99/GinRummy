@@ -44,7 +44,7 @@ public class GinRummy {
 
 			// cpu decides on what to do
 			cpuKnocks = Computer.makeMove(cpu, sp, dp);
-			System.out.println("AI has made their move!");
+			System.out.println("\nAI has made their move!\n");
 		}
 
 		// reaching here means someone knocked - who?

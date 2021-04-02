@@ -103,7 +103,7 @@ public class GameOps {
 	 * @param c  - card being added
 	 */
 	private static void displayAddDraw(Player p1, Card c) {
-		System.out.println("You drew: " + c.toSymbol());
+		System.out.println("You drew: " + c.toSymbol() + "\n");
 		p1.addCardToHand(c);
 	}
 
@@ -212,13 +212,12 @@ public class GameOps {
 						for (Card c : meld) {
 							System.out.print(c.toSymbol() + " ");
 						}
-						System.out.println("\n");
 					}
 				}
 				break;
 			case 4:
 				// deadwood score - knock?
-				System.out.println("Your current deadwood score: " + p1.getDeadwoodScore() + "\n");
+				System.out.println("Your current deadwood score: " + p1.getDeadwoodScore());
 				if (p1.getDeadwoodScore() <= 10) {
 					System.out.println("Would you like to knock? (y/n)");
 					char knock = UserInputOps.knock();
@@ -228,6 +227,7 @@ public class GameOps {
 				}
 				break;
 			}
+			System.out.println("\n");
 		} while (choice == 3 || choice == 4);
 
 		// discard a card from the hand
