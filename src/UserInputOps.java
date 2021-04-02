@@ -22,7 +22,7 @@ public class UserInputOps {
 	public static void closeScanner() {
 		scanner.close();
 	}
-	
+
 	/**
 	 * Print method for displaying user's options
 	 */
@@ -33,7 +33,7 @@ public class UserInputOps {
 		System.out.println("3. Check melds.");
 		System.out.println("4. Check deadwood score/attempt to knock.");
 	}
-	
+
 	/**
 	 * Does the user want to knock?
 	 * 
@@ -41,7 +41,7 @@ public class UserInputOps {
 	 */
 	public static char knock() {
 		char knock = scanner.nextLine().toLowerCase().charAt(0);
-		while(knock != 'y' && knock != 'n') {
+		while (knock != 'y' && knock != 'n') {
 			System.out.println("Invalid input.\nWould you like to knock? (y/n)");
 			knock = scanner.nextLine().toLowerCase().charAt(0);
 		}
@@ -70,11 +70,17 @@ public class UserInputOps {
 	public static int playerDecision() {
 		// choices
 		displayChoices();
-		int choice = Integer.parseInt(scanner.nextLine());
-		// lock user and prevent them from advancing if input is incorrect
-		while (choice < 1 || choice > 4) {
-			System.out.println("Invalid input. Enter a value between 1 and 4.");
+		int choice = 0;
+		try {
 			choice = Integer.parseInt(scanner.nextLine());
+			// lock user and prevent them from advancing if input is incorrect
+			while (choice < 1 || choice > 4) {
+				System.out.println("Invalid input. Enter a value between 1 and 4.");
+				choice = Integer.parseInt(scanner.nextLine());
+			}
+		} catch (NumberFormatException e) {
+			System.out.println("Wrong type of input, buddy. Let's try again.");
+			choice = playerDecision();
 		}
 		return choice;
 	}

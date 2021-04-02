@@ -36,25 +36,6 @@ public class GameOps {
 	}
 
 	/**
-	 * Player must choose a card to discard.
-	 * 
-	 * @param p1 - user
-	 * @return user's card to discard
-	 */
-	private static String chooseDiscard(Player p1) {
-		System.out.println("Choose a card to discard: ");
-		// show hand for user to make decision
-		p1.displayHand();
-		System.out.println("");
-
-		// instructions
-		System.out.println("Helpful tip: Type the card rank, followed by the first letter representing the suit.");
-		System.out.println("Example: For 9\u2660, type in 9s");
-		// ask for user's input
-		return UserInputOps.chooseDiscard();
-	}
-
-	/**
 	 * Create initial stock pile and add cards to it
 	 * 
 	 * @return new stock pile
@@ -88,11 +69,34 @@ public class GameOps {
 	/**
 	 * Discard specified card from player's hand
 	 * 
-	 * @param p1      - user player
-	 * @param dp      - discard pile
-	 * @param discard - string input of card to be discarded
+	 * @param p1 - user player
+	 * @param dp - discard pile
 	 */
-	private static void discardCard(Player p1, DiscardPile dp, String discard) {
+	private static void discardCard(Player p1, DiscardPile dp) {
+		System.out.println("Choose a card to discard.");
+		// show hand for user to make decision
+		p1.displayHand();
+		System.out.println("\n");
+
+		// instructions
+		System.out.println("Helpful tip: Type the card rank, followed by the first letter representing the suit.");
+		System.out.println("Example: For 9\u2660, type in 9s");
+
+		// ask for user's input
+		String discard = UserInputOps.chooseDiscard();
+
+		/*
+		 * guard - check if the hand contains the card. if not, prevent the user from
+		 * proceeding unless they input a valid card
+		 */
+		while(!p1.getHand().contains(discard)) {
+			System.out.println("\nThe card entered was invalid. Please choose a card from your hand to discard.");
+			p1.displayHand();
+			System.out.println("\nReminder: Card rank first, followed by the suit letter.");
+			System.out.println("Reminder example: For 9\u2660, type in 9s");
+			discard = UserInputOps.chooseDiscard();
+		}
+
 		dp.push(p1.discardFromHand(discard));
 	}
 
@@ -116,7 +120,7 @@ public class GameOps {
 	 * @param discardPile - discard pile
 	 */
 	public static void distributeCards(Player p1, Player cpu, StockPile stockPile, DiscardPile discardPile) {
-		if(stockPile.size() != 52) {
+		if (stockPile.size() != 52) {
 			throw new IllegalArgumentException("The initial stock pile is not a standard 52-card deck.");
 		}
 		for (int i = 0; i < 10; i++) {
@@ -231,8 +235,7 @@ public class GameOps {
 		} while (choice == 3 || choice == 4);
 
 		// discard a card from the hand
-		String discard = chooseDiscard(p1);
-		discardCard(p1, dp, discard);
+		discardCard(p1, dp);
 		return false;
 	}
 
