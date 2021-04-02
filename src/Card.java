@@ -32,7 +32,7 @@ public class Card {
      * 
      * @return This returns the card rank
     */
-	public int getRank() {
+	public int getRank(){
 		return this.rank;
 	}
 	
