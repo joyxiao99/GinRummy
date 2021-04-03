@@ -186,4 +186,14 @@ public class GameOpsTest {
 		String s = GameOps.username();
 		assertNotNull(s);
 	}
+
+	/**
+	 * Tests FR-GO-12: Decision when stock pile is empty.This test requires viewing
+	 * of the console.
+	 */
+	@Test
+	public void testEmptyStockDecision() {
+		dp.add(new Card(Suit.C, 3));
+		GameOps.processDecision(p1, new StockPile(), dp);
+	}
 }
