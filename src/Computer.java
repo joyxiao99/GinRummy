@@ -66,7 +66,7 @@ public class Computer {
 		}
 		
 		//discard pile card has lower point than the highest point deadwood card in hand
-		if (cardWithHighestDeadwood.points() > discardPile.peek().points()) {
+		if (cardWithHighestDeadwood.points() > discardPile.peek().points() || stockPile.size() == 0) {
 			drawFromDiscard(player, discardPile);
 		}
 		else { 
