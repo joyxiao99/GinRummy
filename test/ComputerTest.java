@@ -275,6 +275,9 @@ public class ComputerTest {
 	 */
 	@Test
 	public void testComputerKnock() {
+		
+		stockPile = new StockPile();
+
 		player.addCardToHand(card_4d);
 		player.addCardToHand(card_Ad);
 		player.addCardToHand(card_2d);
@@ -329,6 +332,40 @@ public class ComputerTest {
 		Assert.assertEquals(false, actual);
 		Assert.assertEquals(discardPileExpected.toString(), discardPile.toString());
 		Assert.assertEquals(stockPileExpected.toString(), stockPile.toString());
+		Assert.assertEquals(handExpected.toString(), player.getHand().toString());
+	}
+	
+	/**
+	 * Tests FR-CP-8 computer doesn't draw from stock when stock pile is empty
+	 */
+	@Test
+	public void testComputerDrawStock0() {
+		discardPile.add(card_4h);
+
+		stockPile = new StockPile();
+		
+		player.addCardToHand(card_4d);
+		player.addCardToHand(card_6d);
+		player.addCardToHand(card_Js);
+		player.addCardToHand(card_Ad);
+		player.addCardToHand(card_2d);
+		player.addCardToHand(card_5d);
+		
+		Boolean actual = Computer.makeMove(player, stockPile, discardPile);
+		
+		//Expected values for test
+		discardPileExpected.push(card_Js);
+		
+		handExpected.add(card_4d);
+		handExpected.add(card_6d);
+		handExpected.add(card_Ad);
+		handExpected.add(card_2d);
+		handExpected.add(card_5d);
+		handExpected.add(card_4h);
+		
+		Assert.assertEquals(false, actual);
+		Assert.assertEquals(discardPileExpected.toString(), discardPile.toString());
+		Assert.assertEquals(0, stockPile.size());
 		Assert.assertEquals(handExpected.toString(), player.getHand().toString());
 	}
 }
