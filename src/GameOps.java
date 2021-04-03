@@ -196,7 +196,7 @@ public class GameOps {
 
 			choice = UserInputOps.playerDecision();
 			// if the stock pile is empty, prevent user from proceeding
-			while(choice == 1 && sp.empty()) {
+			while (choice == 1 && sp.empty()) {
 				System.out.println("Sorry. The stock pile is empty. Let's try again.\n");
 				choice = UserInputOps.playerDecision();
 			}
@@ -241,6 +241,12 @@ public class GameOps {
 
 		// discard a card from the hand
 		discardCard(p1, dp);
+
+		// update melds
+		p1.checkMelds();
+		// update deadwood score
+		p1.recalculateDeadwoodScore();
+		
 		return false;
 	}
 
