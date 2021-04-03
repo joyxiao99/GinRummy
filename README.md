@@ -1,11 +1,9 @@
-# Project Name
-
-Team Name: Rummy for Dummies
+# Rummy for Dummies
 
 Team Members: Smita Singh, Benson Hall, Joy Xiao
 
 
-This project is a reimplementation of the game Gin Rummy
+This project is a reimplementation of the game Gin Rummy.
 
 The folders and files for this project are as follows:
 
