@@ -89,7 +89,7 @@ public class GameOps {
 		 * guard - check if the hand contains the card. if not, prevent the user from
 		 * proceeding unless they input a valid card
 		 */
-		while(!p1.getHand().contains(discard)) {
+		while (!p1.getHand().contains(discard)) {
 			System.out.println("\nThe card entered was invalid. Please choose a card from your hand to discard.");
 			p1.displayHand();
 			System.out.println("\nReminder: Card rank first, followed by the suit letter.");
@@ -195,6 +195,11 @@ public class GameOps {
 			p1.displayHand();
 
 			choice = UserInputOps.playerDecision();
+			// if the stock pile is empty, prevent user from proceeding
+			while(choice == 1 && sp.empty()) {
+				System.out.println("Sorry. The stock pile is empty. Let's try again.\n");
+				choice = UserInputOps.playerDecision();
+			}
 
 			// choice check
 			switch (choice) {
