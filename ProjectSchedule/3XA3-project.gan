@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="3XA3 Project" company="" webLink="https://gitlab.cas.mcmaster.ca/xiaoz18/3xa3-project.git" view-date="2021-03-11" view-index="0" gantt-divider-location="369" resource-divider-location="428" version="2.8.11" locale="en_CA">
+<?xml version="1.0" encoding="UTF-8"?><project name="3XA3 Project" company="" webLink="https://gitlab.cas.mcmaster.ca/xiaoz18/3xa3-project.git" view-date="2021-03-25" view-index="0" gantt-divider-location="369" resource-divider-location="428" version="2.8.11" locale="en_CA">
     <description><![CDATA[This is a Gantt chart outlining all of the deliverables for the SFWRENG 3XA3 project (Rummy for Dummies)]]></description>
     <view zooming-state="default:2" id="gantt-chart">
         <field id="tpd3" name="Name" width="183" order="0"/>
@@ -71,34 +71,34 @@
         </task>
         <task id="508" name="Test Plan Revision 0" color="#8cb6ce" meeting="false" start="2021-02-27" duration="5" complete="100" thirdDate="2021-02-03" thirdDate-constraint="0" expand="true"/>
         <task id="973" name="Test Plan Revision 0 Completed" color="#8cb6ce" meeting="true" start="2021-03-04" duration="0" complete="100" thirdDate="2021-02-13" thirdDate-constraint="0" expand="true"/>
-        <task id="976" name="Testing Source Code" color="#8cb6ce" meeting="false" start="2021-03-06" duration="17" complete="0" thirdDate="2021-02-13" thirdDate-constraint="0" expand="true">
-            <task id="1073" name="Computer Class Tests" color="#8cb6ce" meeting="false" start="2021-03-06" duration="2" complete="0" thirdDate="2021-02-28" thirdDate-constraint="0" expand="true"/>
-            <task id="1075" name="Hand Class Tests" color="#8cb6ce" meeting="false" start="2021-03-08" duration="1" complete="0" thirdDate="2021-02-28" thirdDate-constraint="0" expand="true"/>
-            <task id="1080" name="DiscardPile Class Tests" color="#8cb6ce" meeting="false" start="2021-03-09" duration="1" complete="0" thirdDate="2021-03-01" thirdDate-constraint="0" expand="true"/>
-            <task id="1082" name="StockPile Class Tests" color="#8cb6ce" meeting="false" start="2021-03-10" duration="1" complete="0" thirdDate="2021-03-01" thirdDate-constraint="0" expand="true"/>
-            <task id="1070" name="Card Class Tests" color="#8cb6ce" meeting="false" start="2021-03-18" duration="1" complete="0" thirdDate="2021-02-28" thirdDate-constraint="0" expand="true"/>
-            <task id="1084" name="Meld Class Tests" color="#8cb6ce" meeting="false" start="2021-03-19" duration="2" complete="0" thirdDate="2021-03-01" thirdDate-constraint="0" expand="true"/>
-            <task id="1085" name="Player Class Tests" color="#8cb6ce" meeting="false" start="2021-03-18" duration="1" complete="0" thirdDate="2021-03-01" thirdDate-constraint="0" expand="true"/>
-            <task id="1086" name="UserInputOps Class Tests" color="#8cb6ce" meeting="false" start="2021-03-19" duration="2" complete="0" thirdDate="2021-03-01" thirdDate-constraint="0" expand="true"/>
-            <task id="1087" name="GameOps Class Tests" color="#8cb6ce" meeting="false" start="2021-03-21" duration="2" complete="0" thirdDate="2021-03-01" thirdDate-constraint="0" expand="true"/>
-            <task id="985" name="Non-Functional Requirements Testing" color="#8cb6ce" meeting="false" start="2021-03-21" duration="2" complete="0" thirdDate="2021-02-27" thirdDate-constraint="0" expand="true"/>
+        <task id="976" name="Testing Source Code" color="#8cb6ce" meeting="false" start="2021-03-06" duration="17" complete="93" thirdDate="2021-02-13" thirdDate-constraint="0" expand="true">
+            <task id="1073" name="Computer Class Tests" color="#8cb6ce" meeting="false" start="2021-03-06" duration="2" complete="100" thirdDate="2021-02-28" thirdDate-constraint="0" expand="true"/>
+            <task id="1075" name="Hand Class Tests" color="#8cb6ce" meeting="false" start="2021-03-08" duration="1" complete="100" thirdDate="2021-02-28" thirdDate-constraint="0" expand="true"/>
+            <task id="1080" name="DiscardPile Class Tests" color="#8cb6ce" meeting="false" start="2021-03-09" duration="1" complete="100" thirdDate="2021-03-01" thirdDate-constraint="0" expand="true"/>
+            <task id="1082" name="StockPile Class Tests" color="#8cb6ce" meeting="false" start="2021-03-10" duration="1" complete="100" thirdDate="2021-03-01" thirdDate-constraint="0" expand="true"/>
+            <task id="1070" name="Card Class Tests" color="#8cb6ce" meeting="false" start="2021-03-18" duration="1" complete="100" thirdDate="2021-02-28" thirdDate-constraint="0" expand="true"/>
+            <task id="1084" name="Meld Class Tests" color="#8cb6ce" meeting="false" start="2021-03-19" duration="2" complete="100" thirdDate="2021-03-01" thirdDate-constraint="0" expand="true"/>
+            <task id="1085" name="Player Class Tests" color="#8cb6ce" meeting="false" start="2021-03-18" duration="1" complete="100" thirdDate="2021-03-01" thirdDate-constraint="0" expand="true"/>
+            <task id="1086" name="UserInputOps Class Tests" color="#8cb6ce" meeting="false" start="2021-03-19" duration="2" complete="100" thirdDate="2021-03-01" thirdDate-constraint="0" expand="true"/>
+            <task id="1087" name="GameOps Class Tests" color="#8cb6ce" meeting="false" start="2021-03-21" duration="2" complete="100" thirdDate="2021-03-01" thirdDate-constraint="0" expand="true"/>
+            <task id="985" name="Non-Functional Requirements Testing" color="#8cb6ce" meeting="false" start="2021-03-21" duration="2" complete="100" thirdDate="2021-02-27" thirdDate-constraint="0" expand="true"/>
             <task id="982" name="Testing Complete" color="#8cb6ce" meeting="true" start="2021-03-23" duration="0" complete="0" thirdDate="2021-02-27" thirdDate-constraint="0" expand="true"/>
         </task>
         <task id="509" name="Design and Document Revision 0" color="#8cb6ce" meeting="false" start="2021-03-11" duration="7" complete="100" thirdDate="2021-02-28" thirdDate-constraint="0" expand="true"/>
         <task id="1001" name="Design and Document Revision 0 Complete" color="#8cb6ce" meeting="true" start="2021-03-18" duration="0" complete="0" thirdDate="2021-02-28" thirdDate-constraint="0" expand="true"/>
-        <task id="1004" name="Preparing Source Code for Revision 0 Demonstration" color="#8cb6ce" meeting="false" start="2021-03-24" duration="1" complete="0" thirdDate="2021-03-14" thirdDate-constraint="0" expand="true"/>
+        <task id="1004" name="Preparing Source Code for Revision 0 Demonstration" color="#8cb6ce" meeting="false" start="2021-03-24" duration="1" complete="100" thirdDate="2021-03-14" thirdDate-constraint="0" expand="true"/>
         <task id="511" name="Revision 0 Demostration" color="#8cb6ce" meeting="true" start="2021-03-25" duration="0" complete="0" thirdDate="2021-03-22" thirdDate-constraint="0" expand="true"/>
-        <task id="510" name="Final Demonstration" color="#8cb6ce" meeting="false" start="2021-03-28" duration="11" complete="0" thirdDate="2021-04-17" thirdDate-constraint="0" expand="false">
-            <task id="1007" name="Presentation Planning" color="#8cb6ce" meeting="false" start="2021-03-28" duration="1" complete="0" thirdDate="2021-03-14" thirdDate-constraint="0" expand="true"/>
-            <task id="1013" name="Creation of Presentation Slides" color="#8cb6ce" meeting="false" start="2021-03-30" duration="3" complete="0" thirdDate="2021-03-21" thirdDate-constraint="0" expand="true"/>
-            <task id="1015" name="Practice Presentation" color="#8cb6ce" meeting="false" start="2021-04-05" duration="3" complete="0" thirdDate="2021-03-21" thirdDate-constraint="0" expand="true"/>
+        <task id="510" name="Final Demonstration" color="#8cb6ce" meeting="false" start="2021-03-28" duration="11" complete="87" thirdDate="2021-04-17" thirdDate-constraint="0" expand="true">
+            <task id="1007" name="Presentation Planning" color="#8cb6ce" meeting="false" start="2021-03-28" duration="1" complete="100" thirdDate="2021-03-14" thirdDate-constraint="0" expand="true"/>
+            <task id="1013" name="Creation of Presentation Slides" color="#8cb6ce" meeting="false" start="2021-03-30" duration="3" complete="100" thirdDate="2021-03-21" thirdDate-constraint="0" expand="true"/>
+            <task id="1015" name="Practice Presentation" color="#8cb6ce" meeting="false" start="2021-04-05" duration="3" complete="100" thirdDate="2021-03-21" thirdDate-constraint="0" expand="true"/>
             <task id="1009" name="Final Demonstration Complete" color="#8cb6ce" meeting="true" start="2021-04-08" duration="0" complete="0" thirdDate="2021-03-21" thirdDate-constraint="0" expand="true"/>
         </task>
         <task id="512" name="Peer Evaluation of Other Demos" color="#8cb6ce" meeting="false" start="2021-04-08" duration="1" complete="0" thirdDate="2021-02-21" thirdDate-constraint="0" expand="true"/>
-        <task id="922" name="Final Documention" color="#8cb6ce" meeting="false" start="2021-03-26" duration="17" complete="0" thirdDate="2021-03-01" thirdDate-constraint="0" expand="false">
-            <task id="1019" name="Revisions of Old Documentation" color="#8cb6ce" meeting="false" start="2021-03-26" duration="8" complete="0" thirdDate="2021-03-23" thirdDate-constraint="0" expand="true"/>
-            <task id="1021" name="Test Report" color="#8cb6ce" meeting="false" start="2021-04-03" duration="2" complete="0" thirdDate="2021-03-23" thirdDate-constraint="0" expand="true"/>
-            <task id="1025" name="Proofread and Edit for Professionalism" color="#8cb6ce" meeting="false" start="2021-04-09" duration="3" complete="0" thirdDate="2021-03-23" thirdDate-constraint="0" expand="true"/>
+        <task id="922" name="Final Documention" color="#8cb6ce" meeting="false" start="2021-03-26" duration="17" complete="36" thirdDate="2021-03-01" thirdDate-constraint="0" expand="true">
+            <task id="1019" name="Revisions of Old Documentation" color="#8cb6ce" meeting="false" start="2021-03-26" duration="8" complete="50" thirdDate="2021-03-23" thirdDate-constraint="0" expand="true"/>
+            <task id="1021" name="Test Report" color="#8cb6ce" meeting="false" start="2021-04-03" duration="2" complete="25" thirdDate="2021-03-23" thirdDate-constraint="0" expand="true"/>
+            <task id="1025" name="Proofread and Edit for Professionalism" color="#8cb6ce" meeting="false" start="2021-04-09" duration="3" complete="20" thirdDate="2021-03-23" thirdDate-constraint="0" expand="true"/>
             <task id="1027" name="Final Documentation Complete" color="#8cb6ce" meeting="true" start="2021-04-12" duration="0" complete="0" thirdDate="2021-03-23" thirdDate-constraint="0" expand="true"/>
         </task>
     </tasks>
