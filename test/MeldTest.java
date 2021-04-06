@@ -1,12 +1,8 @@
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeAll;
 
 import org.junit.Assert;
 import org.junit.Before;
-
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 public class MeldTest {
 	private static Card card_7d = new Card(Suit.D, 7);
 	private static Card card_Qh = new Card(Suit.H, 12);
@@ -66,10 +62,12 @@ public class MeldTest {
 	private static ArrayList<Card> m62 = new ArrayList<Card>();
 
 	
-	
-	@Before
-	public void setup(){
-		//hand1 for test 1
+	/**
+	 * Tests FR-M-1 tests sequence melds with more than three cards 
+	 */
+	@Test
+	public void testCheckMelds1() {
+		
 		hand1.add(card_3s);
 		hand1.add(card_7d);
 		hand1.add(card_Qh);
@@ -80,7 +78,20 @@ public class MeldTest {
 		hand1.add(card_Ad);
 		hand1.add(card_5s);
 		hand1.add(card_6s);
-		
+				
+		m1.add(card_3s);
+		m1.add(card_4s);
+		m1.add(card_5s);
+		m1.add(card_6s);
+		a1.add(m1);
+		Assert.assertEquals(a1, Meld.checkMelds(hand1));
+	}
+	
+	/**
+	 * Tests FR-M-2 tests melds with cards of same rank
+	 */
+	@Test
+	public void testCheckMelds2() {
 		//hand2 for test 2
 		hand2.add(card_3s);
 		hand2.add(card_7d);
@@ -93,6 +104,18 @@ public class MeldTest {
 		hand2.add(card_Ah);
 		hand2.add(card_6s);
 		
+		m2.add(card_Ah);
+		m2.add(card_Ac);
+		m2.add(card_Ad);
+		a2.add(m2);
+		Assert.assertEquals(a2, Meld.checkMelds(hand2));
+	}
+	
+	/**
+	 * Tests FR-M-3 tests meld with 4 cards of same rank
+	 */
+	@Test
+	public void testCheckMelds3() {
 		
 		//hand3 for test 3
 		hand3.add(card_Kd);
@@ -104,8 +127,22 @@ public class MeldTest {
 		hand3.add(card_5h);
 		hand3.add(card_5s);
 		hand3.add(card_3s);
-		hand3.add(card_Js);
-							
+		hand3.add(card_Js);		
+				
+		m3.add(card_5h);
+		m3.add(card_5s);
+		m3.add(card_5c);
+		m3.add(card_5d);
+		a3.add(m3);		
+				
+		Assert.assertEquals(a3, Meld.checkMelds(hand3));
+	}
+	
+	/**
+	 * Tests FR-M-4 tests two sequence and one group meld 
+	 */
+	@Test
+	public void testCheckMelds4() {
 		//hand4 for test 4
 		hand4.add(card_3s);
 		hand4.add(card_4s);
@@ -118,6 +155,30 @@ public class MeldTest {
 		hand4.add(card_Ah);
 		hand4.add(card_As);
 		
+		m41.add(card_3s);
+		m41.add(card_4s);
+		m41.add(card_5s);
+		a4.add(m41);
+		m42.add(card_Jc);
+		m42.add(card_Qc);
+		m42.add(card_Kc);
+		a4.add(m42);
+		m43.add(card_Ah);
+		m43.add(card_As);
+		m43.add(card_Ac);
+		m43.add(card_Ad);
+		a4.add(m43);
+		
+		
+		
+		Assert.assertEquals(a4, Meld.checkMelds(hand4));
+
+	}
+	/**
+	 * Tests FR-M-5 tests sequence and group meld
+	 */
+	@Test
+	public void testCheckMelds5() {
 		//hand5 for test 5
 		hand5.add(card_10c);
 		hand5.add(card_Js);
@@ -130,6 +191,23 @@ public class MeldTest {
 		hand5.add(card_6h);
 		hand5.add(card_9h);
 
+		m51.add(card_Js);
+		m51.add(card_Qs);
+		m51.add(card_Ks);
+		a5.add(m51);
+		m52.add(card_10h);
+		m52.add(card_10c);
+		m52.add(card_10d);
+		a5.add(m52);		
+			
+				
+		Assert.assertEquals(a5, Meld.checkMelds(hand5));
+	}
+	/**
+	 * Tests FR-M-6 tests overlapping melds 
+	 */
+	@Test
+	public void testCheckMelds6() {
 		//hand6 for test 6
 		hand6.add(card_Ac);
 		hand6.add(card_Ad);
@@ -142,48 +220,6 @@ public class MeldTest {
 		hand6.add(card_Jd);
 		hand6.add(card_7s);
 		
-		m1.add(card_3s);
-		m1.add(card_4s);
-		m1.add(card_5s);
-		m1.add(card_6s);
-		a1.add(m1);
-		
-		m2.add(card_Ac);
-		m2.add(card_Ad);
-		m2.add(card_Ah);
-		a2.add(m2);
-		
-		m3.add(card_5d);
-		m3.add(card_5c);
-		m3.add(card_5h);
-		m3.add(card_5s);
-		a3.add(m3);
-		
-		
-		
-		m41.add(card_3s);
-		m41.add(card_4s);
-		m41.add(card_5s);
-		a4.add(m41);
-		m42.add(card_Jc);
-		m42.add(card_Qc);
-		m42.add(card_Kc);
-		a4.add(m42);
-		m43.add(card_Ac);
-		m43.add(card_Ad);
-		m43.add(card_Ah);
-		m43.add(card_As);
-		a4.add(m43);
-		
-		m51.add(card_Js);
-		m51.add(card_Qs);
-		m51.add(card_Ks);
-		a5.add(m51);
-		m52.add(card_10c);
-		m52.add(card_10d);
-		m52.add(card_10h);
-		a5.add(m52);
-	
 		m61.add(card_As);
 		m61.add(card_2s);
 		m61.add(card_3s);
@@ -192,19 +228,7 @@ public class MeldTest {
 		m62.add(card_Ac);
 		m62.add(card_Ad);
 		a6.add(m62);
-		
-	}
-	@Test
-	public void testCheckMelds() {
-		Assert.assertEquals(a1, Meld.checkMelds(hand1));
-		Assert.assertEquals(a2, Meld.checkMelds(hand2));
-		Assert.assertEquals(a3, Meld.checkMelds(hand3));
-		Assert.assertEquals(a4, Meld.checkMelds(hand4));
-		Assert.assertEquals(a5, Meld.checkMelds(hand5));
 		Assert.assertEquals(a6, Meld.checkMelds(hand6));
-
-
 	}
-
 
 }
