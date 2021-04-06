@@ -14,6 +14,8 @@ public class Card {
      * @param r - rank of card (1 to 13)
     */
 	public Card(Suit s, int r) {
+		if (r < 1 || r> 13)
+			throw new IllegalArgumentException("Rank is not valid");
 		this.rank = r;
 		this.suit = s;
 	}
