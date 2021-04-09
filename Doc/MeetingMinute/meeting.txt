@@ -1,0 +1,15 @@
+Meeting Agenda:
+Date: February 18th, 2021
+Estimated meeting: 90 minutes
+Goal: Establish division of functions into modules of code
+- What functions are required to accomplish a functional requirement?
+- What functions will be combined together to form modules?
+- What dependencies will exist between these modules?
+
+Estimated time to complete tasks: 3-4 days
+To prepare for meeting:
+- Understand what functions are required for the game
+- Consider modularization of code
+
+Review of meeting: 
+- Discussed topics and established modules to be divided amongst group members
