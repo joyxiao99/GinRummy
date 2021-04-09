@@ -1,0 +1,102 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{float}
+
+\geometry{a4paper, margin=1in}
+\newcommand{\latex}{\LaTeX\xspace}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta, 
+    urlcolor=blue,
+}
+
+\pagestyle {plain}
+\pagenumbering{arabic}
+
+\newcounter{stepnum}
+
+\title{SE 3XA3: Development Plan\\Title of Project}
+
+\author{Lab 2 Group 7, Rummy For Dummies
+		\\ Joy Xiao, xiaoz18
+		\\ Benson Hall, hallb8
+		\\ Smita Singh, sings59
+}
+
+\date{April 08, 2021}
+
+\begin{document}
+
+\begin{table}[H]
+    \centering
+    \caption{Revision History}
+    \label{TblRevisionHistory}
+    \begin{tabular}{|p{2cm}|p{5cm}|p{5.3cm}|p{2cm}|}
+    \hline
+    \textbf{Date} & \textbf{Developer(s)} & \textbf{Change} & \textbf{Tag} \\
+    \hline
+    February 05, 2021 & Joy Xiao, Benson Hall, Smita Singh & Development Plan Revision 0 & DP-Rev.0 \\
+    \hline
+    \textcolor{red}{April 08, 2021} & \textcolor{red}{Joy Xiao, Benson Hall, Smita Singh} & \textcolor{red}{Development Plan Revision 1} & \textcolor{red}{DP-Rev.1} \\
+    \hline
+    \end{tabular}
+\end{table}
+
+\clearpage
+
+\maketitle
+
+The following is the development plan for Rummy For Dummies.
+
+\section{Team Meeting Plan}
+Each lab session will be used to complete deliverables, assign individual sub-tasks, and establish a meeting time for the next meeting. If it is deemed necessary, another meeting time will be established prior to the next lab session. They will be established to accommodate to all group members. Meeting agendas will be agreed upon prior to the meeting, and will be focused on the upcoming deliverable, following the project's Gantt Chart. \textcolor{red}{Most team meetings will be during assigned lab times on Tuesday afternoons and Thursday evenings. Additional meetings, if necessary will occur on Saturday evenings at 9:00 p.m.}
+
+\section{Team Communication Plan}
+The main form of communication will be through Facebook Messenger, while meetings will be conducted on Microsoft Teams. Any work and planning for the upcoming deliverable will be done through Teams for real-time communication. Any scheduling of meetings or change of plans will be communicated through Facebook Messenger or email, \textbf{should it become necessary}. 
+
+All issues pertaining to the coding of the implementation will be addressed on Gitlab's Issue Tracker.
+
+\section{Team Member Roles}
+There are \textbf{no} team leaders. \\
+Benson: Lead Tester \\
+Joy: Meeting and agenda planner \\
+Benson, Smita, Joy: Developers and Testers
+
+\section{Git Workflow Plan}
+To avoid conflicts with concurrent collaboration, a branch will be established for each group member. Any new features being created will receive its own branch to avoid destabilizing progress for other team members. The master branch will be the main branch with the most updated and stable version of the product. Only stable, working code will be merged into master. Any unstable code or persisting problems in the system will be addressed using Gitlab's Issue Tracker. In addition, individual tasks will be planned in advance and agreed upon. The tasks will be established amongst team members to work on. 
+
+Milestones will be established to allow group members to keep up with the project goals in a timely manner.
+
+\section{Proof of Concept Demonstration Plan}
+The most significant risk of the implementation will be the chance of the player or computer opponent performing a move that is not allowed in Rummy. These rule violations cannot be allowed, or the implementation is not a game of Rummy.
+Another significant risk of the project will be the computer opponent not utilizing game strategies optimally, which would lead the player to always win. This would be a major flaw in the game.
+
+The most difficult part of implementation will be implementing the moves of computer opponent. This is because the code for the computer must emulate strategies to defeat the player. Testing the computer for its "correctness" will be difficult, as testing if the computer is using game strategies optimally is subjective. 
+
+Unit testing will be used to test every component. In addition, specification-based testing and coverage testing will be used to ensure that "illegal" moves made by either the player or computer opponent are not permitted, and they can only proceed further with the game if they make a "legal" move.
+
+There will not be any difficulty installing libraries within the project's implementation. Since the implementation will be in Java, portability is not a concern.
+
+\section{Technology}
+The project will be programmed in Java, using the Eclipse IDE, and JUnit as our testing framework. Documentation will be created using LaTeX.
+
+\section{Coding Style}
+The \href{https://google.github.io/styleguide/javaguide.html}{Google Java Style Guide} will be followed for consistency, as it is a popular Java programming format and all group members currently follow it.
+
+\section{Project Schedule}
+The Gantt Chart for the project schedule is located under the \textit{ProjectSchedule} directory, named \textbf{3XA3-project.gan}.
+
+\section{Project Review (For Revision 1)}
+
+\textcolor{red}{The development of the project went smoothly. Modules were distributed between group members and fulfilled all requirements for the project.} 
+
+\textcolor{red}{There were areas that were initially believed to be the most difficult, such as the computer opponent. However, the algorithm devised for the computer turned out to be an optimal algorithm. This algorithm was tested in many rounds of the game, and the computer was proven to be able to win the game.}
+
+\textcolor{red}{In one instance, after playing 5 rounds of the game, the score for the player was 33, while the AI had 55 points. This showed an indication that both players had a similar degree in skill.}
+\end{document}
