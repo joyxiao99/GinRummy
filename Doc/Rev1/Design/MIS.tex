@@ -1,0 +1,843 @@
+\documentclass[12pt, titlepage]{article}
+
+\usepackage{fullpage}
+\usepackage[round]{natbib}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{ulem}
+
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=red,
+    urlcolor=blue
+}
+
+\title{SFWRENG 3XA3: Module Interface Specifications\\Rummy For Dummies}
+
+\author{Lab 2 Group 7, Rummy For Dummies
+		\\ Joy Xiao, xiaoz18
+		\\ Benson Hall, hallb8
+		\\ Smita Singh, sings59
+}
+\date{April 08, 2021}
+
+\begin{document}
+
+\maketitle
+
+\newpage
+% Revision History
+\begin{table}[h!]
+    \caption{\bf Revision History}
+    \begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
+        \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
+        \midrule
+        March 16, 2021 & 1.0 & Started on the MIS\\
+        March 18, 2021 & 1.1 & Finished the MIS\\
+        \textcolor{red}{April 08, 2021} & \textcolor{red}{2.0} & \textcolor{red}{MIS for Revision 1} \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+\section{Module Hierarchy}
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{p{0.3\textwidth} p{0.6\textwidth}}
+        \toprule
+        \textbf{Level 1} & \textbf{Level 2}\\
+        \midrule
+        
+        {Hardware-Hiding Module} & ~ \\
+        \midrule
+        
+        \multirow{3}{0.3\textwidth}{Behaviour-Hiding Module}\\
+        & Game Operations Module\\
+        & Input Module\\
+        & Melds Module\\
+        \midrule
+        
+        \multirow{3}{0.3\textwidth}{Software Decision Module}\\
+        & Computer Module\\
+        & Stock Pile Data Structure Module\\
+        & Discard Pile Data Structure Module\\
+        & Card Data Structure Module\\
+        & Hand Data Structure Module\\
+        & Player Data Structure Module\\
+        \bottomrule
+        
+    \end{tabular}
+    \caption{Module Hierarchy}
+    \label{TblMH}
+\end{table}
+
+\section{MIS of Card Data Structure Module}
+%ENUM AND CARD DATA TYPE
+\subsection{Interface Syntax}
+\subsubsection{Exported Access Programs}
+		\begin{tabular}[pos]{|c|c|c|c|}
+			
+		\hline
+		%	\label
+		\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ \hline
+		Card & Suit, integer & - & \textcolor{red}{IllegalArgumentException}\\ \hline
+		getSuit & - & Suit & -\\ \hline
+		getRank & - & integer & -\\ \hline
+		points & - & integer & -\\ \hline
+		toString & - & String & -\\ \hline
+		toSymbol & - & String & -\\ \hline
+		\end{tabular}
+
+\subsection{Interface Semantics}
+\subsubsection{State Variables}
+rank: int - rank of card \\
+suit: Suit - suit of card
+
+\subsubsection{Environment Variables}
+Not applicable
+
+\subsubsection{Assumptions}
+Values of variables should be set before they are able to be accessed
+
+\subsection{Access Program Semantics}
+\textcolor{red}{Card:}
+\begin{itemize}
+    \item \textcolor{red}{Input: Suit s, int r}
+    \item \textcolor{red}{Transition: Initializes a new Card object if rank is less than 1 or greater than 13 throws exception}
+    \item \textcolor{red}{Output: None}
+    \item \textcolor{red}{Exception: IllegalArgumentException}
+\end{itemize}
+
+getSuit():
+\begin{itemize}
+    \item Input: None
+    \item Transition: accesses the suit value
+    \item Output: returns the suit of the card
+    \item Exception: None
+\end{itemize}
+
+\noindent getRank():
+\begin{itemize}
+    \item Input: None
+    \item Transition: accesses the rank value
+    \item Output: returns the rank of the card
+    \item Exception: None
+\end{itemize}
+
+\noindent points():
+\begin{itemize}
+    \item Input: None
+    \item Transition: determines the point of the card based on card rank
+    \item Output: returns the point value of the card
+    \item Exception: None
+\end{itemize}
+
+\noindent toString():
+\begin{itemize}
+    \item Input: None
+    \item Transition: determines the string representation of the card
+    \item Output: returns the string representation of the card
+    \item Exception: None
+\end{itemize}
+
+\noindent toSymbol():
+\begin{itemize}
+    \item Input: None
+    \item Transition: determines the string representation of the rank and symbol representation of suit
+    \item Output: returns the symbol representation of the card
+    \item Exception: None
+\end{itemize}
+
+\noindent \textcolor{red}{suitSymbol():}
+\begin{itemize}
+    \item \textcolor{red}{Input: None}
+    \item \textcolor{red}{Transition: determines the symbol representation of suit}
+    \item \textcolor{red}{Output: returns the symbol representation of the suit of the card}
+    \item \textcolor{red}{Exception: None}
+\end{itemize}
+
+\section{MIS of Computer Module}
+\subsection{Interface Syntax}
+\subsubsection{Exported Access Programs}
+
+\begin{tabular}[pos]{| c | c | c | c |}
+    \hline
+    \textbf{Routine Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+    \hline
+    makeMove & Player, StockPile, DiscardPile & Boolean & \textcolor{red}{\sout{EmptyStackException}}\\
+    \hline
+\end{tabular}
+
+\subsection{Interface Semantics}
+\subsubsection{State Variables}
+Not applicable
+
+\subsubsection{Environment Variables}
+Not applicable
+
+\subsubsection{Assumptions}
+\begin{itemize}
+    \item The class is a static class with static methods to be accessed without initialization.
+    \item Drawing from the discardPile should never result in any exceptions since there is always at least one card in the discardPile.
+    \item \textcolor{red}{There will not be an EmptyStackException because the computer will never draw from an empty stock pile. If the stock pile is empty, the computer will draw from the discard pile which is never empty.}
+\end{itemize}
+
+\subsection{Access Program Semantics}
+\noindent makeMove(player, stockPile, discardPile):
+\begin{itemize}
+    \item Input: None 
+    \item Transition: If adding the discard pile card into the hand results in a lower deadwood score \textcolor{red}{or if the stock pile is empty}, draw from the discard pile \textcolor{red}{\sout{and remove the card with the highest deadwood score from hand}}. Or else, draw from the stock pile\textcolor{red}{\sout{ and r}. R}emove the card with the highest deadwood score from hand.
+    \item Output: Returns true if deadwood score is 10 or less, otherwise return false
+    \item \textcolor{red}{Exception: None \sout{Drawing from stock pile with 0 cards will result in a EmptyStackException}}
+\end{itemize}
+
+\section{MIS of Discard Pile Data Structure Module}
+
+\subsection{Interface Syntax}
+\subsubsection{Exported Access Programs}
+
+\begin{tabular}[pos]{| c | c | c | c |}
+    \hline
+    \textbf{Routine Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+    \hline
+    DiscardPile & - & - & - \\
+    \hline
+    displayTopCard & - & - & -\\
+    \hline
+\end{tabular}
+
+\subsection{Interface Semantics}
+\subsubsection{State Variables}
+Not applicable
+
+\subsubsection{Environment Variables}
+Not applicable
+
+\subsubsection{Assumptions}
+\begin{itemize}
+    \item The DiscardPile() constructor is called for each object instance before any
+      other access routine is called for that object.  The constructor can only be
+      called once. It will originally contain 0 cards before the cards are dealt. The class will extend Stack(Card) for functionality.
+    \item The displayTopCard() will return the string representation of the top card in the discard pile. There is no exception because it is assumed that the discardPile will always have a size greater or equal to 1 \textcolor{red}{\sout{at the start of the round}}.
+    \item The DiscardPile class will be extending Stack from java.util.
+\end{itemize}
+
+\subsection{Access Program Semantics}
+DiscardPile():
+\begin{itemize}
+    \item Input: None 
+    \item Transition: Initializes the DiscardPile object
+    \item Output: None
+    \item Exception: None
+\end{itemize}
+
+\noindent displayTopCard():
+\begin{itemize}
+    \item Input: None 
+    \item Transition: None
+    \item Output: Displays a visual representation of the top card in the pile onto the console
+    \item Exception: None
+\end{itemize}
+
+\section{MIS of Game Operations Module}
+% GameOps + GinRummy %
+
+\subsection{Interface Syntax}
+\subsubsection{Exported Access Programs}
+\begin{tabular}{|c|c|c|c|}
+    \hline
+    \textbf{Routine Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+    \hline
+    calculateScores & Player, Player & - & - \\
+    \hline
+    \textcolor{red}{\sout{chooseDiscard}} & \textcolor{red}{\sout{Player}} & \textcolor{red}{\sout{String}} & \textcolor{red}{-} \\
+    \hline
+    createStockPile & - & Stock Pile & - \\
+    \hline
+    createDiscardPile & - & Discard Pile & - \\
+    \hline
+    \textcolor{red}{\sout{discardCard}} & \textcolor{red}{\sout{Player, Discard Pile, String}} & \textcolor{red}{-} & \textcolor{red}{-} \\
+    \hline
+    distributeCards & Player, Player, Stock Pile, Discard Pile & - & - \\
+    \hline
+    \textcolor{red}{\sout{drawFromStockPile}} & \textcolor{red}{\sout{Player, Stock Pile}} & \textcolor{red}{-} & \textcolor{red}{-} \\
+    \hline
+    \textcolor{red}{\sout{drawFromDiscardPile}} & \textcolor{red}{\sout{Player, Discard Pile}} & \textcolor{red}{-} & \textcolor{red}{-} \\
+    \hline
+    endGame & - & - & - \\
+    \hline
+    playAgain & - & character & - \\
+    \hline
+    processDecision & Player, Stock Pile, Discard Pile & boolean & - \\
+    \hline
+    resetEverything & Player & - & - \\
+    \hline
+    username & - & String & - \\
+    \hline
+\end{tabular}
+
+\subsection{Interface Semantics}
+\subsubsection{State Variables}
+Not applicable.
+
+\subsubsection{Environment Variables}
+Not applicable.
+
+\subsubsection{Assumptions}
+\begin{itemize}
+    \item All variables and objects have been instantiated
+\end{itemize}
+
+\subsection{Access Program Semantics}
+\noindent calculateScores(p1, cpu):
+\begin{itemize}
+    \item Input: Two player objects
+    \item Transition: Determines winner of the round and calculates score to add to winner's total score
+    \item Output: None
+    \item Exceptions: None
+\end{itemize}
+
+\noindent \textcolor{red}{\sout{chooseDiscard(p1):}
+\begin{itemize}
+    \item \sout{Input: Player object}
+    \item \sout{Transition: Displays cards in hand that can be discarded and prompts user for a response.}
+    \item \sout{Output: String representation of a card}
+    \item \sout{Exceptions: None}
+\end{itemize}
+}
+
+\noindent createStockPile():
+\begin{itemize}
+    \item Input: None
+    \item Transition: Creates the initial stock pile
+    \item Output: New Stock Pile
+    \item Exceptions: None
+\end{itemize}
+
+\noindent createDiscardPile():
+\begin{itemize}
+    \item Input: None
+    \item Transition: Creates the initial discard pile
+    \item Output: New Discard Pile
+    \item Exceptions: None
+\end{itemize}
+
+\noindent \textcolor{red}{\sout{discardCard(p1, dp, discard):}
+\begin{itemize}
+    \item \sout{Input: Player object, discard pile, and string representation of card to discard}
+    \item \sout{Transition: Discards the card from the player's hand and places it on top of the discard pile}
+    \item \sout{Output: None}
+    \item \sout{Exceptions: None}
+\end{itemize}
+}
+\noindent distributeCards(p1, cpu, sp, dp):
+\begin{itemize}
+    \item Input: Two player objects, stock and discard piles
+    \item Transition: Sets up the opening distribution of cards for a new round
+    \item Output: None
+    \item Exception: None
+\end{itemize}
+
+\noindent \textcolor{red}{\sout{drawFromStockPile(p1, sp):}
+\begin{itemize}
+    \item \sout{Input: Player object, stock pile}
+    \item \sout{Transition: Takes the top card off the stock pile and adds it to the player's hand}
+    \item \sout{Output: None}
+    \item \sout{Exception: None}
+\end{itemize}
+}
+
+\noindent \textcolor{red}{\sout{drawFromDiscardPile(p1, dp):}
+\begin{itemize}
+    \item \sout{Input: Player object, discard pile}
+    \item \sout{Transition: Takes the top card off the discard pile and adds it to the player's hand}
+    \item \sout{Output: None}
+    \item \sout{Exception: None}
+\end{itemize}
+}
+
+\noindent endGame():
+\begin{itemize}
+    \item Input: None
+    \item Transition: Closes all resources
+    \item Output: None
+    \item Exception: None
+\end{itemize}
+
+\noindent playAgain():
+\begin{itemize}
+    \item Input: None
+    \item Transition: Prompts for user's affirmation or refusal to play a new game of Gin Rummy
+    \item Output: User's affirmation or refusal to play
+    \item Exception: None
+\end{itemize}
+
+\noindent processDecision(p1, sp, dp):
+\begin{itemize}
+    \item Input: Player object, stock and discard piles
+    \item Transition: Performs the user's desired move for the turn
+    \item Output: True if player knocks, false otherwise
+    \item Exception: None
+\end{itemize}
+
+\noindent resetEverything(p1):
+\begin{itemize}
+    \item Input: Player object
+    \item Transition: Resets player's hand, melds and deadwood score
+    \item Output: None
+    \item Exception: None
+\end{itemize}
+
+\noindent username():
+\begin{itemize}
+    \item Input: None
+    \item Transition: Prompts for user's username
+    \item Output: User's username
+    \item Exception: None
+\end{itemize}
+
+\section{MIS of Hand Data Structure Module}
+
+\subsection{Interface Syntax}
+\subsubsection{Exported Access Programs}
+\begin{tabular}[pos]{| c | c | c | c |}
+    \hline
+    \textbf{Routine Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+    \hline
+    Hand & - & - & -\\
+    \hline
+    displayHand & - & - & -\\
+    \hline
+    contains & String & Boolean & -\\
+    \hline
+    remove & String & Card & - \\
+    \hline
+\end{tabular}
+
+\subsection{Interface Semantics}
+\subsubsection{State Variables}
+Not applicable
+
+\subsubsection{Environment Variables}
+Not applicable
+
+\subsubsection{Assumptions}
+\begin{itemize}
+    \item The Hand class extends ArrayList from java.util.
+    \item The Hand is initialized to an empty ArrayList with type Card.
+\end{itemize}
+
+\subsection{Access Program Semantics}
+\noindent Hand():
+\begin{itemize}
+    \item Input: None 
+    \item Transition: Initializes a new Hand object 
+    \item Output: None 
+    \item Exception: None
+\end{itemize}
+
+\noindent displayHand():
+\begin{itemize}
+    \item Input: None 
+    \item Transition: None
+    \item Output: Displays a visual representation of the hand onto the console
+    \item Exception: None
+\end{itemize}
+
+\noindent contains(c):
+\begin{itemize}
+    \item Input: String representation of a card 
+    \item Transition: None 
+    \item Output: Returns true if the hand contains the card
+    \item Exception: None
+\end{itemize}
+
+\noindent remove():
+\begin{itemize}
+    \item Input: String representation of a card 
+    \item Transition: Creates new hand with the specific card removed
+    \item Output: Returns the card that is removed from the hand
+    \item Exception: None
+\end{itemize}
+
+\section{MIS of Melds Module}
+% sortByRank + sortBySR + Melds %
+
+\subsection{Interface Syntax}
+\subsubsection{Exported Access Programs}
+\begin{tabular}[pos]{|c|c|c|c|}
+	\hline
+	%	\label
+	\textbf{Routine Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ \hline
+	Meld.checkMelds & Hand & 2D ArrayList of Card &  - \\\hline
+	sortByRank.compare & Card, Card & Integer &  - \\\hline
+	sortBySR.compare & Card, Card & Integer &  - \\\hline
+\end{tabular}
+
+\subsection{Interface Semantics}
+
+\subsubsection{State Variables}
+Not applicable
+
+\subsubsection{Environment Variables}
+Not applicable
+
+\subsubsection{Assumptions}
+Hand of cards has 10 cards. 
+
+\subsection{Access Program Semantics}
+\noindent Meld.checkMelds(h):
+\begin{itemize}
+    \item Input: Hand h with 10 cards
+    \item Transition: Computes sequence and group melds and finds the best meld groups leading to least deadwood score
+    \item Output: returns a 2D-ArrayList of Cards representing groups of melds
+    \item Exception: None
+\end{itemize}
+
+\noindent sortByRank.compare(c1,c2):
+\begin{itemize}
+    \item Input: Two different cards
+    \item Transition: Compares the ranks of c1 and c2
+    \item Output: returns negative integer if c2 is larger than c1 and returns positive integer if c1 is larger than c2
+    \item Exception: None
+\end{itemize}
+
+\noindent sortBySR.compare(c1,c2):
+\begin{itemize}
+    \item Input: Two different cards
+    \item Transition: Compares the suits of c1 and c2 and if they're the same compares the rank
+    \item Output: returns negative integer if c2 is ranked higher than c1 and returns positive integer if c1 is ranked higher than c2
+    \item Exception: None
+\end{itemize}
+
+\section{MIS of Player Data Structure Module}
+
+\subsection{Interface Syntax}
+\subsubsection{Exported Access Programs}
+\begin{tabular}{|c|c|c|c|}
+    \hline
+    \textbf{Routine Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+    \hline
+    Player & String & - & - \\
+    \hline
+    getName & - & String & - \\
+    \hline
+    getHand & - & Hand & - \\
+    \hline
+    getTotalScore & - & integer & - \\
+    \hline
+    getDeadwoodScore & - & integer & - \\
+    \hline
+    getMelds & - & 2D ArrayList of Card & - \\
+    \hline
+    addCardToHand & Card & - & - \\
+    \hline
+    discardFromHand & String & Card & IllegalArgumentException \\
+    \hline
+    addToTotalScore & integer & - & - \\
+    \hline
+    extractDeadwood & - & ArrayList of Card & - \\
+    \hline
+    recalculateDeadwoodScore & - & - & - \\
+    \hline
+    checkMelds & - & - & - \\
+    \hline
+    displayHand & - & - & - \\
+    \hline
+    resetHand & - & - & - \\
+    \hline
+    resetDeadwoodScore & - & - & - \\
+    \hline
+    resetMelds & - & - & - \\
+    \hline
+    \textcolor{red}{resetTotalScore} & \textcolor{red}{-} & \textcolor{red}{-} & \textcolor{red}{-} \\
+    \hline
+\end{tabular}
+
+\subsection{Interface Semantics}
+\subsubsection{State Variables}
+name: String - player's name \\
+hand: Hand - data structure representing player's hand \\
+totalScore: int - player's total score in the game \\
+deadwoodScore: int - player's deadwood score for the round \\
+melds: 2D ArrayList of Card - player's current melds from the hand
+
+\subsubsection{Environment Variables}
+Not applicable.
+
+\subsubsection{Assumptions}
+\begin{itemize}
+    \item The user's name is not empty.
+\end{itemize}
+
+\subsection{Access Program Semantics}
+\noindent Player(name):
+\begin{itemize}
+    \item Input: String representing the player's name
+    \item Transition: Initializes the Player object
+    \item Output: None
+    \item Exception: None
+\end{itemize}
+
+\noindent getName():
+\begin{itemize}
+    \item Input: None
+    \item Transition: None
+    \item Output: Player's name
+    \item Exception: None
+\end{itemize}
+
+\noindent getHand():
+\begin{itemize}
+    \item Input: None
+    \item Transition: None
+    \item Output: Player's current hand
+    \item Exception: None
+\end{itemize}
+
+\noindent getTotalScore():
+\begin{itemize}
+    \item Input: None
+    \item Transition: None
+    \item Output: Player's total score
+    \item Exception: None
+\end{itemize}
+
+\noindent getDeadwoodScore():
+\begin{itemize}
+    \item Input: None
+    \item Transition: None
+    \item Output: Player's current deadwood score
+    \item Exception: None
+\end{itemize}
+
+\noindent getMelds():
+\begin{itemize}
+    \item Input: None
+    \item Transition: None
+    \item Output: Player's current melds
+    \item Exception: None
+\end{itemize}
+
+\noindent addCardToHand(c):
+\begin{itemize}
+    \item Input: A card
+    \item Transition: Adds the card to the player's hand
+    \item Output: None
+    \item Exception: None
+\end{itemize}
+
+\noindent discardFromHand(input):
+\begin{itemize}
+    \item Input: String representation of a card to discard from the hand
+    \item Transition: Remove the card that represents the input from the hand, if it exists, and return it.
+    \item Output: Card that was discarded
+    \item Exception: IllegalArgumentException if the card does not exist in the hand
+\end{itemize}
+
+\noindent addToTotalScore(points):
+\begin{itemize}
+    \item Input: Points to add to the total score
+    \item Transition: Points are added to the player's total score
+    \item Output: None
+    \item Exceptions: None
+\end{itemize}
+
+\noindent extractDeadwood():
+\begin{itemize}
+    \item Input: None
+    \item Transition: Create a list of cards in the hand that are not in a meld.
+    \item Output: ArrayList of deadwood cards
+    \item Exception: None
+\end{itemize}
+
+\noindent recalculateDeadwoodScore():
+\begin{itemize}
+    \item Input: None
+    \item Transition: Recalculate and update the current deadwood score, given the current hand
+    \item Output: None
+    \item Exceptions: None
+\end{itemize}
+
+\noindent checkMelds():
+\begin{itemize}
+    \item Input: None
+    \item Transition: Update the current melds in a player's hand
+    \item Output: None
+    \item Exceptions: None
+\end{itemize}
+
+\noindent displayHand():
+\begin{itemize}
+    \item Input: None
+    \item Transition: Display the player's current hand
+    \item Output: None
+    \item Exceptions: None
+\end{itemize}
+
+\noindent resetHand():
+\begin{itemize}
+    \item Input: None
+    \item Transition: Reset the player's hand
+    \item Output: None
+    \item Exceptions: None
+\end{itemize}
+
+\noindent resetDeadwoodScore():
+\begin{itemize}
+    \item Input: None
+    \item Transition: Reset the player's deadwood score
+    \item Output: None
+    \item Exceptions: None
+\end{itemize}
+
+\noindent resetMelds():
+\begin{itemize}
+    \item Input: None
+    \item Transition: Reset the player's current melds
+    \item Output: None
+    \item Exceptions: None
+\end{itemize}
+
+\noindent \textcolor{red}{resetTotalScore():
+\begin{itemize}
+    \item Input: None
+    \item Transition: Reset the player's total score
+    \item Output: None
+    \item Exceptions: None
+\end{itemize}
+}
+
+\section{MIS of Stock Pile Data Structure Module}
+\subsection{Interface Syntax}
+\subsubsection{Exported Access Programs}
+
+\begin{tabular}[pos]{| c | c | c | c |}
+    \hline
+    \textbf{Routine Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+    \hline
+    StockPile & - & - & - \\
+    \hline
+    search & Object & integer & - \\
+    \hline
+\end{tabular}
+
+\subsection{Interface Semantics}
+\subsubsection{State Variables}
+Not applicable
+
+\subsubsection{Environment Variables}
+Not applicable
+
+\subsubsection{Assumptions}
+\begin{itemize}
+    \item The StockPile class will be extending Stack from java.util.
+    \item The search(c) will override the original method in the API. It will always return -1 since searching for a card in the stock pile should not be done at anytime in the game.
+\end{itemize}
+
+\subsection{Access Program Semantics}
+StockPile():
+\begin{itemize}
+    \item Input: None 
+    \item Transition: Initializes the StockPile object
+    \item Output: None
+    \item Exception: None
+\end{itemize}
+\noindent search(obj):
+\begin{itemize}
+    \item Input: Any object
+    \item Transition: None
+    \item Output: returns -1
+    \item Exception: None
+\end{itemize}
+
+\section{MIS of Input Module}
+
+\subsection{Interface Syntax}
+\subsubsection{Exported Access Programs}
+\begin{tabular}{|c|c|c|c|}
+    \hline
+    \textbf{Routine Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+    \hline
+    chooseDiscard & - & String & - \\
+    \hline
+    closeScanner & - & - & - \\
+    \hline
+    knock & - & character & - \\
+    \hline
+    playAgain & - & character & - \\
+    \hline
+    playerDecision & - & integer & - \\
+    \hline
+    username & - & String & - \\
+    \hline
+\end{tabular}
+
+\subsection{Interface Semantics}
+\subsubsection{State Variables}
+scanner: Scanner - Object used to read user keyboard input
+
+\subsubsection{Environment Variables}
+keyboard: external device for user to provide String input when prompted by the game
+
+\subsubsection{Assumptions}
+\begin{itemize}
+    \item User input comes from active keyboard input.
+    \item Input stream is available throughout operation of the program.
+\end{itemize}
+
+\subsection{Access Program Semantics}
+chooseDiscard():
+\begin{itemize}
+    \item Input: None
+    \item Transition: Receive user input on card to discard
+    \item Output: User's input of the card to discard
+    \item Exceptions: None
+\end{itemize}
+
+\noindent closeScanner():
+\begin{itemize}
+    \item Input: None
+    \item Transition: Closes scanner state variable access
+    \item Output: None
+    \item Exceptions: None
+\end{itemize}
+
+\noindent knock():
+\begin{itemize}
+    \item Input: None
+    \item Transition: Takes the user input on if the player wants to knock, and validates it
+    \item Output: User's affirmation or refusal to knock
+    \item Exception: None
+\end{itemize}
+
+\noindent playAgain():
+\begin{itemize}
+    \item Input: None
+    \item Transition: Takes the user input on if the player wants to play again, and validates it
+    \item Output: User's affirmation or refusal to play a new game
+    \item Exception: None
+\end{itemize}
+
+\noindent playerDecision():
+\begin{itemize}
+    \item Input: None
+    \item Transition: After showing the available options for the user to make, takes user input and validates it
+    \item Output: User's \textcolor{red}{valid} decision for the turn
+    \item Exceptions: None
+\end{itemize}
+
+\noindent username():
+\begin{itemize}
+    \item Input: None
+    \item Transition: Takes user input
+    \item Output: User's input for their username
+    \item Exception: None
+\end{itemize}
+
+\end{document}
